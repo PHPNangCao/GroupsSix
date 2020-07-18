@@ -17,20 +17,20 @@
             @csrf
             <div class="form-group">
                 <label>Tiêu Đề</label>
-                <input type="text" class="form-control-file" name="tieude" value="{{$quangcao->tieude}}">
+                <input type="text" class="form-control-file" name="tieude" value="{{$khuyenmai->tieude}}">
             </div>
             <div class="form-group">
                 <label>Nội Dung</label>
-                <textarea class="form-control" name="noidung" rows="3" placeholder="noidung" value="{{$quangcao->noidung}}"></textarea>
+                <textarea class="form-control" name="noidung" rows="3" placeholder="noidung" value="{{$khuyenmai->noidung}}"></textarea>
             </div>
             <div class="form-group">
                 <label>Ảnh</label>
-                <input type="file" class="form-control-file" name="anh" value="{{$quangcao->anh}}">
+                <input type="file" class="form-control-file" name="anh" value="{{$khuyenmai->anh}}">
             </div>
             <div class="form-group">
                 <label>Trạng Thái</label>
-                <input type="checkbox" name="tinhtrang" value="1"  {{ ($quangcao->tinhtrang== 1) ? 'checked' : ''}} />ON
-                <input type="checkbox" name="tinhtrang" value="1"  {{ ($quangcao->tinhtrang== 0) ? 'checked' : ''}} />OFF
+                <input type="checkbox" name="tinhtrang" value="1"  {{ ($khuyenmai->tinhtrang== 1) ? 'checked' : ''}} />ON
+                <input type="checkbox" name="tinhtrang" value="1"  {{ ($khuyenmai->tinhtrang== 0) ? 'checked' : ''}} />OFF
             </div>
             <button type="submit" class="btn btn-primary">Lưu thông tin</button>
         </form>
