@@ -24,7 +24,7 @@
                 <select name="khuyenmai_id" class="form-control">
                 <option >----Chọn nhà khuyến mãi----</option>
                 @foreach ($khuyenmai as $km)
-                    <option value="{{$km->id}}">{{$km->ten}}</option>
+                    <option value="{{$km->id}}">{{$km->noidung}}</option>
                 @endforeach
                 </select>
             </div>

@@ -17,10 +17,9 @@ class SaleproductController extends Controller
      */
     public function index()
     {
-        $SanPham = DB::table('SanPham')->get();
-        $khuyenmai = DB::table('KhuyenMai')->get();
+
         $khuyenmaisanpham = DB::table('SanPhamKhuyenMai')->orderBy('id', 'DESC')->get();;
-        return view('api-admin.modules.saleproduct.index', ['khuyenmaisanpham' => $khuyenmaisanpham],['khuyenmai'->$khuyenmai,'SanPham' => $SanPham]);
+        return view('api-admin.modules.saleproduct.index', ['khuyenmaisanpham' => $khuyenmaisanpham]);
     }
 
     /**
@@ -30,7 +29,7 @@ class SaleproductController extends Controller
      */
     public function create()
     {
-        $khuyenmai  = DB::table('KhuyenMai')->get(); 
+        $khuyenmai  = DB::table('KhuyenMai')->get();
         $sanpham = DB::table('SanPham')->get();
         return view('api-admin.modules.saleproduct.create',['khuyenmai' => $khuyenmai], ['SanPham' => $sanpham]);
     }
