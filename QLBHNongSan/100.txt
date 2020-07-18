@@ -1,0 +1,4 @@
+lavarel validation
+
+tất cả project  -> menu
+		-> blade template

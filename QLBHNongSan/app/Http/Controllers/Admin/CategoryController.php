@@ -44,7 +44,8 @@ class CategoryController extends Controller
         $data['created_at'] = new DateTime;
         $data['updated_at'] = new DateTime;
         //$request->anh->store('images', 'public');
-        
+
+
         //thêm ảnh
         $file = $request->anh;
         
