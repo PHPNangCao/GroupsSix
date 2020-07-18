@@ -24,7 +24,7 @@
                 <select name="donvitinh_id" class="form-control">
                 <option >----Chọn đơn vị tính----</option>
                 @foreach ($DonViTinh as $DVT)
-                    <option value="{{$DVT->id}}">{{$DVT->ten}}</option>
+                    <option value="{{$DVT->id}}" selected = {{$SanPham->donvitinh_id}}>{{$DVT->ten}}</option>
                 @endforeach
                 </select>
             </div>
@@ -34,7 +34,7 @@
                 <select name="loaisanpham_id" class="form-control">
                 <option >----Chọn loại sản phẩm----</option>
                 @foreach ($LoaiSanPham as $LoaiSP)
-                    <option value="{{$LoaiSP->id}}">{{$LoaiSP->ten}}</option>
+                    <option value="{{$LoaiSP->id}}" selected = {{$SanPham->loaisanpham_id}}>{{$LoaiSP->ten}}</option>
                 @endforeach
                 </select>
             </div>
