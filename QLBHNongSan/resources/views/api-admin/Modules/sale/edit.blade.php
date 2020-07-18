@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="card-body">
-        <form action="{{route('admin.sale.update')}}" method="POST">
+        <form action="{{route('admin.sale.update', ['id' => $khuyenmai->id])}}" method="POST">
             @csrf
             <div class="form-group">
                 <label>Tiêu Đề</label>
