@@ -47,11 +47,8 @@ class CategoryController extends Controller
 
 
         //thêm ảnh
-        $file = $request->anh;
-        
+        $file = $request->anh;      
         $file->move('public/upload/category', $file->getClientOriginalName());
-
-
         $data["anh"] =  $file->getClientOriginalName();
 
 
@@ -93,16 +90,35 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->except('_token');
-        $data['updated_at'] = new DateTime;
+        // $data = $request->except('_token');
+        // $data['updated_at'] = new DateTime;
 
-        //thêm ảnh
-        $file = $request->anh;  
-        $file->move('public/upload/category', $file->getClientOriginalName());
-        $data["anh"] =  $file->getClientOriginalName();
-        
-         DB::table('LoaiSanPham')->where('id',$id)->update($data);
-        return redirect()->route('admin.category.index');
+        // if($request->has('anh')){
+        //     //thêm ảnh
+        //     $file = $request->anh;  
+        //     $file->move('public/upload/category', $file->getClientOriginalName());
+        //     $data["anh"] =  $file->getClientOriginalName();
+        // }else{
+        //     $data["anh"] = $request->anh;
+        // }
+        //  DB::table('LoaiSanPham')->where('id',$id)->update($data);
+        if($request->has('anh')){
+            $image_name = $request->anh->getClientOriginalName();
+            $request->anh->move(public_path('public/upload/category'),$image_name);
+        }else{
+            $image_name = $request->image;
+        }
+        $addimage = DB::table('LoaiSanPham')->where('id',$id)->update([
+            'ten' => $request->ten,
+            'mota' => $request->mota,
+            'anh' => $image_name,
+            'nhom_id' => $request->nhom_id,
+            'trangthai' => $request->trangthai
+        ]);
+        if($addimage){
+            return redirect()->route('admin.category.index')->with('Sửa thành công bảng loại sản phẩm');
+        }
+        return redirect()->route('admin.category.index')->with('Sửa không thành công bảng loại sản phẩm');
     }
 
     /**

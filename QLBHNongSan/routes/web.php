@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('admin', function () {
     return view('welcome');
 });
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
@@ -225,7 +225,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 });
 
 
-Route::get('trang-chu', 'TrangChu\PageController@page')->name('trang-chu');
+Route::get('/', 'TrangChu\PageController@page')->name('trang-chu');
 
 Route::get('dang-ki', 'TrangChu\PageController@dangki')->name('dangki');
 Route::post('dang-ki', 'TrangChu\PageController@xulydangki')->name('xulydangki');
