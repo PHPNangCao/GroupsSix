@@ -10,7 +10,7 @@
     </div>
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
-            <thead>
+            <thead style="text-align: center">
                 <tr>
                     <th>Mã</th>
                     <th>Tên</th>
@@ -22,7 +22,7 @@
 
                 </tr>
             </thead> 
-            <tbody>
+            <tbody style="text-align: center">
                 @foreach ($LoaiSanPham as $LoaiSP)
                 <tr>
                     <td>{{$loop->iteration }}</td>

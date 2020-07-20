@@ -12,21 +12,21 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Tên loại sản phẩm</label>
+                        <label>Tên loại sản phẩm <span class="text-danger">(*)</label>
                     <input type="text" name="ten" class="form-control" required placeholder="Tên loại sản phẩm" value="{{$LoaiSanPham->ten}}">
                     </div>
                     <div class="form-group">
-                        <label>Mô tả</label>
+                        <label>Mô tả <span class="text-danger">(*)</label>
                         <textarea class="form-control" name="mota" rows="3" required placeholder="Mô tả" >{{$LoaiSanPham->mota}}</textarea>
                     </div>
                     <div class="form-group">
-                        <label>Ảnh</label>
+                        <label>Ảnh <span class="text-danger">(*)</label>
                         <input type="hidden" name="image" value="{{$LoaiSanPham->anh}}">
                         <input type="file" class="form-control-file" name="anh">
                     </div>
                           
                     <div class="form-group">
-                        <label>Nhóm sản phẩm</label>
+                        <label>Nhóm sản phẩm <span class="text-danger">(*)</label>
                         <select name="nhom_id" class="form-control" required>
                             <option >----Chọn nhóm sản phẩm----</option>
                         @foreach ($NhomSanPham as $NhomSP)

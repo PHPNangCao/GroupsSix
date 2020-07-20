@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Mô tả</label>
+                        <label>Mô tả <span class="text-danger">(*)</label>
                         <textarea class="form-control" name="mota" rows="3"  placeholder="Mô tả"></textarea>
                         @if ($errors->has('mota'))
                         <div class="text-danger">
@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Ảnh</label>
+                        <label>Ảnh <span class="text-danger">(*)</label>
                         <input type="file" class="form-control-file"  name="anh">
                         @if ($errors->has('anh'))
                         <div class="text-danger">
@@ -48,7 +48,7 @@
                 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label>Đơn vị tính</label>
+                        <label>Đơn vị tính <span class="text-danger">(*)</label>
                         <select name="donvitinh_id" class="form-control">
                         <option value="">----Chọn đơn vị tính----</option>
                         @foreach ($DonViTinh as $DVT)
@@ -64,14 +64,16 @@
                     </div>
         
                     <div class="form-group">
-                        <label>Loại sản phẩm</label>
+                        <label>Loại sản phẩm <span class="text-danger">(*)</label>
                         <select name="loaisanpham_id" class="form-control">
                         <option value="">----Chọn loại sản phẩm----</option>
                         @foreach ($LoaiSanPham as $LoaiSP)
+                            {{-- @if (array($LoaiSP->trangthai) == 1)
+                                <option value="{{$loaiSP->id}}">{{$LoaiSP->ten}}</option>
+                            @else --}}
                             <option value="{{$LoaiSP->id}}">{{$LoaiSP->ten}}</option>
                         @endforeach
                         </select>
-                        
                         @if ($errors->has('loaisanpham_id'))
                         <div class="text-danger">
                             {{$errors->first('loaisanpham_id')}}
