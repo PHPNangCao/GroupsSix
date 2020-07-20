@@ -24,9 +24,7 @@
                         <input type="hidden" name="image" value="{{$LoaiSanPham->anh}}">
                         <input type="file" class="form-control-file" name="anh">
                     </div>
-        
-                    
-        
+                          
                     <div class="form-group">
                         <label>Nhóm sản phẩm</label>
                         <select name="nhom_id" class="form-control" required>

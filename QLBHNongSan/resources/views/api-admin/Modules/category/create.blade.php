@@ -11,26 +11,33 @@
             @csrf
             <div class="form-group">
                 <label>Tên loại sản phẩm</label>
-                <input type="text" name="ten" class="form-control" required placeholder="Tên loại sản phẩm">
+                <input type="text" name="ten" class="form-control"   placeholder="Tên loại sản phẩm">
             </div>
             <div class="form-group">
                 <label>Mô tả</label>
-                <textarea class="form-control" name="mota" rows="3" required placeholder="Mô tả"></textarea>
+                <textarea class="form-control" name="mota" rows="3"   placeholder="Mô tả"></textarea>
             </div>
             <div class="form-group">
                 <label>Ảnh</label>
-                <input type="file" class="form-control-file" required name="anh">
+                <input type="file" class="form-control-file"   name="anh">
             </div>
             
             <div class="form-group">
                 <label>Nhóm sản phẩm</label>
                 <select name="nhom_id" class="form-control">
-                    <option >----Chọn nhóm sản phẩm----</option>
+                    <option value="">----Chọn nhóm sản phẩm----</option>
                 @foreach ($NhomSanPham as $NhomSP)
                     <option value="{{$NhomSP->id}}">{{$NhomSP->ten}}</option>
                 @endforeach
                 </select>
+
+                @if ($errors->has('nhom_id'))
+                <div class="error-text" style="color: red">
+                    {{$errors->first('nhom_id')}}
+                </div>
+                @endif
             </div>
+
             <hr>
             <button type="submit" class="btn btn-primary">Lưu thông tin</button>
         </form>

@@ -35,17 +35,8 @@
                 <label>Mật Khẩu</label>
                 <input type="password" name="matkhau" class="form-control" placeholder="Mật Khẩu">
             </div>
-            {{-- <div class="form-group">
-                <label>Nhóm sản phẩm</label>
-                <select name="nhom_id" class="form-control">
-                <option >----Chọn nhóm sản phẩm----</option>
 
-                @foreach ($khachhang as $kh)
-                    <option value="{{$kh->id}}">{{$kh->ten}}</option>
-                @endforeach
-
-                </select>
-            </div> --}}
+            
             <button type="submit" class="btn btn-primary">Lưu thông tin</button>
         </form>
     </div>

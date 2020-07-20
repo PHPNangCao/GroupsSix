@@ -30,8 +30,8 @@
                     <td>{{ $SP->ten }}</td>
                     <td>{{ $SP->mota }}</td>
                     <td><img src="public/upload/product/{{$SP->anh}}" alt="" height="100px"></td>
-                    <td>{{ $SP->loaisanpham_id }}</td>
-                    <td>{{ $SP->donvitinh_id }}</td>
+                    <td>{{ $SP->LoaiSanPham->ten }}</td>
+                    <td>{{ $SP->DonViTinh->ten }}</td>
                     <td>
                         @if ($SP->trangthai == 1)
                             Còn hàng

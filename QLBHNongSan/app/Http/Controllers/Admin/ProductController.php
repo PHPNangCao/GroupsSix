@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
+use App\Admin\ProductModel;
 use DateTime;
 
 use App\Http\Controllers\Controller;
@@ -16,7 +18,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data = DB::table('SanPham')->orderBy('id', 'DESC')->get();
+        $SanPham = DB::table('SanPham')->get();
+        $data = ProductModel::orderBy('id', 'DESC')->get();
         return view('api-admin.modules.product.index', ['SanPham' => $data]);
     }
 
@@ -41,20 +44,33 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $valdidateData = $request->validate([
+            'ten' => 'required|unique:SanPham',
+            'donvitinh_id' => 'required',
+            'loaisanpham_id' => 'required',
+            'anh' => 'required',
+            'mota' => 'required',
+
+        ],[
+            'ten.required' => 'Vui lòng nhập tên sản phẩm',
+            'ten.unique' => 'Tên sản phẩm này đã tồn tại',
+            'donvitinh_id.required' => 'Vui lòng chọn đơn vị tính',
+            'loaisanpham_id.required' => 'Vui lòng chọn loại sản phẩm',
+            'anh.required' => 'Vui lòng chọn ảnh',
+            'mota.required' => 'Vui lòng nhập mô tả sản phẩm',
+
+        ]);
+
         $data = $request->except('_token');
         $data['created_at'] = new DateTime;
         $data['updated_at'] = new DateTime;
 
     //thêm ảnh
-        $file = $request->anh;
-        
+        $file = $request->anh;       
         $file->move('public/upload/product', $file->getClientOriginalName());
-
-
         $data["anh"] =  $file->getClientOriginalName();
     //
         DB::table('SanPham')->insert($data);
-
         return redirect()->route('admin.product.index');
     }
 
@@ -92,6 +108,21 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $valdidateData = $request->validate([
+            'ten' => 'required|unique:SanPham',
+            'donvitinh_id' => 'required',
+            'loaisanpham_id' => 'required',
+            'mota' => 'required',
+
+        ],[
+            'ten.required' => 'Vui lòng nhập tên sản phẩm',
+            'ten.unique' => 'Tên sản phẩm này đã tồn tại',
+            'donvitinh_id.required' => 'Vui lòng chọn đơn vị tính',
+            'loaisanpham_id.required' => 'Vui lòng chọn loại sản phẩm',
+            'mota.required' => 'Vui lòng nhập mô tả sản phẩm',
+            
+        ]);
+        
         $data = $request->except('_token');
         $data['updated_at'] = new DateTime;
         DB::table('SanPham')->where('id',$id)->update($data);
