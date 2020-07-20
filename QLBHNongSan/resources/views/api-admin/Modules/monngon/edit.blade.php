@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="card-body">
-        <form action="{{route('admin.recruitment.update',['id' => $monngon->id])}}" method="POST">
+        <form action="{{route('admin.monngon.update',['id' => $monngon->id])}}" method="POST">
             @csrf
             <div class="form-product">
                 <label >Tiêu đề</label>
@@ -38,10 +38,10 @@
             <div class="form-product">
                 <label >Sản phẩm: </label>
                 <select name="sanpham_id" class="form-control">
-                    {{-- <option value="{{$sanpham->id}}">{{$sanpham->ten}}</option>
-                    @foreach($sanpham as $sp)
                     <option value="{{$sanpham->id}}">{{$sanpham->ten}}</option>
-                    @endforeach --}}
+                    @foreach($sanpham as $sp)
+                        <option value="{{$sanpham->id}}">{{$sanpham->ten}}</option>
+                    @endforeach
                 </select>
             </div>
             <br>
