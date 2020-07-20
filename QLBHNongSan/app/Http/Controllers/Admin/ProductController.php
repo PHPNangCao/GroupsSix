@@ -46,7 +46,7 @@ class ProductController extends Controller
     {
         $valdidateData = $request->validate([
             'ten' => 'required|unique:SanPham',
-            'donvitinh_id' => 'required',
+            'donvitinh_id' => 'required', 
             'loaisanpham_id' => 'required',
             'anh' => 'required',
             'mota' => 'required',

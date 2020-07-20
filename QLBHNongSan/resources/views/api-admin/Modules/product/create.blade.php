@@ -11,29 +11,29 @@
             @csrf
             <div class="row">
                 <div class="col-md-8">
-                    <div class="form-product">
-                        <label>Tên sản phẩm</label>
+                    <div class="form-group">
+                        <label>Tên sản phẩm <span class="text-danger">(*)</span></label>
                         <input type="text" name="ten" class="form-control"   placeholder="Tên sản phẩm">
                         @if ($errors->has('ten'))
-                        <div class="error-text" style="color: red">
+                        <div class="text-danger">
                             {{$errors->first('ten')}}
                         </div>
                         @endif
                     </div>
-                    <div class="form-product">
+                    <div class="form-group">
                         <label>Mô tả</label>
                         <textarea class="form-control" name="mota" rows="3"  placeholder="Mô tả"></textarea>
                         @if ($errors->has('mota'))
-                        <div class="error-text" style="color: red">
+                        <div class="text-danger">
                             {{$errors->first('mota')}}
                         </div>
                         @endif
                     </div>
-                    <div class="form-product">
+                    <div class="form-group">
                         <label>Ảnh</label>
                         <input type="file" class="form-control-file"  name="anh">
                         @if ($errors->has('anh'))
-                        <div class="error-text" style="color: red">
+                        <div class="text-danger">
                             {{$errors->first('anh')}}
                         </div>
                         @endif
@@ -53,7 +53,7 @@
                         </select>
         
                         @if ($errors->has('donvitinh_id'))
-                        <div class="error-text" style="color: red">
+                        <div class="text-danger">
                             {{$errors->first('donvitinh_id')}}
                         </div>
                         @endif
@@ -69,7 +69,7 @@
                         </select>
                         
                         @if ($errors->has('loaisanpham_id'))
-                        <div class="error-text" style="color: red">
+                        <div class="text-danger">
                             {{$errors->first('loaisanpham_id')}}
                         </div>
                         @endif

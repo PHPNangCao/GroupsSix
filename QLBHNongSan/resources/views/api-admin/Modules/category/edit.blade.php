@@ -39,13 +39,6 @@
                 </div>
 
                 <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Tình trạng</label>
-                        <select name="trangthai" class="form-control" required>
-                            <option value="0">Hết Hàng</option>
-                            <option value="1">Còn Hàng</option>
-                        </select>
-                    </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Ảnh đã lưu</label>

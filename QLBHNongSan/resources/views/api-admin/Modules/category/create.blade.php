@@ -12,6 +12,11 @@
             <div class="form-group">
                 <label>Tên loại sản phẩm</label>
                 <input type="text" name="ten" class="form-control"   placeholder="Tên loại sản phẩm">
+                @if ($errors->has('ten'))
+                <div class="error-text" style="color: red">
+                    {{$errors->first('ten')}}
+                </div>
+                @endif
             </div>
             <div class="form-group">
                 <label>Mô tả</label>

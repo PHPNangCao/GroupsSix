@@ -25,6 +25,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
         Route::get('edit/{id}', 'CategoryController@edit')->name('edit');
         Route::post('update/{id}', 'CategoryController@update')->name('update');
 
+        Route::get('status/{id}', 'CategoryController@status')->name('status');
         Route::get('destroy/{id}', 'CategoryController@destroy')->name('destroy');
 
     }); 

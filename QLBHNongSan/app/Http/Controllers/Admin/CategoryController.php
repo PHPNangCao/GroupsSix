@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin\CategoryModel;
 use App\Http\Controllers\Controller;
 use DateTime;
 use Illuminate\Http\UploadedFile;
@@ -17,7 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
         $NhomSanPham = DB::table('NhomSanPham')->get();
-        $data = DB::table('LoaiSanPham')->orderBy('id', 'DESC')->get();
+        $data = CategoryModel::orderBy('id', 'DESC')->get();
         return view('api-admin.modules.category.index', ['LoaiSanPham' => $data], );
     }
     /**
@@ -63,9 +64,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function status($id)
     {
-        //
+        $category = CategoryModel::find($id);
+        $category->trangthai = ! $category->trangthai;
+        $category->save();
+        return redirect()->back();
     }
 
     /**
