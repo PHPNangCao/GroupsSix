@@ -12,7 +12,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Tên Loại Người Dùng</th>
+                        <th>Loại Người Dùng</th>
                         <th>Mô tả</th>
                         <th>Sửa</th>
                         <th>Xoá</th>

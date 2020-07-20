@@ -9,35 +9,57 @@
     <div class="card-body">
         <form action="{{route('admin.staff.store')}}" method="POST">
             @csrf
+            
             <div class="form-group">
                 <label>Tên nhân viên</label>
                 <input type="text" name="ten" class="form-control" placeholder="Tên nhân viên">
+                @if ($errors->has('ten'))
+                <div class="text-danger">
+                    {{$errors->first('ten')}}
+                </div>
+                @endif
             </div>
+
             <div class="form-group">
                 <label>CMND</label>
-                <input type="text" name="cmnd" class="form-control" placeholder="Email">
+                <input type="integer" name="cmnd" class="form-control" placeholder="CMND">
+                @if ($errors->has('cmnd'))
+                <div class="text-danger">
+                    {{$errors->first('cmnd')}}
+                </div>
+                @endif
             </div>
+
             <div class="form-group">
                 <label>Số điện thoại </label>
-                <input type="text" name="sdt" class="form-control" placeholder="Số điện thoại">
+                <input type="integer" name="sdt" class="form-control" placeholder="Số điện thoại">
+                @if ($errors->has('sdt'))
+                <div class="text-danger">
+                    {{$errors->first('sdt')}}
+                </div>
+                @endif
             </div>
+
             <div class="form-group">
                 <label>Địa chỉ</label>
                 <input type="text" name="diachi" class="form-control" placeholder="Địa Chỉ">
+                @if ($errors->has('diachi'))
+                <div class="text-danger">
+                    {{$errors->first('diachi')}}
+                </div>
+                @endif
             </div>
 
             <div class="form-group">
                 <label>Mã Số Nhân Viên</label>
-                <input type="text" name="user_id" class="form-control" placeholder="Mã Số Nhân Viên">
+                <input type="integer" name="user_id" class="form-control" placeholder="Mã Số Nhân Viên">
+                @if ($errors->has('user_id'))
+                <div class="text-danger">
+                    {{$errors->first('user_id')}}
+                </div>
+                @endif
             </div>
-            {{-- <div class="form-group">
-                <label>Mã Số Nhân Viên</label>
-                <select name="user_id" class="form-control">
-                @foreach ($DonViTinh as $DVT)
-                    <option value="{{$DVT->id}}">{{$DVT->ten}}</option>
-                @endforeach
-                </select>
-            </div> ==> đang check lại --}}
+
             <hr>
             <button type="submit" class="btn btn-primary">Lưu thông tin</button>
         </form>

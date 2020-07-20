@@ -40,6 +40,18 @@ class KindOfUserController extends Controller
      */
     public function store(Request $request)
     {
+        $valdidateData = $request->validate([
+            'ten' => 'required|unique:LoaiNguoiDung',
+
+            'mota' => 'required',
+
+        ],[
+            'ten.required' => 'Vui lòng nhập loại người dùng',
+            'ten.unique' => 'Loại người dùng này đã tồn tại',
+            'mota.required' => 'Vui lòng nhập mô tả loại người dùng',
+
+        ]);
+
         $data = $request->except('_token');
         $data['created_at'] = new DateTime;
         $data['updated_at'] = new DateTime;

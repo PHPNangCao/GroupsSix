@@ -11,6 +11,7 @@
             @csrf
             <div class="row">
                 <div class="col-md-8">
+
                     <div class="form-group">
                         <label>Tên sản phẩm <span class="text-danger">(*)</span></label>
                         <input type="text" name="ten" class="form-control"   placeholder="Tên sản phẩm">
@@ -20,6 +21,7 @@
                         </div>
                         @endif
                     </div>
+
                     <div class="form-group">
                         <label>Mô tả</label>
                         <textarea class="form-control" name="mota" rows="3"  placeholder="Mô tả"></textarea>
@@ -29,6 +31,7 @@
                         </div>
                         @endif
                     </div>
+
                     <div class="form-group">
                         <label>Ảnh</label>
                         <input type="file" class="form-control-file"  name="anh">
@@ -38,6 +41,7 @@
                         </div>
                         @endif
                     </div>
+                    
                       <hr>
                     <button type="submit" class="btn btn-primary">Lưu thông tin</button>
                 </div>

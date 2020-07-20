@@ -26,7 +26,7 @@
                     <tr>
                         <td>{{$loop->iteration }}</td>
                         <td>{{ $nv->ten }}</td>
-                        <td>{{ $nv->email }}</td>
+                        <td>{{ $nv->cmnd }}</td>
                         <td>{{ $nv->sdt }}</td>
                         <td>{{ $nv->diachi }}</td>
                         <td>{{ $nv->user_id }}</td>
