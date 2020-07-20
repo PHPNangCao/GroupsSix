@@ -25,7 +25,7 @@
                     <button type="submit" class="btn btn-primary">Lưu thông tin</button>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4"> 
                     <div class="form-group">
                         <label>Đơn vị tính</label>
                         <select name="donvitinh_id" class="form-control">
@@ -35,7 +35,7 @@
                         @endforeach
                         </select>
                     </div>
-        
+                <input type="hidden" name="trangthai" value="{{$SanPham->trangthai}}">
                     <div class="form-group">
                         <label>Loại sản phẩm</label>
                         <select name="loaisanpham_id" class="form-control">

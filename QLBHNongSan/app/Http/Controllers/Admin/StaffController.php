@@ -44,7 +44,6 @@ class StaffController extends Controller
             'cmnd' => 'required|interger|max:12',
             'sdt' => 'required|interger|max:10',
             'diachi' => 'required',
-            'user_id' => 'required|interger|max:10',
 
         ],[
             'ten.required' => 'Vui lòng nhập tên nhân viên',
@@ -53,8 +52,6 @@ class StaffController extends Controller
             'cmnd.max' => 'Số CMND không quá được 12 số',
             'sdt.required' => 'Vui lòng nhập số số điện thoại',
             'diachi.required' => 'Vui lòng nhập địa chỉ',
-            'user_id.required' => 'Vui lòng nhập mã số nhân viên',
-            'user_id.max' => 'Mã số nhân viên không được quá 10 số',
         ]);
         
 

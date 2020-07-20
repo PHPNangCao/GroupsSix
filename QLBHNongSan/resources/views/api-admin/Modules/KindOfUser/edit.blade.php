@@ -10,8 +10,8 @@
         <form action="{{route('admin.kindofuser.update',['id' => $loainguoidung->id])}}" method="POST">
             @csrf
             <div class="form-group">
-                <label>Tên khách hàng</label>
-                <input type="text" name="ten" class="form-control" placeholder="Tên người dùng" value="{{$loainguoidung->ten}}">
+                <label>Loại người dùng</label>
+                <input type="text" name="ten" class="form-control" placeholder="Loại người dùng" value="{{$loainguoidung->ten}}">
             
             </div>
 

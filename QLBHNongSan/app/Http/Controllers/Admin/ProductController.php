@@ -112,9 +112,23 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // $data = $request->except('_token');
+        // $data['updated_at'] = new DateTime;
+
+        // if($request->has('anh')){
+        //     //thêm ảnh
+        //     $file = $request->anh;  
+        //     $file->move('public/upload/category', $file->getClientOriginalName());
+        //     $data["anh"] =  $file->getClientOriginalName();
+        // }else{
+        //     $data["anh"] = $request->anh;
+        // }
+        //  DB::table('LoaiSanPham')->where('id',$id)->update($data);
+
+        
         if($request->has('anh')){
             $image_name = $request->anh->getClientOriginalName();
-            $request->anh->move(public_path('public/upload/product'),$image_name);
+            $request->anh->move('public/upload/product', $image_name);
         }else{
             $image_name = $request->image;
         }
