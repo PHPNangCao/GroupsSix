@@ -52,6 +52,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
         Route::get('edit/{id}', 'ProductController@edit')->name('edit');
         Route::post('update/{id}', 'ProductController@update')->name('update');
 
+        Route::get('status/{id}', 'ProductController@status')->name('status');
         Route::get('destroy/{id}', 'ProductController@destroy')->name('destroy');
 
     });

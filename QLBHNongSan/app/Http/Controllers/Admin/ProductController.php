@@ -80,11 +80,15 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
+    public function status($id)
+    {
+        $product = ProductModel::find($id);
+        $product->trangthai = ! $product->trangthai;
+        $product->save();
+        return redirect()->back();
+    }
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -108,25 +112,30 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $valdidateData = $request->validate([
-            'ten' => 'required|unique:SanPham',
-            'donvitinh_id' => 'required',
-            'loaisanpham_id' => 'required',
-            'mota' => 'required',
+        if($request->has('anh')){
+            $image_name = $request->anh->getClientOriginalName();
+            $request->anh->move(public_path('public/upload/product'),$image_name);
+        }else{
+            $image_name = $request->image;
+        }
+        $addimage = DB::table('SanPham')->where('id',$id)->update([
+            'ten' => $request->ten,
+            'mota' => $request->mota,
+            'anh' => $image_name,
+            'loaisanpham_id' => $request->loaisanpham_id,
+            'donvitinh_id' => $request->donvitinh_id,
+            'trangthai' => $request->trangthai
 
-        ],[
-            'ten.required' => 'Vui lòng nhập tên sản phẩm',
-            'ten.unique' => 'Tên sản phẩm này đã tồn tại',
-            'donvitinh_id.required' => 'Vui lòng chọn đơn vị tính',
-            'loaisanpham_id.required' => 'Vui lòng chọn loại sản phẩm',
-            'mota.required' => 'Vui lòng nhập mô tả sản phẩm',
-            
         ]);
-        
-        $data = $request->except('_token');
-        $data['updated_at'] = new DateTime;
-        DB::table('SanPham')->where('id',$id)->update($data);
-        return redirect()->route('admin.product.index');
+        if($addimage){
+            return redirect()->route('admin.product.index')->with('Sửa thành công bảng sản phẩm');
+        }
+        return redirect()->route('admin.product.index')->with('Sửa không thành công bảng sản phẩm');
+
+        // $data = $request->except('_token');
+        // $data['updated_at'] = new DateTime;
+        // DB::table('SanPham')->where('id',$id)->update($data);
+        // return redirect()->route('admin.product.index');
 
     }
 

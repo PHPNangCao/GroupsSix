@@ -34,9 +34,9 @@
                     <td>{{ $SP->DonViTinh->ten }}</td>
                     <td>
                         @if ($SP->trangthai == 1)
-                            Còn hàng
+                            <a href="{{route('admin.product.status',['id' => $SP->id])}}" class="btn btn-success">Show</i></a>
                         @else
-                            Hết hàng
+                            <a href="{{route('admin.product.status',['id' => $SP->id])}}" class="btn btn-danger">Hide</a>
                         @endif
                     </td>
                     <td><a href="{{route('admin.product.edit',['id' => $SP->id])}}">Sửa</a></td>

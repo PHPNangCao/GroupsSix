@@ -41,11 +41,27 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $valdidateData = $request->validate([
+            'ten' => 'required|unique:LoaiSanPham',
+            'nhom_id' => 'required', 
+            'trangthai' => 'required',
+            'anh' => 'required',
+            'mota' => 'required',
+
+        ],[
+            'ten.required' => 'Vui lòng nhập tên sản phẩm',
+            'ten.unique' => 'Tên sản phẩm này đã tồn tại',
+            'nhom_id.required' => 'Vui lòng chọn nhóm sản phẩm',
+            'trangthai.required' => 'Vui lòng chọn trạng thái',
+            'anh.required' => 'Vui lòng chọn ảnh',
+            'mota.required' => 'Vui lòng nhập mô tả sản phẩm',
+
+        ]);
+
         $data = $request->except('_token');
         $data['created_at'] = new DateTime;
         $data['updated_at'] = new DateTime;
         //$request->anh->store('images', 'public');
-
 
         //thêm ảnh
         $file = $request->anh;      

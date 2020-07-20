@@ -18,13 +18,25 @@
                 </div>
                 @endif
             </div>
+
             <div class="form-group">
                 <label>Mô tả</label>
                 <textarea class="form-control" name="mota" rows="3"   placeholder="Mô tả"></textarea>
+                @if ($errors->has('mota'))
+                <div class="error-text" style="color: red">
+                    {{$errors->first('mota')}}
+                </div>
+                @endif
             </div>
+
             <div class="form-group">
                 <label>Ảnh</label>
                 <input type="file" class="form-control-file"   name="anh">
+                @if ($errors->has('anh'))
+                <div class="error-text" style="color: red">
+                    {{$errors->first('anh')}}
+                </div>
+                @endif
             </div>
             
             <div class="form-group">
