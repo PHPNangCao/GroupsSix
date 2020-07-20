@@ -34,6 +34,7 @@
                         @endforeach
                         </select>
                     </div>
+                    <input type="hidden" name="trangthai" value="{{$LoaiSanPham->trangthai}}">
                     <hr>
                     <button type="submit" class="btn btn-primary">Lưu thông tin</button>
                 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin\StaffModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,11 +17,11 @@ class StaffController extends Controller
      */
     public function index()
     {
-        $data = DB::table('nhanvien')->orderBy('id', 'DESC')->get();
+        $data = StaffModel::orderBy('id', 'DESC')->get();
         return view('api-admin.modules.staff.index', ['nhanvien' => $data]);
     }
 
-    /**
+    /** 
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
