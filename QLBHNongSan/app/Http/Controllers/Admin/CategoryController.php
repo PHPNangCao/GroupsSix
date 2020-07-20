@@ -70,7 +70,6 @@ class CategoryController extends Controller
 
 
         DB::table('LoaiSanPham')->insert($data);
-
         return redirect()->route('admin.category.index');
     }
 

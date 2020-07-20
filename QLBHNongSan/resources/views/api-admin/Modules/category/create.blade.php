@@ -28,7 +28,6 @@
                 </div>
                 @endif
             </div>
-
             <div class="form-group">
                 <label>Ảnh</label>
                 <input type="file" class="form-control-file"   name="anh">
@@ -47,7 +46,6 @@
                     <option value="{{$NhomSP->id}}">{{$NhomSP->ten}}</option>
                 @endforeach
                 </select>
-
                 @if ($errors->has('nhom_id'))
                 <div class="error-text" style="color: red">
                     {{$errors->first('nhom_id')}}

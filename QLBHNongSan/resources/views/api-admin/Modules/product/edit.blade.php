@@ -18,8 +18,9 @@
                     </div>
                     <div class="form-group">
                         <label>Ảnh</label>
-                    <input type="file" class="form-control-file" name="anh" value="{{$SanPham->anh}}" >
-                      </div>                    
+                        <input type="hidden" name="image" value="{{$SanPham->anh}}">
+                        <input type="file" class="form-control-file" name="anh">
+                    </div>              
                       <hr>
                     <button type="submit" class="btn btn-primary">Lưu thông tin</button>
                 </div>
