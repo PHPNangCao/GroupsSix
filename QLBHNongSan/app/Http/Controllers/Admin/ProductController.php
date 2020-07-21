@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
+use App\Admin\ProductModel;
 use DateTime;
 
 use App\Http\Controllers\Controller;
@@ -16,7 +18,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data = DB::table('SanPham')->orderBy('id', 'DESC')->get();
+        $SanPham = DB::table('SanPham')->get();
+        $data = ProductModel::orderBy('id', 'DESC')->get();
         return view('api-admin.modules.product.index', ['SanPham' => $data]);
     }
 
@@ -41,20 +44,33 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $valdidateData = $request->validate([
+            'ten' => 'required|unique:SanPham',
+            'donvitinh_id' => 'required', 
+            'loaisanpham_id' => 'required',
+            'anh' => 'required',
+            'mota' => 'required',
+
+        ],[
+            'ten.required' => 'Vui lòng nhập tên sản phẩm',
+            'ten.unique' => 'Tên sản phẩm này đã tồn tại',
+            'donvitinh_id.required' => 'Vui lòng chọn đơn vị tính',
+            'loaisanpham_id.required' => 'Vui lòng chọn loại sản phẩm',
+            'anh.required' => 'Vui lòng chọn ảnh',
+            'mota.required' => 'Vui lòng nhập mô tả sản phẩm',
+
+        ]);
+
         $data = $request->except('_token');
         $data['created_at'] = new DateTime;
         $data['updated_at'] = new DateTime;
 
     //thêm ảnh
-        $file = $request->anh;
-        
+        $file = $request->anh;       
         $file->move('public/upload/product', $file->getClientOriginalName());
-
-
         $data["anh"] =  $file->getClientOriginalName();
     //
         DB::table('SanPham')->insert($data);
-
         return redirect()->route('admin.product.index');
     }
 
@@ -64,11 +80,15 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
+    public function status($id)
+    {
+        $product = ProductModel::find($id);
+        $product->trangthai = ! $product->trangthai;
+        $product->save();
+        return redirect()->back();
+    }
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -92,10 +112,44 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->except('_token');
-        $data['updated_at'] = new DateTime;
-        DB::table('SanPham')->where('id',$id)->update($data);
-        return redirect()->route('admin.product.index');
+        // $data = $request->except('_token');
+        // $data['updated_at'] = new DateTime;
+
+        // if($request->has('anh')){
+        //     //thêm ảnh
+        //     $file = $request->anh;  
+        //     $file->move('public/upload/category', $file->getClientOriginalName());
+        //     $data["anh"] =  $file->getClientOriginalName();
+        // }else{
+        //     $data["anh"] = $request->anh;
+        // }
+        //  DB::table('LoaiSanPham')->where('id',$id)->update($data);
+
+        
+        if($request->has('anh')){
+            $image_name = $request->anh->getClientOriginalName();
+            $request->anh->move('public/upload/product', $image_name);
+        }else{
+            $image_name = $request->image;
+        }
+        $addimage = DB::table('SanPham')->where('id',$id)->update([
+            'ten' => $request->ten,
+            'mota' => $request->mota,
+            'anh' => $image_name,
+            'loaisanpham_id' => $request->loaisanpham_id,
+            'donvitinh_id' => $request->donvitinh_id,
+            'trangthai' => $request->trangthai
+
+        ]);
+        if($addimage){
+            return redirect()->route('admin.product.index')->with('Sửa thành công bảng sản phẩm');
+        }
+        return redirect()->route('admin.product.index')->with('Sửa không thành công bảng sản phẩm');
+
+        // $data = $request->except('_token');
+        // $data['updated_at'] = new DateTime;
+        // DB::table('SanPham')->where('id',$id)->update($data);
+        // return redirect()->route('admin.product.index');
 
     }
 

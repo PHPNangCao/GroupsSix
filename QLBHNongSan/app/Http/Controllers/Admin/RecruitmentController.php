@@ -37,7 +37,15 @@ class RecruitmentController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->except('_token');
+        $rule = [
+            'tieude' => 'required' ,
+        ];
+        $messenger = [
+            ''
+        ];
+        $data = Validator::make($request->except('_token'),[
+
+        ],$messenger);
         $data['created_at'] = new DateTime;
         $data['updated_at'] = new DateTime;
 

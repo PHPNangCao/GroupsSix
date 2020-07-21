@@ -10,13 +10,17 @@
         <form action="{{route('admin.kindofuser.update',['id' => $loainguoidung->id])}}" method="POST">
             @csrf
             <div class="form-group">
-                <label>Tên khách hàng</label>
-                <input type="text" name="ten" class="form-control" placeholder="Tên người dùng" value="{{$loainguoidung->ten}}">
+                <label>Loại người dùng <span class="text-danger">(*)</label>
+                <input type="text" name="ten" class="form-control" placeholder="Loại người dùng" value="{{$loainguoidung->ten}}">
+            
             </div>
+
             <div class="form-group">
-                <label>Mô tả</label>
+                <label>Mô tả <span class="text-danger">(*)</label>
                 <input type="text" name="mota" class="form-control" placeholder="Mô tả" value="{{$loainguoidung->mota}}">
+            
             </div>
+            
             <hr>
             <button type="submit" class="btn btn-primary">Lưu thông tin</button>
         </form>

@@ -10,7 +10,7 @@
     </div>
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
-            <thead>
+            <thead style="text-align: center">
                 <tr>
                     <th>Mã</th>
                     <th>Tên Sản phẩm </th>
@@ -19,28 +19,29 @@
                     <th>Loại Sản phẩm</th>
                     <th>Đơn vị tính</th> 
                     <th>Trạng Thái</th>
-                    <th>Sửa</th>
-                    <th>Xóa</th>
+                    <th>Thao Tác</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="text-align: center">
                 @foreach ($SanPham as $SP)
                 <tr> 
                     <td>{{$loop->iteration }}</td>
                     <td>{{ $SP->ten }}</td>
                     <td>{{ $SP->mota }}</td>
                     <td><img src="public/upload/product/{{$SP->anh}}" alt="" height="100px"></td>
-                    <td>{{ $SP->loaisanpham_id }}</td>
-                    <td>{{ $SP->donvitinh_id }}</td>
+                    <td>{{ $SP->LoaiSanPham->ten }}</td>
+                    <td>{{ $SP->DonViTinh->ten }}</td>
                     <td>
                         @if ($SP->trangthai == 1)
-                            Còn hàng
+                            <a href="{{route('admin.product.status',['id' => $SP->id])}}" class="btn btn-success">Show</i></a>
                         @else
-                            Hết hàng
+                            <a href="{{route('admin.product.status',['id' => $SP->id])}}" class="btn btn-danger">Hide</a>
                         @endif
                     </td>
-                    <td><a href="{{route('admin.product.edit',['id' => $SP->id])}}">Sửa</a></td>
-                    <td><a href="{{route('admin.product.destroy',['id' => $SP->id])}}" onclick="return checkDelete('Bạn có muốn xóa sản phẩm này không?')">Xoá</a></td>
+                    <td>
+                        <a href="{{route('admin.product.edit',['id' => $SP->id])}}" class="btn btn-danger">Sửa</a>
+                        <a href="{{route('admin.product.destroy',['id' => $SP->id])}}" onclick="return checkDelete('Bạn có muốn xóa sản phẩm này không?')" class="btn btn-success">Xoá</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB, DateTime;
+use DateTime;
+use Illuminate\Support\Facades\DB;
+
 class UserController extends Controller
 {
     /**
@@ -38,6 +40,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $valdidateData = $request->validate([
+            'ten' => 'required|unique:loainguoidung',
+            'pass' => 'required',
+        ],[
+            'ten.required' => 'Vui lòng nhập Email hoặc tên người dùng',
+            'ten.unique' => 'Tên Email hoặc người dùng đã tồn tại',
+        ]);
+
         $data = $request->except('_token');
         $data['created_at'] = new DateTime;
         $data['updated_at'] = new DateTime;

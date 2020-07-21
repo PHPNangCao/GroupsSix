@@ -9,41 +9,49 @@
     <div class="card-body">
         <form action="{{route('admin.category.update',['id' => $LoaiSanPham->id])}}" enctype="multipart/form-data" method="POST">
             @csrf
-            <div class="form-group">
-                <label>Tên loại sản phẩm</label>
-            <input type="text" name="ten" class="form-control" required placeholder="Tên loại sản phẩm" value="{{$LoaiSanPham->ten}}">
-            </div>
-            <div class="form-group">
-                <label>Mô tả</label>
-                <textarea class="form-control" name="mota" rows="3" required placeholder="Mô tả" >{{$LoaiSanPham->mota}}</textarea>
-            </div>
-            <div class="form-group">
-                <label>Ảnh</label>
-                <input type="file" class="form-control-file" required name="anh" value="{{$LoaiSanPham->anh}}">
-            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Tên loại sản phẩm <span class="text-danger">(*)</label>
+                    <input type="text" name="ten" class="form-control" required placeholder="Tên loại sản phẩm" value="{{$LoaiSanPham->ten}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Mô tả <span class="text-danger">(*)</label>
+                        <textarea class="form-control" name="mota" rows="3" required placeholder="Mô tả" >{{$LoaiSanPham->mota}}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Ảnh <span class="text-danger">(*)</label>
+                        <input type="hidden" name="image" value="{{$LoaiSanPham->anh}}">
+                        <input type="file" class="form-control-file" name="anh">
+                    </div>
+                          
+                    <div class="form-group">
+                        <label>Nhóm sản phẩm <span class="text-danger">(*)</label>
+                        <select name="nhom_id" class="form-control" required>
+                            <option >----Chọn nhóm sản phẩm----</option>
+                        @foreach ($NhomSanPham as $NhomSP)
+                            <option value="{{$NhomSP->id}}" selected = "{{$LoaiSanPham->ten}}" >{{$NhomSP->ten}}</option>
+                        @endforeach
+                        </select>
+                    </div>
+                    <input type="hidden" name="trangthai" value="{{$LoaiSanPham->trangthai}}">
+                    <hr>
+                    <button type="submit" class="btn btn-primary">Lưu thông tin</button>
+                </div>
 
-            <select name="trangthai" class="form-control" required>
-                <option value="0">Hết Hàng</option>
-                <option value="1">Còn Hàng</option>
-            </select>
-
-            <div class="form-group">
-                <label>Nhóm sản phẩm</label>
-                <select name="nhom_id" class="form-control" required>
-                    <option >----Chọn nhóm sản phẩm----</option>
-                @foreach ($NhomSanPham as $NhomSP)
-                    <option value="{{$NhomSP->id}}" selected = "{{$LoaiSanPham->ten}}" >{{$NhomSP->ten}}</option>
-                @endforeach
-                </select>
+                <div class="col-md-4">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Ảnh đã lưu</label>
+                            <a href="#" class="thumbnail">
+                                <img src="public/upload/category/{{$LoaiSanPham->anh}}" alt="" height="100px">
+                            </a>
+                        </div>
+                    </div>
+                </div> 
             </div>
-            <hr>
-            <button type="submit" class="btn btn-primary">Lưu thông tin</button>
         </form>
     </div>
-    <!-- /.card-body -->
-    <div class="card-footer">
-    </div>
-    <!-- /.card-footer-->
 </div>
 
 @endsection
