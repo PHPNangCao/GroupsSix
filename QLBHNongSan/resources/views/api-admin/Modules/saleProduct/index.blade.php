@@ -20,7 +20,9 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Khuyến mãi</th>
+                        <th>Tiêu Đề</th>
+                        <th>Nội Dung</th>
+                        <th>Khuyến mãi ID</th>
                         <th>Sản phẩm</th>
                         <th>Edit</th>
                         <th>Delete</th>
@@ -39,8 +41,10 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                    <th>ID</th>
-                        <th>Khuyến mãi</th>
+                        <th>ID</th>
+                        <th>Tiêu Đề</th>
+                        <th>Nội Dung</th>
+                        <th>Khuyến mãi ID</th>
                         <th>Sản phẩm</th>
                         <th>Edit</th>
                         <th>Delete</th>

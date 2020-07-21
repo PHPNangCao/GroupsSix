@@ -20,11 +20,15 @@
                 <input type="text" class="form-control-file" name="tieude">
             </div>
             <div class="form-group">
+                <label>Nội Dung</label>
+                <input type="text" class="form-control-file" name="noidung">
+            </div>
+            <div class="form-group">
                 <label>Khuyến mãi ID</label>
                 <select name="khuyenmai_id" class="form-control">
                 <option >----Chọn nhà khuyến mãi----</option>
                 @foreach ($khuyenmai as $km)
-                    <option value="{{$km->id}}">{{$km->noidung}}</option>
+                    <option value="{{$km->id}}">{{$km->tieude}}</option>
                 @endforeach
                 </select>
             </div>

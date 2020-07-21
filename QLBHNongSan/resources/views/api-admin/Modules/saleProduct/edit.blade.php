@@ -16,8 +16,12 @@
     <form action="{{route('admin.saleproduct.store',['id' => $khuyenmaisanpham->id])}}" method="POST">
             @csrf
             <div class="form-group">
-                <label>Thông tin khuyến mãi</label>
+                <label>Tiêu Đề</label>
                 <input type="text" class="form-control-file" name="tieude">
+            </div>
+            <div class="form-group">
+                <label>Nội Dung</label>
+                <input type="text" class="form-control-file" name="noidung">
             </div>
             <div class="form-group">
                 <label>Khuyến mãi ID</label>
