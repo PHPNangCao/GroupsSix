@@ -26,6 +26,7 @@
               @endif
           </div>
           <hr>
+          <a href="{{route('admin.unit.index')}}" class="btn btn-warning">Quay Lại</a>
           <button type="submit" class="btn btn-primary">Lưu thông tin</button>
         </div> 
       </form>

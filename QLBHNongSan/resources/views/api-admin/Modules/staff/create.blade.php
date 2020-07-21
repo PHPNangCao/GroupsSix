@@ -54,8 +54,8 @@
                 <label>Mã Số Nhân Viên</label>
                 <select name="user_id" class="form-control">
                     <option value="">---- Mã Số Nhân Viên ----</option>
-                    @foreach ($loainguoidung as $loaind)
-                    <option value="{{$loaind->id}}">{{$loaind->ten}}</option>
+                    @foreach ($LoaiNguoiDung as $nd)
+                    <option value="{{$nd->id}}" name="user_id"></option>
                     @endforeach
                     </select>
                 @if ($errors->has('user_id'))
@@ -64,8 +64,8 @@
                 </div>
                 @endif
             </div>
-
             <hr>
+            <a href="{{route('admin.staff.index')}}" class="btn btn-warning">Quay Lại</a>
             <button type="submit" class="btn btn-primary">Lưu thông tin</button>
         </form>
     </div>

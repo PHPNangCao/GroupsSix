@@ -17,14 +17,14 @@
             @csrf
             <div class="form-group">
                 <label>Thông tin khuyến mãi</label>
-                <input type="text" class="form-control-file" name="tieude">
+                <input type="text" class="form-control-file" name="mota">
             </div>
             <div class="form-group">
                 <label>Khuyến mãi ID</label>
                 <select name="khuyenmai_id" class="form-control">
                 <option >----Chọn nhà khuyến mãi----</option>
                 @foreach ($khuyenmai as $km)
-                    <option value="{{$km->id}}">{{$km->noidung}}</option>
+                    <option value="{{$km->id}}">{{$km->tieude}}</option>
                 @endforeach
                 </select>
             </div>

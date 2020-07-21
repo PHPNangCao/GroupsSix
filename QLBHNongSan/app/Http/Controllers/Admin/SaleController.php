@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB, DateTime;
+use Illuminate\Support\Facades\DB, DateTime;
 
 class SaleController extends Controller
 {
@@ -44,7 +44,7 @@ class SaleController extends Controller
         //$request->anh->store('images', 'public');
     //thêm ảnh
     $file = $request->anh;
-        
+
     $file->move('public/upload/sale', $file->getClientOriginalName());
 
 
