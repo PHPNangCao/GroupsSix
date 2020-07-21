@@ -19,6 +19,7 @@
                         <th>Số điện thoại </th>
                         <th>Địa chỉ</th>
                         <th>Mã Số Nhân Viên</th>
+                        <th>Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,8 +31,10 @@
                         <td>{{ $nv->sdt }}</td>
                         <td>{{ $nv->diachi }}</td>
                         <td>{{ $nv->user_id }}</td>
-                    <td><a href="{{route('admin.staff.edit',['id' => $nv->id])}}">Sửa</a></td>
-                        <td><a href="{{route('admin.staff.destroy',['id' => $nv->id])}}" onclick="return checkDelete('Bạn có muốn xóa thông tin nvách hàng này nvông?')">Xoá</a></td>
+                        <td>
+                            <a href="{{route('admin.staff.edit',['id' => $nv->id])}}">Sửa</a>
+                            <a href="{{route('admin.staff.destroy',['id' => $nv->id])}}" onclick="return checkDelete('Bạn có muốn xóa thông tin nvách hàng này nvông?')">Xoá</a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

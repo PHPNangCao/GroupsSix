@@ -11,7 +11,6 @@
             @csrf
             <div class="row">
                 <div class="col-md-8">
-
                     <div class="form-group">
                         <label>Tên sản phẩm <span class="text-danger">(*)</span></label>
                         <input type="text" name="ten" class="form-control"   placeholder="Tên sản phẩm">
@@ -40,10 +39,7 @@
                             {{$errors->first('anh')}}
                         </div>
                         @endif
-                    </div>
-                    
-                      <hr>
-                    <button type="submit" class="btn btn-primary">Lưu thông tin</button>
+                    </div>               
                 </div>
                 
                 <div class="col-md-4">
@@ -81,6 +77,9 @@
                         @endif
                     </div>
                 </div>
+                <hr>
+                <a href="{{route('admin.product.index')}}" class="btn btn-warning">Quay Lại</a>
+                <button type="submit" class="btn btn-primary">Lưu thông tin</button>
             </div>
         </form>
     </div>

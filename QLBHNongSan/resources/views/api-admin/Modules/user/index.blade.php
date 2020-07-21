@@ -10,23 +10,24 @@
         <table id="example1" class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>STT</th>
                     <th>Email </th>
                     <th>Password</th>
                     <th>Loại người dùng</th>
-                    <th>Sửa</th>
-                    <th>Xóa</th>
+                    <th>Thao tác</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($nguoidung as $nd)
+                @foreach ($LoaiNguoiDung as $nd)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $nd->email }}</td>
-                    <td>{{ $nd->pass }}</td>
-                    <td>{{ $nd->loainguoidung_id }}</td>
-                    <td><a href="{{route('admin.user.edit',['id' => $nd->id])}}">Sửa</a></td>
-                    <td><a href="{{route('admin.user.destroy',['id' => $nd->id])}}" onclick="return checkDelete('Bạn có muốn xóa người dùng này không?')">Xóa</a></td>
+                    <td>{{ $nd->matkhau }}</td>
+                    <td>{{ $nd->loainguoidung->ten }}</td>
+                    <td>
+                        <a href="{{route('admin.user.edit',['id' => $nd->id])}}" class="btn btn-success">Sửa</a>
+                        <a href="{{route('admin.user.destroy',['id' => $nd->id])}}" onclick="return checkDelete('Bạn có muốn xóa người dùng này không?')" class="btn btn-danger">Xóa</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
