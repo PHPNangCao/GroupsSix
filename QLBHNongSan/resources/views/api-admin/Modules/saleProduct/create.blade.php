@@ -17,11 +17,7 @@
             @csrf
             <div class="form-group">
                 <label>Thông tin khuyến mãi</label>
-                <input type="text" class="form-control-file" name="tieude">
-            </div>
-            <div class="form-group">
-                <label>Nội Dung</label>
-                <input type="text" class="form-control-file" name="noidung">
+                <input type="text" class="form-control-file" name="mota">
             </div>
             <div class="form-group">
                 <label>Khuyến mãi ID</label>

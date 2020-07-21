@@ -23,7 +23,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library -->
-                    
+
                 <li class="nav-item">
                     <a href="../gallery.html" class="nav-link">
                         <i class="nav-icon far fa-tachometer-alt"></i>
@@ -104,7 +104,7 @@
                     </ul>
                 </li>
 
-                
+
                 <li class="nav-item">
                     <a href="{{route('admin.supplier.index')}}" class="nav-link">
                         <i class="nav-icon far fa-home"></i>
@@ -169,13 +169,28 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.sale.index')}}" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-list"></i>
                         <p>
-                            Khuyến mãi
+                            Danh mục khuyến mãi
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                        <a href="{{route('admin.sale.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Thêm thông tin Khuyến mãi</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.saleproduct.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Sản phẩm khuyến mãi</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="../gallery.html" class="nav-link">

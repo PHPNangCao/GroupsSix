@@ -13,22 +13,18 @@
         </div>
     </div>
     <div class="card-body">
-    <form action="{{route('admin.saleproduct.store',['id' => $khuyenmaisanpham->id])}}" method="POST">
+    <form action="{{route('admin.saleproduct.update',['id' => $sanphamkhuyenmai->id])}}" method="POST">
             @csrf
             <div class="form-group">
-                <label>Tiêu Đề</label>
-                <input type="text" class="form-control-file" name="tieude">
-            </div>
-            <div class="form-group">
-                <label>Nội Dung</label>
-                <input type="text" class="form-control-file" name="noidung">
+                <label>Mô Tả</label>
+                <input type="text" class="form-control-file" name="mota">
             </div>
             <div class="form-group">
                 <label>Khuyến mãi ID</label>
                 <select name="khuyenmai_id" class="form-control">
                 <option >----Chọn nhà khuyến mãi----</option>
                 @foreach ($khuyenmai as $km)
-                    <option value="{{$km->id}}">{{$km->noidung}}</option>
+                    <option value="{{$km->id}}">{{$km->tieude}}</option>
                 @endforeach
                 </select>
             </div>
