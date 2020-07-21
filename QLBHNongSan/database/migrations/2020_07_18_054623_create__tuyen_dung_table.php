@@ -16,11 +16,11 @@ class CreateTuyenDungTable extends Migration
         Schema::create('TuyenDung', function (Blueprint $table) {
             $table->id();
             $table->string('tieude');
-            $table->string('url')->nullable();
-            $table->string('anh')->nullable();
+            $table->string('url');
+            $table->string('anh');
             $table->longText('mota');
             $table->string('lienhe');
-            $table->boolean('tinhtrang')->default(1);
+            $table->boolean('tinhtrang');
             $table->timestamps();
         });
     }
