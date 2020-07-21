@@ -9,23 +9,24 @@
     </div>
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
-            <thead>
+            <thead style="text-align: center">
                 <tr>
-                    <th>Mã</th>
+                    <th>STT</th>
                     <th>Tên</th>
                     <th>Mô tả</th>
-                    <th>Sửa</th>
-                    <th>Xóa</th>
+                    <th>Thao tác</th> 
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="text-align: center">
                 @foreach ($DonViTinh as $DVT)
                 <tr>
                     <td>{{$loop->iteration }}</td>
                     <td>{{ $DVT->ten }}</td>
                     <td>{{ $DVT->mota }}</td>
-                    <td><a href="{{route('admin.unit.edit',['id' => $DVT->id])}}">Sửa</a></td>
-                    <td><a href="{{route('admin.unit.destroy',['id' => $DVT->id])}}" onclick="return checkDelete('Bạn có muốn xóa đơn vị tính này không?')">Xóa</a></td>
+                    <td>
+                        <a href="{{route('admin.unit.edit',['id' => $DVT->id])}}" class="btn btn-success">Sửa</a>
+                        <a href="{{route('admin.unit.destroy',['id' => $DVT->id])}}" onclick="return checkDelete('Bạn có muốn xóa đơn vị tính này không?')" class="btn btn-danger">Xóa</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

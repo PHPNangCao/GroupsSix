@@ -14,7 +14,7 @@
     </div>
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
-            <thead>
+            <thead style="text-align: center">
                 <tr>
                     <th>ID</th>
                     <th>Tên Lô Hàng</th>
@@ -29,7 +29,7 @@
                     <th>Delete</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="text-align: center">
                 @foreach ($LoHang as $LH)
                 <tr>
                     <td>{{$loop->iteration }}</td>

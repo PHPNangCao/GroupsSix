@@ -52,7 +52,12 @@
 
             <div class="form-group">
                 <label>Mã Số Nhân Viên</label>
-                <input type="integer" name="user_id" class="form-control" placeholder="Mã Số Nhân Viên">
+                <select name="user_id" class="form-control">
+                    <option value="">---- Mã Số Nhân Viên ----</option>
+                    @foreach ($loainguoidung as $loaind)
+                    <option value="{{$loaind->id}}">{{$loaind->ten}}</option>
+                    @endforeach
+                    </select>
                 @if ($errors->has('user_id'))
                 <div class="text-danger">
                     {{$errors->first('user_id')}}

@@ -10,7 +10,7 @@
         <form action="{{route('admin.kindofuser.store')}}" method="POST">
             @csrf
             <div class="form-group">
-                <label>Loại Người Dùng</label>
+                <label>Loại Người Dùng <span class="text-danger">(*)</label>
                 <input type="text" name="ten" class="form-control" placeholder="Loại Người Dùng">
                 @if ($errors->has('ten'))
                 <div class="text-danger">
@@ -19,7 +19,7 @@
                 @endif
             </div>
             <div class="form-group">
-                <label>Mô tả</label>
+                <label>Mô tả <span class="text-danger">(*)</label>
                 <input type="text" name="mota" class="form-control" placeholder="Mô tả">
                 @if ($errors->has('mota'))
                 <div class="text-danger">

@@ -16,23 +16,23 @@
         <form action="{{route('admin.customer.update',['id' => $khachhang->id])}}" method="POST">
             @csrf
             <div class="form-group">
-                <label>Tên khách hàng</label>
+                <label>Tên khách hàng <span class="text-danger">(*)</label>
                 <input type="text" name="ten" class="form-control" placeholder="Tên khách hàng" value="{{$khachhang->ten}}">
             </div>
             <div class="form-group">
-                <label>Email</label>
+                <label>Email <span class="text-danger">(*)</label>
                 <input type="text" name="email" class="form-control" placeholder="Email" value="{{$khachhang->email}}">
             </div>
             <div class="form-group">
-                <label>Số điện thoại </label>
+                <label>Số điện thoại <span class="text-danger">(*)</label>
                 <input type="text" name="sdt" class="form-control" placeholder="Số điện thoại" value="{{$khachhang->sdt}}">
             </div>
             <div class="form-group">
-                <label>Địa chỉ</label>
+                <label>Địa chỉ <span class="text-danger">(*)</label>
                 <input type="text" name="diachi" class="form-control" placeholder="Địa Chỉ" value="{{$khachhang->diachi}}">
             </div>
             <div class="form-group">
-                <label>Mật Khẩu</label>
+                <label>Mật Khẩu <span class="text-danger">(*)</label>
                 <input type="password" name="matkhau" class="form-control" placeholder="Địa Chỉ" value="{{$khachhang->matkhau}}">
             </div>
             <button type="submit" class="btn btn-primary">Lưu thông tin</button>
