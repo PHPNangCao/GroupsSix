@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Validator;
 use DB,DateTime;
 class MonNgonController extends Controller
 {
@@ -37,12 +38,29 @@ class MonNgonController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->except('_token');
-        $data['created_at'] = new DateTime;
-        $data['updated_at'] = new DateTime;
-
-        DB::table('monngon')->insert($data);
-        return redirect()->route('admin.monngon.index');
+        $validator  = Validator::make($request->all(),[
+            'tieude' => 'required|unique:monngon',
+            'tomtat' => 'required',
+            'noidung' => 'nullable',
+            'anh' => 'nullable',
+            'luotxem' => 'defual',
+            'trangthai' => 'required',
+            'sanpham_id' => 'required|exists:sanpham,id',
+        ]);
+        if ($validator->fails()) {
+            return redirect('admin/monngon/create')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        else
+        {
+            $data = $request->except('_token');
+            $data['created_at'] = new DateTime;
+            $data['updated_at'] = new DateTime;
+    
+            DB::table('monngon')->insert($data);
+            return redirect()->route('admin.monngon.index');
+        }
     }
 
     /**
