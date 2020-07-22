@@ -15,34 +15,42 @@
         <form action="{{route('admin.monngon.store')}}" method="POST">
             @csrf
             <div class="form-product">
-                <label >Tiêu đề</label>
+                <label >Tiêu đề <span class="text-danger">*</span></label>
                 <input type="text" name="tieude" class="form-control" placeholder="Nhập tiêu đề">
+                <span class="text-danger"> @error('tieude') {{ $message }} @enderror</span>
             </div>
             <div class="form-product">
-                <label >Tóm tắt</label>
+                <label >Tóm tắt <span class="text-danger">*</span></label>
                 <input type="text" name="tomtat" class="form-control" placeholder="Nhập tóm tắt">
+                <span class="text-danger"> @error('tomtat') {{ $message }} @enderror</span>
             </div>
             <div class="form-product">
-                <label >Nội dung</label>
+                <label >Nội dung <span class="text-danger">*</span></label>
                 <textarea type="text" name="noidung" class="form-control" placeholder="Nhập nội dung"></textarea>
+                <span class="text-danger"> @error('noidung') {{ $message }} @enderror</span>
             </div>
             <div class="form-product">
-                <label >Ảnh</label>
+                <label >Ảnh <span class="text-danger">*</span></label>
                 <input type="file" name="anh" class="form-control-file" >
+                <span class="text-danger"> @error('anh') {{ $message }} @enderror</span>
             </div>
             <br>
             <div class="form-product">
-                <label >Trạng thái</label>
-                    <input type="radio" name="trangthai" value="Mở"  >Mở
-                    <input type="radio" name="trangthai" value="Ẩn"  >Ẩn
+                <label >Trạng thái <span class="text-danger">*</span></label>
+                    <input type="radio" name="trangthai" value="1" >Mở
+                    <input type="radio" name="trangthai" value="0" >Ẩn
+                <br>
+                    <span class="text-danger"> @error('trangthai') {{ $message }} @enderror</span>
             </div>
             <div class="form-product">
-                <label >Sản phẩm: </label>
+                <label >Sản phẩm <span class="text-danger">*</span></label>
                 <select name="sanpham_id" class="form-control">
-                    {{-- @foreach($sanpham as $sp)
-                    <option value="{{$sp->id}}">{{$sp->ten}}</option>
-                    @endforeach --}}
+                    <option>----Chọn sản phẩm----</option>
+                    @foreach($sanpham as $sp)
+                        <option value="{{$sp->id}}">{{$sp->ten}}</option>
+                    @endforeach
                 </select>
+                <span class="text-danger"> @error('sanpham_id') {{ $message }} @enderror</span>
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Lưu thông tin</button>

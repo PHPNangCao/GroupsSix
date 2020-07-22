@@ -18,7 +18,7 @@ class CreateMonNgonTable extends Migration
             $table->string('tieude');
             $table->string('tomtat');
             $table->text('noidung');
-            $table->integer('luotxem');
+            $table->integer('luotxem')->default(0);
             $table->string('anh');
             $table->boolean('trangthai');
 

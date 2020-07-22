@@ -23,7 +23,7 @@
                     <th>Lượt xem</th>
                     <th>Ảnh</th>
                     <th>Trạng thái</th>
-                    <td>Sản phẩm</td>
+                    <th>Sản phẩm</th>
                     <th>Sửa</th>
                     <th>Xóa</th>
                 </tr>

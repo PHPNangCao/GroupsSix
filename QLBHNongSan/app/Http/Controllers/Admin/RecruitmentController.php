@@ -50,7 +50,8 @@ class RecruitmentController extends Controller
             return redirect('admin/recruitment/create')
                         ->withErrors($validator)
                         ->withInput();
-        }else
+        }
+        else
         {
             $data = $request->except('_token');
             $data['created_at'] = new DateTime;
@@ -59,8 +60,6 @@ class RecruitmentController extends Controller
             DB::table('tuyendung')->insert($data);
             return redirect()->route('admin.recruitment.index');
         }
-
-        
     }
 
     /**
@@ -95,11 +94,28 @@ class RecruitmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->except('_token');
-        $data['updated_at'] = new DateTime;
+        $validator  = Validator::make($request->all(),[
+            'tieude' => 'required|unique:tuyendung',
+            'url' => 'required',
+            'anh' => 'nullable',
+            'mota' => 'required',
+            'lienhe' => 'required',
+            'tinhtrang' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return redirect('admin/recruitment/edit/'.$id)
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        else
+        {
+            $data = $request->except('_token');
+            $data['updated_at'] = new DateTime;
 
-        DB::table('tuyendung')->where('id',$id)->update($data);
-        return redirect()->route('admin.recruitment.index');
+            DB::table('tuyendung')->where('id',$id)->update($data);
+            return redirect()->route('admin.recruitment.index');
+        }
+    
     }
 
     /**

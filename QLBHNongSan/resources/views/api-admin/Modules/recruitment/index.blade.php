@@ -22,10 +22,9 @@
                     <th>Ảnh</th>
                     <th>Mổ tả</th>
                     <th>Liên hệ</th>
-                    <td>Thời gian</td>
-                    <td>Tình trạng</td>
-                    <th>Sửa</th>
-                    <th>Xóa</th>
+                    <th>Ngày tạo</th>
+                    <th>Tình trạng</th>
+                    <th>Thao tác</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,8 +44,10 @@
                             Đang ngưng tuyển
                         @endif
                     </td>
-                    <td><a href="{{route('admin.recruitment.edit',['id' => $td->id])}}">Sửa</a></td>
-                    <td><a href="{{route('admin.recruitment.destroy',['id' => $td->id])}}" onclick="return checkDelete('Bạn có muốn xóa bài tin này không?')">Xóa</a></td>
+                    <td>
+                        <a href="{{route('admin.recruitment.edit',['id' => $td->id])}}">Sửa</a>
+                        <a href="{{route('admin.recruitment.destroy',['id' => $td->id])}}" onclick="return checkDelete('Bạn có muốn xóa bài tin này không?')">Xóa</a>
+                   </td>
                 </tr>
                 @endforeach
             </tbody>

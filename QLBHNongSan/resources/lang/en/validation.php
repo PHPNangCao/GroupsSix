@@ -41,7 +41,7 @@ return [
     'distinct' => 'The :attribute field has a duplicate value.',
     'email' => 'Trường :attribute bắt buộc phải là dạng email.',
     'ends_with' => 'The :attribute must end with one of the following: :values.',
-    'exists' => 'The selected :attribute is invalid.',
+    'exists' => ':attribute không tìm thấy.',
     'file' => 'Trường :attribute bắt buộc phải dạng file.',
     'filled' => 'The :attribute field must have a value.',
     'gt' => [
@@ -153,6 +153,10 @@ return [
         'lienhe' => 'Liên hệ',
         'tinhtrang' => 'Tình trạng',
         'url' => 'URL',
+        'tomtat' => 'Tóm tắt',
+        'sanpham_id' => 'Sản phẩm',
+        'noidung' => 'Nội dung',
+        'trangthai' => 'Trạng thái',
     ],
 
 ];
