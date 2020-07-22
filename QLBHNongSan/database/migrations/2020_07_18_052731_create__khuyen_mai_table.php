@@ -16,6 +16,7 @@ class CreateKhuyenMaiTable extends Migration
         Schema::create('KhuyenMai', function (Blueprint $table) {
             $table->id();
             $table->string('tieude');
+            $table->string('url')->nullable();
             $table->text('noidung');
             $table->string('anh');
             $table->boolean('tinhtrang')->default(1);

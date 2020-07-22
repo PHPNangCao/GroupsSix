@@ -100,18 +100,18 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {   
         $valdidateData = $request->validate([
-            'ten' => 'required|unique:KhachHang',
-            'email' => 'required', 
-            'sdt' => 'required',
-            'diachi' => 'required',
-            'matkhau' => 'required',
+            'ten'       => 'required',
+            'email'     => 'required', 
+            'sdt'       => 'required',
+            'diachi'    => 'required',
+            'matkhau'   => 'required',
 
         ],[
-            'ten.required' => 'Vui lòng nhập tên khách hàng',
-            'ten.unique' => 'Tên khách hàng này đã tồn tại',
-            'sdt.required' => 'Vui lòng nhập số điện thoại',
-            'diachi.required' => 'Vui lòng nhập địa chỉ',
-            'matkhau.required' => 'Vui lòng nhập mật khẩu'
+            'ten.required'      => 'Vui lòng nhập tên khách hàng',
+        //    'ten.unique' => 'Tên khách hàng này đã tồn tại',
+            'sdt.required'      => 'Vui lòng nhập số điện thoại',
+            'diachi.required'   => 'Vui lòng nhập địa chỉ',
+            'matkhau.required'  => 'Vui lòng nhập mật khẩu'
 
         ]);
 

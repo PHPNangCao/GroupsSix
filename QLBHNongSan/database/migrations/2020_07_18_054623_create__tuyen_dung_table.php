@@ -16,7 +16,7 @@ class CreateTuyenDungTable extends Migration
         Schema::create('TuyenDung', function (Blueprint $table) {
             $table->id();
             $table->string('tieude');
-            $table->string('url');
+            $table->string('url')->nullable();
             $table->string('anh');
             $table->longText('mota');
             $table->string('lienhe');

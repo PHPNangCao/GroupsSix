@@ -16,6 +16,7 @@ class CreateBinhLuanTable extends Migration
         Schema::create('BinhLuan', function (Blueprint $table) {
             $table->id();
             $table->string('ten');
+            $table->string('url')->nullable();
             $table->string('email')->nullable();
             $table->text('noidung');
             $table->boolean('trangthai')->default(1);

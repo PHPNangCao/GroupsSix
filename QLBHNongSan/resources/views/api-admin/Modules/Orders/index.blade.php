@@ -1,34 +1,33 @@
 @extends('api-admin.master')
-@section('title','Danh sách loại sản phẩm')
+@section('title','Danh sách đơn hàng')
 @section('content')
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">
-            <a href="{{route('admin.category.create')}}">Thêm Loại Sản phẩm</a>
+            <a href="{{route('admin.orders.create')}}">Thêm đơn hàng</a>
         </h3>
     </div>
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
             <thead style="text-align: center">
                 <tr>
-                    <th>Mã</th>
-                    <th>Tên</th>
-                    <th>Url</th>
-                    <th>Nhóm SP</th>
-                    <th>Mô tả</th>
-                    <th>Ảnh</th>
-                    <th>Trạng thái</th>
-                    <th>Thao Tác</th>
-
+                    <th>STT</th>
+                    <th>Thông tin</th>
+                    <th>Ghi chú</th>
+                    <th>Tổng tiền</th>
+                    <th>Tình trạng</th>
+                    <th>Sản phẩm</th>
+                    <th>Thanh toán</th>
+                    <th>Nhà vận chuyển</th>
+                    <th>Thao tác</th>
                 </tr>
             </thead> 
-            <tbody style="text-align: center">
+            {{-- <tbody style="text-align: center">
                 @foreach ($LoaiSanPham as $LoaiSP)
                 <tr>
                     <td>{{$loop->iteration }}</td>
                     <td>{{ $LoaiSP->ten }}</td>
-                    <td>{{ $LoaiSP->url }}</td>
                     <td>{{ $LoaiSP->mota }}</td>
                     <td><img src="public/upload/category/{{$LoaiSP->anh}}" alt="" height="100px"></td>
                     <td>{{ $LoaiSP->NhomSanPham->ten }} </td>
@@ -45,13 +44,13 @@
                     </td>
                 </tr>
                 @endforeach
-            </tbody>
+            </tbody> --}}
         </table>
     </div>
     <!-- /.card-body -->
-    <div class="card-footer">
+    {{-- <div class="card-footer">
         
-    </div>
+    </div> --}}
     <!-- /.card-footer-->
 </div>
 

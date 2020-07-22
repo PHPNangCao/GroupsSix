@@ -25,7 +25,7 @@
                     with font-awesome or any other icon font library -->
 
                 <li class="nav-item">
-                    <a href="../gallery.html" class="nav-link">
+                    <a href="/" class="nav-link">
                         <i class="nav-icon far fa-tachometer-alt"></i>
                         <p>
                             Trang tổng quan
@@ -114,6 +114,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.transport.index')}}" class="nav-link">
+                        <i class="nav-icon far fa-home"></i>
+                        <p>
+                            Nhà vận chuyển
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.customer.index')}}" class="nav-link">
                         <i class="nav-icon far fa-image"></i>
                         <p>
@@ -122,7 +130,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../gallery.html" class="nav-link">
+                    <a href="{{route('admin.orders.index')}}" class="nav-link">
                         <i class="nav-icon far fa-image"></i>
                         <p>
                             Đơn đặt hàng

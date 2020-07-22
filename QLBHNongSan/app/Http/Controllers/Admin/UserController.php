@@ -94,12 +94,12 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $valdidateData = $request->validate([
-            'email'             => 'required|unique:User',
+            'email'             => 'required',
             'matkhau'           => 'required',
             'loainguoidung_id'  => 'required'
         ],[
             'email.required'               => 'Vui lòng nhập Email',
-            'email.unique'                 => 'Tên Email đã tồn tại',
+            //'email.unique'                 => 'Tên Email đã tồn tại',
             'matkhau.required'             => 'Vui lòng nhập mật khẩu',
             'loainguoidung_id.required'    => 'Vui lòng chọn loại người dùng',
         ]);

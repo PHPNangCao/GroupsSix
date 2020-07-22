@@ -18,6 +18,7 @@
                 <tr>
                     <th>STT</th>
                     <th>Tên</th>
+                    <th>url</th>
                     <th>Mô tả</th>
                     <th>Ảnh</th>
                     <th>Thao tác</th>
@@ -28,6 +29,7 @@
                 <tr>
                     <td>{{$loop->iteration }}</td>
                     <td>{{ $NhomSP->ten }}</td>
+                    <td>{{ $NhomSP->url }}</td>
                     <td>{{ $NhomSP->mota }}</td> 
                     <td><img src="public/upload/groups/{{$NhomSP->anh}}" alt="" height="100px"></td>
                     <td>

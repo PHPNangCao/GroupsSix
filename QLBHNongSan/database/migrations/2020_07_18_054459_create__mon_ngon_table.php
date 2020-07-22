@@ -16,6 +16,7 @@ class CreateMonNgonTable extends Migration
         Schema::create('MonNgon', function (Blueprint $table) {
             $table->id();
             $table->string('tieude');
+            $table->string('url')->nullable();
             $table->string('tomtat');
             $table->text('noidung');
             $table->integer('luotxem');

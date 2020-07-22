@@ -14,7 +14,8 @@
                 <tr>
                     <th>Mã</th>
                     <th>Tên Sản phẩm </th>
-                    <th>Mô Tả</th>
+                    <th>Url </th>
+                    <th style="width: 300px;">Mô Tả</th>
                     <th>Hình ảnh</th>
                     <th>Loại Sản phẩm</th>
                     <th>Đơn vị tính</th> 
@@ -27,6 +28,7 @@
                 <tr> 
                     <td>{{$loop->iteration }}</td>
                     <td>{{ $SP->ten }}</td>
+                    <td>{{ $SP->url }}</td>
                     <td>{{ $SP->mota }}</td>
                     <td><img src="public/upload/product/{{$SP->anh}}" alt="" height="100px"></td>
                     <td>{{ $SP->LoaiSanPham->ten }}</td>

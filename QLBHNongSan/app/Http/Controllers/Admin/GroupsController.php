@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use DateTime;
 class GroupsController extends Controller
 {
@@ -53,7 +54,7 @@ class GroupsController extends Controller
         $data = $request->except('_token');
         $data['created_at'] = new DateTime;
         $data['updated_at'] = new DateTime;
-
+        $data['url'] = Str::slug($data['ten'], '-');
             //thêm ảnh
             $file = $request->anh;       
             $file->move('public/upload/groups', $file->getClientOriginalName());
@@ -102,10 +103,12 @@ class GroupsController extends Controller
         }else{
             $image_name = $request->image;
         }
+        $url = Str::slug($request->ten, '-');
         DB::table('NhomSanPham')->where('id',$id)->update([
-            'ten' => $request->ten,
-            'mota' => $request->mota,
-            'anh' => $image_name,
+            'ten'   => $request->ten,
+            'url'   => $url,
+            'mota'  => $request->mota,
+            'anh'   => $image_name,
         ]);
         return redirect()->route('admin.group.index');
     }

@@ -46,24 +46,24 @@ class LotOrđerController extends Controller
     public function store(Request $request)
     {
         $valdidateData = $request->validate([
-            'ten' => 'required|unique:LoHang',
-            'sanpham_id' => 'required',
+            'ten'           => 'required|unique:LoHang',
+            'sanpham_id'    => 'required',
             'nhacungcap_id' => 'required',
-            'ngaysudung' => 'required',
-            'giamuavao' => 'required',
-            'giabanra' => 'required',
-            'soluongnhap' => 'required',
+            'ngaysudung'    => 'required',
+            'giamuavao'     => 'required',
+            'giabanra'      => 'required',
+            'soluongnhap'   => 'required',
 
 
         ],[
-            'ten.required' => 'Vui lòng nhập tên lô hàng',
-            'ten.unique' => 'Tên lô hàng này đã tồn tại',
-            'sanpham_id.required' => 'Vui lòng chọn loại sản phẩm',
-            'nhacungcap_id.required' => 'Vui lòng chọn nhà cung cấp',
-            'ngaysudung.required' => 'Vui lòng nhập ngày sử dụng',
-            'giamuavao.required' => 'Vui lòng nhập giá mua vào',
-            'giabanra.required' => 'Vui lòng nhập giá bán ra',
-            'soluongnhap.required' => 'Vui lòng nhập số lượng',
+            'ten.required'              => 'Vui lòng nhập tên lô hàng',
+            'ten.unique'                => 'Tên lô hàng này đã tồn tại',
+            'sanpham_id.required'       => 'Vui lòng chọn loại sản phẩm',
+            'nhacungcap_id.required'    => 'Vui lòng chọn nhà cung cấp',
+            'ngaysudung.required'       => 'Vui lòng nhập ngày sử dụng',
+            'giamuavao.required'        => 'Vui lòng nhập giá mua vào',
+            'giabanra.required'         => 'Vui lòng nhập giá bán ra',
+            'soluongnhap.required'      => 'Vui lòng nhập số lượng',
         ]);
 
 
@@ -80,9 +80,12 @@ class LotOrđerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function status($id)
     {
-        //
+        $LotOrder = LotOrderModel::find($id);
+        $LotOrder->tinhtrang =! $LotOrder->tinhtrang;
+        $LotOrder->save();
+        return redirect()->back();
     }
 
     /**
@@ -109,24 +112,23 @@ class LotOrđerController extends Controller
     public function update(Request $request, $id)
     {
         $valdidateData = $request->validate([
-            'ten' => 'required|unique:LoHang',
-            'sanpham_id' => 'required',
+            'ten'           => 'required',
+            'sanpham_id'    => 'required',
             'nhacungcap_id' => 'required',
-            'ngaysudung' => 'required',
-            'giamuavao' => 'required',
-            'giabanra' => 'required',
-            'soluongnhap' => 'required',
+            'ngaysudung'    => 'required',
+            'giamuavao'     => 'required',
+            'giabanra'      => 'required',
+            'soluongnhap'   => 'required',
 
 
         ],[
-            'ten.required' => 'Vui lòng nhập tên lô hàng',
-            'ten.unique' => 'Tên lô hàng này đã tồn tại',
-            'sanpham_id.required' => 'Vui lòng chọn loại sản phẩm',
-            'nhacungcap_id.required' => 'Vui lòng chọn nhà cung cấp',
-            'ngaysudung.required' => 'Vui lòng nhập ngày sử dụng',
-            'giamuavao.required' => 'Vui lòng nhập giá mua vào',
-            'giabanra.required' => 'Vui lòng nhập giá bán ra',
-            'soluongnhap.required' => 'Vui lòng nhập số lượng',
+            'ten.required'              => 'Vui lòng nhập tên lô hàng',
+            'sanpham_id.required'       => 'Vui lòng chọn loại sản phẩm',
+            'nhacungcap_id.required'    => 'Vui lòng chọn nhà cung cấp',
+            'ngaysudung.required'       => 'Vui lòng nhập ngày sử dụng',
+            'giamuavao.required'        => 'Vui lòng nhập giá mua vào',
+            'giabanra.required'         => 'Vui lòng nhập giá bán ra',
+            'soluongnhap.required'      => 'Vui lòng nhập số lượng',
         ]);
 
 

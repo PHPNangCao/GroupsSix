@@ -4,7 +4,7 @@
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Danh sách nhà cung cấp <a href="{{route('admin.supplier.create')}}">Thêm mới</a></h3>
+        <h3 class="card-title">Danh sách nhà cung cấp <a href="{{route('admin.supplier.create')}}" class="btn btn-success">Thêm mới</a></h3>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
             <i class="fas fa-minus"></i></button>
@@ -15,28 +15,30 @@
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Phone</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                <tr style="text-align: center">
+                    <th>STT</th>
+                    <th>Tên</th>
+                    <th>Địa chỉ</th>
+                    <th>Số điện thoại</th>
+                    <th>Thao tác</th>
+                   
                 </tr>
             </thead>
             <tbody>
                 @foreach ($NhaCungCap as $NhaCC)
-                <tr>
+                <tr style="text-align: center">
                     <td>{{$loop->iteration }}</td>
                     <td>{{ $NhaCC->ten }}</td>
                     <td>{{ $NhaCC->diachi }}</td>
                     <td>{{ $NhaCC->sdt }}</td>
-                    <td><a href="{{route('admin.supplier.edit',['id' => $NhaCC->id])}}">Edit</a></td>
-                    <td><a href="{{route('admin.supplier.destroy',['id' => $NhaCC->id])}}" onclick="return checkDelete('Bạn có muốn xóa nhóm này không?')">Delete</a></td>
+                    <td>
+                        <a href="{{route('admin.supplier.edit',['id' => $NhaCC->id])}}" class="btn btn-success">Sửa</a>
+                        <a href="{{route('admin.supplier.destroy',['id' => $NhaCC->id])}}"  class="btn btn-danger" onclick="return checkDelete('Bạn có muốn xóa nhóm này không?')">Xóa</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
-            <tfoot>
+            {{-- <tfoot>
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
@@ -45,7 +47,7 @@
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
-            </tfoot>
+            </tfoot> --}}
         </table>
     </div>
     <!-- /.card-body -->

@@ -16,6 +16,7 @@ class CreateQuangCaoTable extends Migration
         Schema::create('QuangCao', function (Blueprint $table) {
             $table->id();
             $table->string('anh');
+            $table->string('url')->nullable();
             $table->boolean('trangthai')->default(1);
             $table->unsignedBigInteger('khuyenmai_id');
             $table->foreign('khuyenmai_id')->references('id')->on('KhuyenMai');

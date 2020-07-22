@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Admin\ProductModel;
 use DateTime;
-
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $SanPham = DB::table('SanPham')->get();
+       // $SanPham = DB::table('SanPham')->get();
         $data = ProductModel::orderBy('id', 'DESC')->get();
         return view('api-admin.modules.product.index', ['SanPham' => $data]);
     }
@@ -60,10 +60,11 @@ class ProductController extends Controller
             'mota.required' => 'Vui lòng nhập mô tả sản phẩm',
 
         ]);
-
+        
         $data = $request->except('_token');
         $data['created_at'] = new DateTime;
         $data['updated_at'] = new DateTime;
+        $data['url'] = Str::slug($data['ten'], '-');
 
     //thêm ảnh
         $file = $request->anh;       
@@ -132,8 +133,10 @@ class ProductController extends Controller
         }else{
             $image_name = $request->image;
         }
+        $url = Str::slug($request->ten, '-');
         $addimage = DB::table('SanPham')->where('id',$id)->update([
             'ten' => $request->ten,
+            'url'   => $url,
             'mota' => $request->mota,
             'anh' => $image_name,
             'loaisanpham_id' => $request->loaisanpham_id,
@@ -141,6 +144,7 @@ class ProductController extends Controller
             'trangthai' => $request->trangthai
 
         ]);
+
         if($addimage){
             return redirect()->route('admin.product.index')->with('Sửa thành công bảng sản phẩm');
         }

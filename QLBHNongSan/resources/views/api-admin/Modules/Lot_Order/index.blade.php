@@ -25,8 +25,8 @@
                     <th>Tình Trạng</th>
                     <th>Sản Phẩm</th>
                     <th>Nhà Cung Cấp</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th>Thao tác</th>
+                   
                 </tr>
             </thead>
             <tbody style="text-align: center">
@@ -38,16 +38,23 @@
                     <td>{{ $LH->giamuavao }}</td>
                     <td>{{ $LH->giabanra }}</td>
                     <td>{{ $LH->soluongnhap }}</td>
-                    <td>{{ $LH->tinhtrang }}</td>
-                    {{-- <td>{{ $LH->getStatus($LH->tinhtrang)['name'] }}</td> --}}
+                    <td>
+                        @if ($LH->tinhtrang == 1)
+                            <p class="btn btn-success">Đã Nhận</i></p>
+                        @else
+                            <a href="{{route('admin.lot-order.status',['id' => $LH->id])}}" class="btn btn-danger">Chưa Nhận</a>
+                        @endif
+                    </td>
                     <td>{{ $LH->SanPham->ten }}</td>
                     <td>{{ $LH->NhaCungCap->ten }}</td>
-                <td><a href="{{route('admin.lot-order.edit',['id' => $LH->id])}}">Edit</a></td>
-                    <td><a href="{{route('admin.lot-order.destroy',['id' => $LH->id])}}" onclick="return checkDelete('Bạn có muốn xóa Lô hàng này không?')">Delete</a></td>
+                    <td>
+                        <a href="{{route('admin.lot-order.edit',['id' => $LH->id])}}" class="btn btn-success">Edit</a>
+                        <a href="{{route('admin.lot-order.destroy',['id' => $LH->id])}}" class="btn btn-danger" onclick="return  checkDelete('Bạn có muốn xóa Lô hàng này không?')">Delete</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
-            <tfoot>
+            {{-- <tfoot>
                 <tr>
                     <th>ID</th>
                     <th>Tên Lô Hàng</th>
@@ -61,7 +68,7 @@
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
-            </tfoot>
+            </tfoot> --}}
         </table>
     </div>
     <!-- /.card-body -->

@@ -16,7 +16,8 @@ class CreateLoaiSanPhamTable extends Migration
         Schema::create('LoaiSanPham', function (Blueprint $table) {
             $table->id();
             $table->string('ten');
-            $table->string('mota');
+            $table->string('url')->nullable();
+            $table->string('mota')->nullable();
             $table->string('anh');
             $table->boolean('trangthai')->default(1);
             $table->unsignedBigInteger('nhom_id');

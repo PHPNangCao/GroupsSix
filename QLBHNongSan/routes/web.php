@@ -155,6 +155,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
         Route::get('edit/{id}', 'LotOrđerController@edit')->name('edit');
         Route::post('update/{id}', 'LotOrđerController@update')->name('update');
 
+        Route::get('status/{id}', 'LotOrđerController@status')->name('status');
         Route::get('destroy/{id}', 'LotOrđerController@destroy')->name('destroy');
 
     });
@@ -223,7 +224,29 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 
     });
 
+    Route::prefix('orders')->name('orders.')->group(function(){
+        Route::get('index', 'OrdersController@index')->name('index');
+        Route::get('create', 'OrdersController@create')->name('create');
+        Route::post('store', 'OrdersController@store')->name('store');
 
+        Route::get('edit/{id}', 'OrdersControllerr@edit')->name('edit');
+        Route::post('update/{id}', 'OrdersController@update')->name('update');
+
+        Route::get('destroy/{id}', 'OrdersController@destroy')->name('destroy');
+
+    });
+
+    Route::prefix('transport')->name('transport.')->group(function(){
+        Route::get('index', 'TransportController@index')->name('index');
+        Route::get('create', 'TransportController@create')->name('create');
+        Route::post('store', 'TransportController@store')->name('store');
+
+        Route::get('edit/{id}', 'TransportController@edit')->name('edit');
+        Route::post('update/{id}', 'TransportController@update')->name('update');
+
+        Route::get('destroy/{id}', 'TransportController@destroy')->name('destroy');
+
+    });
 });
 
 

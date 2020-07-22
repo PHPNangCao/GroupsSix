@@ -16,8 +16,9 @@ class CreateSanPhamTable extends Migration
         Schema::create('SanPham', function (Blueprint $table) {
             $table->id();
             $table->string('ten');
+            $table->string('url')->nullable();
             $table->string('anh');
-            $table->string('mota');
+            $table->string('mota')->nullable();
             $table->boolean('trangthai')->default(1);
             $table->unsignedBigInteger('loaisanpham_id')->nullable();
             $table->foreign('loaisanpham_id')->references('id')->on('LoaiSanPham');

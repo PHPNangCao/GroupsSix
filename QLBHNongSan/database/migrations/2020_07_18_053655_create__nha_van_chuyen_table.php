@@ -17,8 +17,8 @@ class CreateNhaVanChuyenTable extends Migration
             $table->id();
             $table->string('ten');
             $table->string('diachi');
-            $table->time('thoigiannhan');
-            $table->time('thoigianchuyen');
+            $table->string('sdt');
+            $table->string('mota')->nullable();
             $table->timestamps();
         });
     }

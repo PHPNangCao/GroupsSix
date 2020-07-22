@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Admin\CategoryModel;
 use App\Http\Controllers\Controller;
-use DateTime;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
-class CategoryController extends Controller
+use App\Admin\OrdersModel;
+use DateTime;
+class OrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $NhomSanPham = DB::table('NhomSanPham')->get();
-        $data = CategoryModel::orderBy('id', 'DESC')->get();
-        return view('api-admin.modules.category.index', ['LoaiSanPham' => $data], );
+        return view('api-admin.modules.Orders.index');
     }
     /**
      * Show the form for creating a new resource.
@@ -29,9 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        
-        $NhomSanPham = DB::table('NhomSanPham')->get();
-        return view('api-admin.modules.category.create',['NhomSanPham' => $NhomSanPham]);
+        return view('api-admin.modules.category.create');
     }
 
     /**
@@ -60,7 +54,6 @@ class CategoryController extends Controller
         $data = $request->except('_token');
         $data['created_at'] = new DateTime;
         $data['updated_at'] = new DateTime;
-        $data['url'] = Str::slug($data['ten'], '-');
         //$request->anh->store('images', 'public');
 
         //thêm ảnh
@@ -81,7 +74,7 @@ class CategoryController extends Controller
      */
     public function status($id)
     {
-        $category = CategoryModel::find($id);
+        $category = OrdersModel::find($id);
         $category->trangthai = ! $category->trangthai;
         $category->save();
         return redirect()->back();
@@ -127,10 +120,8 @@ class CategoryController extends Controller
         }else{
             $image_name = $request->image;
         }
-            $url = Str::slug($request->ten, '-');
         $addimage = DB::table('LoaiSanPham')->where('id',$id)->update([
             'ten' => $request->ten,
-            'url' => $url,
             'mota' => $request->mota,
             'anh' => $image_name,
             'nhom_id' => $request->nhom_id,

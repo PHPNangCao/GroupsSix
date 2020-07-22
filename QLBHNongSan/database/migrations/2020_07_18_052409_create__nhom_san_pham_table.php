@@ -16,7 +16,8 @@ class CreateNhomSanPhamTable extends Migration
         Schema::create('NhomSanPham', function (Blueprint $table) {
             $table->id();
             $table->string('ten');
-            $table->string('mota');
+            $table->string('url')->nullable();
+            $table->string('mota')->nullable();
             $table->string('anh')->nullable();
             $table->timestamps();
         });
