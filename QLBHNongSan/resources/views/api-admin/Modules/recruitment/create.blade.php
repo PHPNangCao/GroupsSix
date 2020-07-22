@@ -32,6 +32,9 @@
             <div class="form-product">
                 <label >Mô tả <span class="text-danger">*</span></label>
                 <textarea type="text" name="mota" class="form-control" placeholder="Nhập mô tả" >{{ old('mota') }}</textarea>
+                <script>
+                    CKEDITOR.replace( 'mota' );
+                </script>
                 <span class="text-danger"> @error('mota') {{ $message }} @enderror</span>
             </div>
             <div class="form-product">

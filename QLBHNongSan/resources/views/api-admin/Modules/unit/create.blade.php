@@ -19,6 +19,9 @@
           <div class="form-product">
               <label>Mô tả</label>
               <textarea class="form-control" name="mota" rows="3" placeholder="Mô tả"></textarea>
+              <script>
+                CKEDITOR.replace( 'mota' );
+              </script>
               @if ($errors->has('mota'))
               <div class="text-danger">
                   {{$errors->first('mota')}}

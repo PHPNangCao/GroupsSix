@@ -25,8 +25,8 @@
                         <th>Số điện thoại </th>
                         <th>Địa chỉ</th>
                         <th>Mật Khẩu</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        <th>Thao Tác</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -38,12 +38,14 @@
                         <td>{{ $kh->sdt }}</td>
                         <td>{{ $kh->diachi }}</td>
                         <td>{{ $kh->matkhau }}</td>
-                    <td><a href="{{route('admin.customer.edit',['id' => $kh->id])}}">Edit</a></td>
-                        <td><a href="{{route('admin.customer.destroy',['id' => $kh->id])}}" onclick="return checkDelete('Bạn có muốn xóa thông tin khách hàng này không?')">Delete</a></td>
+                        <td>
+                            <a href="{{route('admin.customer.edit',['id' => $kh->id])}}" class="btn btn-success">Sửa</a>
+                            <a href="{{route('admin.customer.destroy',['id' => $kh->id])}}" class="btn btn-danger" onclick="return checkDelete('Bạn có muốn xóa thông tin khách hàng này không?')">Xóa</a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
-                <tfoot>
+                {{-- <tfoot>
                     <tr>
                         <th>ID</th>
                         <th>Tên khách hàng</th>
@@ -54,14 +56,14 @@
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
-                </tfoot>
+                </tfoot> --}}
             </table>
         </form>
     </div>
     <!-- /.card-body -->
-    <div class="card-footer">
+    {{-- <div class="card-footer">
         Footer
-    </div>
+    </div> --}}
     <!-- /.card-footer-->
 </div>
 

@@ -17,8 +17,10 @@
 
             <div class="form-group">
                 <label>Mô tả <span class="text-danger">(*)</label>
-                <input type="text" name="mota" class="form-control" placeholder="Mô tả" value="{{$loainguoidung->mota}}">
-            
+                <textarea class="form-control" name="mota" rows="3"  placeholder="Mô tả">{{$loainguoidung->mota}}</textarea>
+                <script>
+                    CKEDITOR.replace( 'mota' );
+                </script>
             </div>
             
             <hr>

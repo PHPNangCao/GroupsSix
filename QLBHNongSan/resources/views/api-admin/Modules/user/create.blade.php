@@ -20,7 +20,7 @@
             </div>
             <div class="form-product">
                 <label>Mật khẩu <span class="text-danger">(*)</label>
-                <input type="password" class="form-control" name="matkhau" placeholder="Nhập mật khẩu">
+                <input type="text" class="form-control" name="matkhau" placeholder="Nhập mật khẩu">
                 @if ($errors->has('matkhau'))
                         <div class="text-danger">
                             {{$errors->first('matkhau')}}

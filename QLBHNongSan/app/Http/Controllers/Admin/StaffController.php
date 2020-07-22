@@ -28,7 +28,8 @@ class StaffController extends Controller
      */
     public function create()
     {
-        return view('api-admin.modules.staff.create');
+        $user = DB::table('user')->get();
+        return view('api-admin.modules.staff.create', ['User' => $user]);
     }
 
     /**
@@ -40,18 +41,23 @@ class StaffController extends Controller
     public function store(Request $request)
     {
         $valdidateData = $request->validate([
-            'ten' => 'required|unique:NhanVien',
-            'cmnd' => 'required|interger|max:12',
-            'sdt' => 'required|interger|max:10',
+            'ten' => 'required',
+            'cmnd' => 'required|unique:NhanVien|integer',
+            'sdt' => 'required|integer',    
             'diachi' => 'required',
+            'user_id' => 'required|unique:NhanVien',
 
         ],[
             'ten.required' => 'Vui lòng nhập tên nhân viên',
             'cmnd.required' => 'Vui lòng nhập số CMND',
             'cmnd.unique' => 'Số CMND này đã tồn tại',
-            'cmnd.max' => 'Số CMND không quá được 12 số',
+            'cmnd.integer' => 'Số CMND này phải nhập bằng số',
+           // 'cmnd.max' => 'Số CMND không quá được 12 số',
             'sdt.required' => 'Vui lòng nhập số số điện thoại',
+            'sdt.integer' => 'Số điện thoại phải nhận bằng số',
             'diachi.required' => 'Vui lòng nhập địa chỉ',
+            'user_id.required' => 'Vui lòng chọn user',
+            'user_id.unique' => 'User này đã có thông tin',
         ]);
         
 
@@ -84,9 +90,9 @@ class StaffController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $DVT = DB::table('nhanvien')->where('id',$id)->first();
-        return view('api-admin.modules.staff.edit', ['nhanvien' => $DVT]);
+    {   $user = DB::table('user')->get();
+        $NV = DB::table('nhanvien')->where('id',$id)->first();
+        return view('api-admin.modules.staff.edit', ['nhanvien' => $NV], ['User' => $user] );
     }
 
     /**
@@ -98,6 +104,27 @@ class StaffController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $valdidateData = $request->validate([
+            'ten' => 'required',
+            'cmnd' => 'required|integer',
+            'sdt' => 'required|integer',    
+            'diachi' => 'required',
+            'user_id' => 'required',
+
+        ],[
+            'ten.required' => 'Vui lòng nhập tên nhân viên',
+            'cmnd.required' => 'Vui lòng nhập số CMND',
+           // 'cmnd.unique' => 'Số CMND này đã tồn tại',
+            'cmnd.integer' => 'Số CMND này phải nhập bằng số',
+           // 'cmnd.max' => 'Số CMND không quá được 12 số',
+            'sdt.required' => 'Vui lòng nhập số số điện thoại',
+            'sdt.integer' => 'Số điện thoại phải nhận bằng số',
+            'diachi.required' => 'Vui lòng nhập địa chỉ',
+            'user_id.required' => 'Vui lòng chọn user',
+           // 'user_id.unique' => 'User này đã có thông tin',
+        ]);
+        
+
         $data = $request->except('_token');
         $data['updated_at'] = new DateTime;
         DB::table('nhanvien')->where('id',$id)->update($data);

@@ -18,6 +18,9 @@
                     <div class="form-group">
                         <label>Mô tả <span class="text-danger">(*)</label>
                         <textarea class="form-control" name="mota" rows="3" required placeholder="Mô tả" >{{$LoaiSanPham->mota}}</textarea>
+                        <script>
+                            CKEDITOR.replace( 'mota' );
+                        </script>
                     </div>
                     <div class="form-group">
                         <label>Ảnh <span class="text-danger">(*)</label>

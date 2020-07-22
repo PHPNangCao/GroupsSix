@@ -27,7 +27,9 @@
             <div class="form-product">
                 <label >Nội dung <span class="text-danger">*</span></label>
                 <textarea type="text" name="noidung" class="form-control" placeholder="Nhập nội dung"></textarea>
-                <span class="text-danger"> @error('noidung') {{ $message }} @enderror</span>
+                <script>
+                    CKEDITOR.replace( 'noidung' );
+                </script>
             </div>
             <div class="form-product">
                 <label >Ảnh <span class="text-danger">*</span></label>
