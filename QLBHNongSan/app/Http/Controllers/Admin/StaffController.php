@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin\StaffModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,11 +17,11 @@ class StaffController extends Controller
      */
     public function index()
     {
-        $data = DB::table('nhanvien')->orderBy('id', 'DESC')->get();
+        $data = StaffModel::orderBy('id', 'DESC')->get();
         return view('api-admin.modules.staff.index', ['nhanvien' => $data]);
     }
 
-    /**
+    /** 
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -38,6 +39,22 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
+        $valdidateData = $request->validate([
+            'ten' => 'required|unique:NhanVien',
+            'cmnd' => 'required|interger|max:12',
+            'sdt' => 'required|interger|max:10',
+            'diachi' => 'required',
+
+        ],[
+            'ten.required' => 'Vui lòng nhập tên nhân viên',
+            'cmnd.required' => 'Vui lòng nhập số CMND',
+            'cmnd.unique' => 'Số CMND này đã tồn tại',
+            'cmnd.max' => 'Số CMND không quá được 12 số',
+            'sdt.required' => 'Vui lòng nhập số số điện thoại',
+            'diachi.required' => 'Vui lòng nhập địa chỉ',
+        ]);
+        
+
         $data = $request -> except('_token');
         $data['created_at'] = new DateTime;
         $data['updated_at'] = new DateTime;

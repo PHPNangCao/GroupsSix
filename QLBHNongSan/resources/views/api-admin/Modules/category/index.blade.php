@@ -10,7 +10,7 @@
     </div>
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
-            <thead>
+            <thead style="text-align: center">
                 <tr>
                     <th>Mã</th>
                     <th>Tên</th>
@@ -18,27 +18,29 @@
                     <th>Mô tả</th>
                     <th>Ảnh</th>
                     <th>Trạng thái</th>
-                    <th>Sửa</th>
-                    <th>Xóa</th>
+                    <th>Thao Tác</th>
+
                 </tr>
             </thead> 
-            <tbody>
+            <tbody style="text-align: center">
                 @foreach ($LoaiSanPham as $LoaiSP)
                 <tr>
                     <td>{{$loop->iteration }}</td>
                     <td>{{ $LoaiSP->ten }}</td>
-                    <td>{{ $LoaiSP->nhom_id }} </td>
                     <td>{{ $LoaiSP->mota }}</td>
                     <td><img src="public/upload/category/{{$LoaiSP->anh}}" alt="" height="100px"></td>
+                    <td>{{ $LoaiSP->NhomSanPham->ten }} </td>
                     <td>
                         @if ($LoaiSP->trangthai == 1)
-                            Còn hàng
+                            <a href="{{route('admin.category.status',['id' => $LoaiSP->id])}}" class="btn btn-success">Show</i></a>
                         @else
-                            Hết hàng
+                            <a href="{{route('admin.category.status',['id' => $LoaiSP->id])}}" class="btn btn-danger">Hide</a>
                         @endif
                     </td>
-                    <td><a href="{{route('admin.category.edit',['id' => $LoaiSP->id])}}">Sửa</a></td>
-                    <td><a href="{{route('admin.category.destroy',['id' => $LoaiSP->id])}}" onclick="return checkDelete('Bạn có muốn xóa loại sản phẩm này không?')">Xóa</a></td>
+                    <td>
+                        <a href="{{route('admin.category.edit',['id' => $LoaiSP->id])}}" class="btn btn-success">Sửa <i class="fa fa-pencil"></a>
+                        <a href="{{route('admin.category.destroy',['id' => $LoaiSP->id])}}" onclick="return checkDelete('Bạn có muốn xóa loại sản phẩm này không?')" class="btn btn-danger">Xóa <i class="fa fa-close"></a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

@@ -14,7 +14,7 @@
     </div>
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
-            <thead>
+            <thead style="text-align: center">
                 <tr>
                     <th>ID</th>
                     <th>Tên Lô Hàng</th>
@@ -29,7 +29,7 @@
                     <th>Delete</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="text-align: center">
                 @foreach ($LoHang as $LH)
                 <tr>
                     <td>{{$loop->iteration }}</td>
@@ -39,8 +39,9 @@
                     <td>{{ $LH->giabanra }}</td>
                     <td>{{ $LH->soluongnhap }}</td>
                     <td>{{ $LH->tinhtrang }}</td>
-                    <td>{{ $LH->sanpham_id }}</td>
-                    <td>{{ $LH->nhacungcap_id }}</td>
+                    {{-- <td>{{ $LH->getStatus($LH->tinhtrang)['name'] }}</td> --}}
+                    <td>{{ $LH->SanPham->ten }}</td>
+                    <td>{{ $LH->NhaCungCap->ten }}</td>
                 <td><a href="{{route('admin.lot-order.edit',['id' => $LH->id])}}">Edit</a></td>
                     <td><a href="{{route('admin.lot-order.destroy',['id' => $LH->id])}}" onclick="return checkDelete('Bạn có muốn xóa Lô hàng này không?')">Delete</a></td>
                 </tr>

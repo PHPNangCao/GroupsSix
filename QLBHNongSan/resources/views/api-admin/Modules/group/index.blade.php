@@ -14,29 +14,30 @@
     </div>
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
-            <thead>
+            <thead style="text-align: center">
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Images</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th>STT</th>
+                    <th>Tên</th>
+                    <th>Mô tả</th>
+                    <th>Ảnh</th>
+                    <th>Thao tác</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="text-align: center">
                 @foreach ($NhomSanPham as $NhomSP)
                 <tr>
                     <td>{{$loop->iteration }}</td>
                     <td>{{ $NhomSP->ten }}</td>
                     <td>{{ $NhomSP->mota }}</td> 
                     <td><img src="public/upload/groups/{{$NhomSP->anh}}" alt="" height="100px"></td>
-                <td><a href="{{route('admin.group.edit',['id' => $NhomSP->id])}}">Edit</a></td>
-                    <td><a href="{{route('admin.group.destroy',['id' => $NhomSP->id])}}" onclick="return checkDelete('Bạn có muốn xóa nhóm này không?')">Delete</a></td>
+                    <td>
+                        <a href="{{route('admin.group.edit',['id' => $NhomSP->id])}}" class="btn btn-success">Sửa <i class="fa fa-pencil"></i></a>
+                        <a href="{{route('admin.group.destroy',['id' => $NhomSP->id])}}" onclick="return checkDelete('Bạn có muốn xóa nhóm này không?')" class="btn btn-danger">Xoá</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
-            <tfoot>
+            {{-- <tfoot>
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
@@ -45,13 +46,13 @@
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
-            </tfoot>
+            </tfoot> --}}
         </table>
     </div>
     <!-- /.card-body -->
-    <div class="card-footer">
+    {{-- <div class="card-footer">
         Footer
-    </div>
+    </div> --}}
     <!-- /.card-footer-->
 </div>
 

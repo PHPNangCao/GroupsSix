@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Validator;
 use DB,DateTime;
 class RecruitmentController extends Controller
 {
@@ -37,12 +38,29 @@ class RecruitmentController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->except('_token');
-        $data['created_at'] = new DateTime;
-        $data['updated_at'] = new DateTime;
+        $validator  = Validator::make($request->all(),[
+            'tieude' => 'required|unique:tuyendung',
+            'url' => 'required',
+            'anh' => 'nullable',
+            'mota' => 'required',
+            'lienhe' => 'required',
+            'tinhtrang' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return redirect('admin/recruitment/create')
+                        ->withErrors($validator)
+                        ->withInput();
+        }else
+        {
+            $data = $request->except('_token');
+            $data['created_at'] = new DateTime;
+            $data['updated_at'] = new DateTime;
+    
+            DB::table('tuyendung')->insert($data);
+            return redirect()->route('admin.recruitment.index');
+        }
 
-        DB::table('tuyendung')->insert($data);
-        return redirect()->route('admin.recruitment.index');
+        
     }
 
     /**

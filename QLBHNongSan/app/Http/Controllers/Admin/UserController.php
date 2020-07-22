@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin\UserModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB, DateTime;
+use DateTime;
+use Illuminate\Support\Facades\DB;
+
 class UserController extends Controller
 {
     /**
@@ -14,9 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {   
-        $loainguoidung = DB::table('user')->get();
-        $nguoidung = DB::table('user')->get();
-        return view('api-admin.modules.user.index',['nguoidung' => $nguoidung],['loainguoidung'=>$loainguoidung]);
+        $data = UserModel::orderBy('id', 'DESC')->get();
+        return view('api-admin.modules.user.index',['LoaiNguoiDung' => $data]);
     }
 
     /**
@@ -38,6 +40,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $valdidateData = $request->validate([
+            'email'             => 'required|unique:loainguoidung',
+            'matkhau'           => 'required',
+            'loainguoidung_id'  => 'required'
+        ],[
+            'email.required'               => 'Vui lòng nhập Email',
+            'email.unique'                 => 'Tên Email đã tồn tại',
+            'matkhau.required'             => 'Vui lòng nhập mật khẩu',
+            'loainguoidung_id.required'    => 'Vui lòng chọn loại người dùng',
+        ]);
+
         $data = $request->except('_token');
         $data['created_at'] = new DateTime;
         $data['updated_at'] = new DateTime;

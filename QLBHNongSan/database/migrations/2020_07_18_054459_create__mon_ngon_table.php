@@ -16,13 +16,13 @@ class CreateMonNgonTable extends Migration
         Schema::create('MonNgon', function (Blueprint $table) {
             $table->id();
             $table->string('tieude');
-            $table->string('tomtat')->nullable();
+            $table->string('tomtat');
             $table->text('noidung');
-            $table->integer('luotxem')->default(0);
-            $table->string('anh')->nullable();
-            $table->boolean('trangthai')->default(1);
+            $table->integer('luotxem');
+            $table->string('anh');
+            $table->boolean('trangthai');
 
-            $table->unsignedBigInteger('sanpham_id')->nullable();
+            $table->unsignedBigInteger('sanpham_id');
             $table->foreign('sanpham_id')->references('id')->on('SanPham');
             $table->timestamps();
         });

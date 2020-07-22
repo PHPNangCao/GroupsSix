@@ -20,8 +20,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Khuyến mãi</th>
-                        <th>Sản phẩm</th>
+                        <th>Mô tả</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -29,9 +28,8 @@
                 <tbody>
                     @foreach ($khuyenmaisanpham as $kmsp)
                     <tr>
-                        <td>{{$loop->iteration }}</td>
-                        <td>{{ $kmsp->tieude }}</td>
-                        <td>{{ $kmsp->noidung }}</td>
+                        <td>{{$loop->iteration}}</td>
+                        <td>{{ $kmsp->mota }}</td>
                         <td><a href="{{route('admin.saleproduct.edit',['id' => $kmsp->id])}}">Edit</a></td>
                         <td><a href="{{route('admin.saleproduct.destroy',['id' => $kmsp->id])}}" onclick="return checkDelete('Bạn có muốn xóa thông tin khách hàng này không?')">Delete</a></td>
                     </tr>
@@ -39,9 +37,8 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                    <th>ID</th>
-                        <th>Khuyến mãi</th>
-                        <th>Sản phẩm</th>
+                        <th>ID</th>
+                        <th>Mô tả</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>

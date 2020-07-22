@@ -18,7 +18,7 @@ class KindOfUserController extends Controller
     public function index()
     {
         $data = DB::table('loainguoidung')->orderBy('id', 'DESC')->get();
-        return view('api-admin.modules.KindOfUser.index', ['loainguoidung' => $data]);
+        return view('api-admin.modules.kindofuser.index', ['loainguoidung' => $data]);
     }
 
     /**
@@ -29,7 +29,7 @@ class KindOfUserController extends Controller
     public function create()
     {
         $loainguoidung = DB::table('loainguoidung')->get();
-        return view('api-admin.modules.KindOfUser.create',['loainguoidung' => $loainguoidung]);
+        return view('api-admin.modules.kindofuser.create',['loainguoidung' => $loainguoidung]);
     }
 
     /**
@@ -40,13 +40,24 @@ class KindOfUserController extends Controller
      */
     public function store(Request $request)
     {
+        $valdidateData = $request->validate([
+            'ten' => 'required|unique:LoaiNguoiDung',
+            'mota' => 'required',
+
+        ],[
+            'ten.required' => 'Vui lòng nhập loại người dùng',
+            'ten.unique' => 'Loại người dùng này đã tồn tại',
+            'mota.required' => 'Vui lòng nhập mô tả loại người dùng',
+
+        ]);
+
         $data = $request->except('_token');
         $data['created_at'] = new DateTime;
         $data['updated_at'] = new DateTime;
 
         DB::table('loainguoidung')->insert($data);
         
-        return redirect()->route('admin.KindOfUser.index');
+        return redirect()->route('admin.kindofuser.index');
     }
 
     /**
@@ -69,7 +80,7 @@ class KindOfUserController extends Controller
     public function edit($id)
     {
         $loainguoidung = DB::table('loainguoidung')->where('id',$id)->first();
-        return view('api-admin.modules.KindOfUser.edit', ['loainguoidung' => $loainguoidung]);
+        return view('api-admin.modules.kindofuser.edit', ['loainguoidung' => $loainguoidung]);
     }
 
     /**
@@ -84,7 +95,7 @@ class KindOfUserController extends Controller
         $data = $request->except('_token');
         $data['updated_at'] = new DateTime;
         DB::table('loainguoidung')->where('id',$id)->update($data);
-        return redirect()->route('admin.KindOfUser.index');
+        return redirect()->route('admin.kindofuser.index');
     }
 
     /**
@@ -96,6 +107,6 @@ class KindOfUserController extends Controller
     public function destroy($id)
     {
         DB::table('loainguoidung')->where('id',$id)->delete();
-        return redirect()->route('admin.KindOfUser.index');
+        return redirect()->route('admin.kindofuser.index');
     }
 }

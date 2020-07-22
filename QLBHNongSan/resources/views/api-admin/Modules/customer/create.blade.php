@@ -16,36 +16,27 @@
         <form action="{{route('admin.customer.store')}}" method="POST">
             @csrf
             <div class="form-group">
-                <label>Tên khách hàng</label>
+                <label>Tên khách hàng <span class="text-danger">(*)</label>
                 <input type="text" name="ten" class="form-control" placeholder="Tên khách hàng">
             </div>
             <div class="form-group">
-                <label>Email</label>
+                <label>Email <span class="text-danger">(*)</label>
                 <input type="text" name="email" class="form-control" placeholder="Email">
             </div>
             <div class="form-group">
-                <label>Số điện thoại </label>
+                <label>Số điện thoại <span class="text-danger">(*)</label>
                 <input type="text" name="sdt" class="form-control" placeholder="Số điện thoại">
             </div>
             <div class="form-group">
-                <label>Địa chỉ</label>
+                <label>Địa chỉ <span class="text-danger">(*)</label>
                 <input type="text" name="diachi" class="form-control" placeholder="Địa Chỉ">
             </div>
             <div class="form-group">
-                <label>Mật Khẩu</label>
+                <label>Mật Khẩu <span class="text-danger">(*)</label>
                 <input type="password" name="matkhau" class="form-control" placeholder="Mật Khẩu">
             </div>
-            {{-- <div class="form-group">
-                <label>Nhóm sản phẩm</label>
-                <select name="nhom_id" class="form-control">
-                <option >----Chọn nhóm sản phẩm----</option>
 
-                @foreach ($khachhang as $kh)
-                    <option value="{{$kh->id}}">{{$kh->ten}}</option>
-                @endforeach
-
-                </select>
-            </div> --}}
+            
             <button type="submit" class="btn btn-primary">Lưu thông tin</button>
         </form>
     </div>

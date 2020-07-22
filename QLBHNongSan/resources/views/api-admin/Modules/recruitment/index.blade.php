@@ -4,7 +4,7 @@
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Danh sách tin tuyển dụng <a href="{{route('admin.recruitment.create')}}">Thêm mới</a></h3>
+        <h3 class="card-title"><a href="{{route('admin.recruitment.create')}}">Thêm mới tin tuyển dụng</a></h3>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
             <i class="fas fa-minus"></i></button>

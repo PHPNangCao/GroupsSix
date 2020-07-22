@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB, DateTime;
+use Illuminate\Support\Facades\DB, DateTime;
 
 class CustomerController extends Controller
 {
@@ -44,7 +44,7 @@ class CustomerController extends Controller
         //$request->anh->store('images', 'public');
 
         DB::table('khachhang')->insert($data);
-        
+
 
 
         return redirect()->route('admin.customer.index');

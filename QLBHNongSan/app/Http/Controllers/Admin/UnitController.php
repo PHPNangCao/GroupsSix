@@ -28,6 +28,7 @@ class UnitController extends Controller
     public function create()
     {
         return view('api-admin.modules.unit.create');
+        
     }
 
     /**
@@ -38,6 +39,17 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
+        $valdidateData = $request->validate([
+            'ten' => 'required|unique:DonViTinh',
+            'mota' => 'required',
+
+        ],[
+            'ten.required' => 'Vui lòng nhập tên đơn vị tính',
+            'ten.unique' => 'Tên đơn vị tính này đã tồn tại',
+            'mota.required' => 'Vui lòng nhập mô tả sản phẩm',
+
+        ]);
+        
         $data = $request -> except('_token');
         $data['created_at'] = new DateTime;
         $data['updated_at'] = new DateTime;
@@ -45,7 +57,6 @@ class UnitController extends Controller
         DB::table('DonViTinh')->insert($data);
 
         return redirect()->route('admin.unit.index');
-
 
     }
 

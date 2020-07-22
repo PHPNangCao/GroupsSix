@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="card-body">
-        <form action="{{route('admin.recruitment.store')}}" method="POST">
+        <form action="{{route('admin.monngon.store')}}" method="POST">
             @csrf
             <div class="form-product">
                 <label >Tiêu đề</label>
