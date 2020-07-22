@@ -22,6 +22,9 @@
             <div class="form-group">
                 <label>Nội Dung</label>
                 <textarea class="form-control" name="noidung" rows="3" required placeholder="noidung"></textarea>
+                <script>
+                    CKEDITOR.replace( 'noidung' );
+                </script>
             </div>
             <div class="form-group">
                 <label>Ảnh</label>

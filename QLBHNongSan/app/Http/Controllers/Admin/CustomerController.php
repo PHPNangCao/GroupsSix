@@ -38,6 +38,23 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+        $valdidateData = $request->validate([
+            'ten' => 'required|unique:KhachHang',
+            'email' => 'required', 
+            'sdt' => 'required',
+            'diachi' => 'required',
+            'matkhau' => 'required',
+
+        ],[
+            'ten.required' => 'Vui lòng nhập tên khách hàng',
+            'ten.unique' => 'Tên khách hàng này đã tồn tại',
+            'sdt.required' => 'Vui lòng nhập số điện thoại',
+            'diachi.required' => 'Vui lòng nhập địa chỉ',
+            'matkhau.required' => 'Vui lòng nhập mật khẩu'
+
+        ]);
+
+
         $data = $request->except('_token');
         $data['created_at'] = new DateTime;
         $data['updated_at'] = new DateTime;
@@ -81,7 +98,23 @@ class CustomerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   
+        $valdidateData = $request->validate([
+            'ten' => 'required|unique:KhachHang',
+            'email' => 'required', 
+            'sdt' => 'required',
+            'diachi' => 'required',
+            'matkhau' => 'required',
+
+        ],[
+            'ten.required' => 'Vui lòng nhập tên khách hàng',
+            'ten.unique' => 'Tên khách hàng này đã tồn tại',
+            'sdt.required' => 'Vui lòng nhập số điện thoại',
+            'diachi.required' => 'Vui lòng nhập địa chỉ',
+            'matkhau.required' => 'Vui lòng nhập mật khẩu'
+
+        ]);
+
         $data = $request->except('_token');
         $data['updated_at'] = new DateTime;
         DB::table('khachhang')->where('id',$id)->update($data);

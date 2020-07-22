@@ -24,7 +24,10 @@
                     <div class="form-group">
                         <label>Mô tả <span class="text-danger">(*)</label>
                     <textarea class="form-control" name="mota" rows="3" placeholder="Mô tả">{{$NhomSanPham->mota}}</textarea>
-                    </div>
+                    <script>
+                        CKEDITOR.replace( 'mota' );
+                    </script>
+                </div>
                     <div class="form-group">
                         <label>Ảnh <span class="text-danger">(*)</label>
                         <input type="file" class="form-control-file" name="anh" value="{{$NhomSanPham->anh}}" >

@@ -29,6 +29,9 @@
             <div class="form-product">
                 <label >Mô tả</label>
                 <textarea type="text" name="mota" class="form-control" >{{$tuyendung->mota}}</textarea>
+                <script>
+                    CKEDITOR.replace( 'mota' );
+                </script>
             </div>
             <div class="form-product">
                 <label >Liên hệ</label>

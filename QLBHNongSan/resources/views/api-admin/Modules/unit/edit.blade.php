@@ -11,7 +11,10 @@
             </div>
             <div class="form-group">
                 <label>Mô tả</label>
-            <textarea class="form-control" name="mota" rows="3" placeholder="Mô tả">{{$DonViTinh->mota}}</textarea>
+                <textarea class="form-control" name="mota" rows="3" placeholder="Mô tả">{{$DonViTinh->mota}}</textarea>
+                <script>
+                    CKEDITOR.replace( 'mota' );
+                </script>
             </div>
             <hr>
             <button type="submit" class="btn btn-primary">Lưu thông tin</button>

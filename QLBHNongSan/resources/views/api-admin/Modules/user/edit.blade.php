@@ -18,19 +18,35 @@
             <div class="form-product">
                 <label>Email</label>
                 <input type="text" name="email" class="form-control" placeholder="Tên email hoặc người dùng" value="{{$nguoidung->email}}">
+                @if ($errors->has('email'))
+                <div class="text-danger">
+                    {{$errors->first('email')}}
+                </div>
+                @endif
             </div>
             <div class="form-product">
                 <label>Mật khẩu</label>
-                <input type="text" class="form-control" name="pass" placeholder="Nhập mật khẩu" value="{{$nguoidung->pass}}">
+                <input type="text" class="form-control" name="matkhau" placeholder="Nhập mật khẩu" value="{{$nguoidung->matkhau}}">
+                @if ($errors->has('matkhau'))
+                <div class="text-danger">
+                    {{$errors->first('matkhau')}}
+                </div>
+                @endif
             </div>
             <div class="form-product">
-                <label>Loại người dùng</label>
-                <select name="loainguoidung_id" class="form-control">
-                    {{-- @foreach($loainguoidung as $lnd)
-                    <option value="{{ $lnd->id }}"> {{ $lnd->ten }}</option>
-                    @endforeach --}}
-                </select>
-              </div>
+                <label>Loại người dùng <span class="text-danger">(*)</label>
+                    <select name="loainguoidung_id" class="form-control">
+                        <option value="">----Chọn loại người dùng----</option>
+                        @foreach($loainguoidung as $loaind)
+                        <option value="{{ $loaind->id }}" selected = "{{ $nguoidung->loainguoidung_id }}">{{ $loaind->ten }}</option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('loainguoidung_id'))
+                            <div class="text-danger">
+                                {{$errors->first('loainguoidung_id')}}
+                            </div>
+                    @endif
+            </div>
             <br>
             <button type="submit" class="btn btn-primary">Lưu thông tin</button>
         </form>

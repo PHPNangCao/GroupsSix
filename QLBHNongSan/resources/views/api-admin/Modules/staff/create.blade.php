@@ -7,7 +7,7 @@
         <h3 class="card-title">Thêm thông tin nhân viên</h3>
     </div>
     <div class="card-body">
-        <form action="{{route('admin.staff.store')}}" method="POST">
+        <form action="{{route('admin.staff.store')}}" method="POST" >
             @csrf
             
             <div class="form-group">
@@ -32,7 +32,7 @@
 
             <div class="form-group">
                 <label>Số điện thoại </label>
-                <input type="integer" name="sdt" class="form-control" placeholder="Số điện thoại">
+                <input type="number" name="sdt" class="form-control" placeholder="Số điện thoại">
                 @if ($errors->has('sdt'))
                 <div class="text-danger">
                     {{$errors->first('sdt')}}
@@ -51,12 +51,12 @@
             </div>
 
             <div class="form-group">
-                <label>Mã Số Nhân Viên</label>
+                <label>Email Đăng Nhập</label>
                 <select name="user_id" class="form-control">
-                    <option value="">---- Mã Số Nhân Viên ----</option>
-                    @foreach ($LoaiNguoiDung as $nd)
-                    <option value="{{$nd->id}}" name="user_id"></option>
-                    @endforeach
+                    <option value="">---- Email Nhân Viên ----</option>
+                        @foreach ($User as $us)
+                            <option value="{{$us->id}}">{{ $us->email}}</option>
+                        @endforeach
                     </select>
                 @if ($errors->has('user_id'))
                 <div class="text-danger">

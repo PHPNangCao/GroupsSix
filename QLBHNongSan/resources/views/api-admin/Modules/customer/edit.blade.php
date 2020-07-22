@@ -18,22 +18,47 @@
             <div class="form-group">
                 <label>Tên khách hàng <span class="text-danger">(*)</label>
                 <input type="text" name="ten" class="form-control" placeholder="Tên khách hàng" value="{{$khachhang->ten}}">
+                @if ($errors->has('ten'))
+                    <div class="text-danger">
+                        {{$errors->first('ten')}}
+                    </div>
+                @endif
             </div>
             <div class="form-group">
                 <label>Email <span class="text-danger">(*)</label>
                 <input type="text" name="email" class="form-control" placeholder="Email" value="{{$khachhang->email}}">
+                @if ($errors->has('email'))
+                <div class="text-danger">
+                    {{$errors->first('email')}}
+                </div>
+            @endif
             </div>
             <div class="form-group">
                 <label>Số điện thoại <span class="text-danger">(*)</label>
                 <input type="text" name="sdt" class="form-control" placeholder="Số điện thoại" value="{{$khachhang->sdt}}">
+                @if ($errors->has('sdt'))
+                <div class="text-danger">
+                    {{$errors->first('sdt')}}
+                </div>
+            @endif
             </div>
             <div class="form-group">
                 <label>Địa chỉ <span class="text-danger">(*)</label>
                 <input type="text" name="diachi" class="form-control" placeholder="Địa Chỉ" value="{{$khachhang->diachi}}">
+                @if ($errors->has('diachi'))
+                <div class="text-danger">
+                    {{$errors->first('diachi')}}
+                </div>
+            @endif
             </div>
             <div class="form-group">
                 <label>Mật Khẩu <span class="text-danger">(*)</label>
-                <input type="password" name="matkhau" class="form-control" placeholder="Địa Chỉ" value="{{$khachhang->matkhau}}">
+                <input type="text" name="matkhau" class="form-control" placeholder="Địa Chỉ" value="{{$khachhang->matkhau}}">
+                @if ($errors->has('matkhau'))
+                <div class="text-danger">
+                    {{$errors->first('matkhau')}}
+                </div>
+            @endif
             </div>
             <button type="submit" class="btn btn-primary">Lưu thông tin</button>
         </form>

@@ -41,7 +41,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $valdidateData = $request->validate([
-            'email'             => 'required|unique:loainguoidung',
+            'email'             => 'required|unique:User',
             'matkhau'           => 'required',
             'loainguoidung_id'  => 'required'
         ],[
@@ -79,7 +79,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {   
-        $loainguoidung = DB::table('user')->get();
+        $loainguoidung = DB::table('LoaiNguoiDung')->get();
         $nguoidung = DB::table('user')->where('id',$id)->first();
         return view('api-admin.modules.user.edit',['nguoidung'=>$nguoidung],['loainguoidung'=>$loainguoidung]);
     }
@@ -93,9 +93,19 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $valdidateData = $request->validate([
+            'email'             => 'required|unique:User',
+            'matkhau'           => 'required',
+            'loainguoidung_id'  => 'required'
+        ],[
+            'email.required'               => 'Vui lòng nhập Email',
+            'email.unique'                 => 'Tên Email đã tồn tại',
+            'matkhau.required'             => 'Vui lòng nhập mật khẩu',
+            'loainguoidung_id.required'    => 'Vui lòng chọn loại người dùng',
+        ]);
+
         $data = $request->except('_token');
         $data['updated_at'] = new DateTime;
-        
         DB::table('user')->where('id',$id)->update($data);
 
         return redirect()->route('admin.user.index');

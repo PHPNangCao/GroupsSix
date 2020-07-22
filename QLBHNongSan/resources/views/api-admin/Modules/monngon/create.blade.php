@@ -25,6 +25,9 @@
             <div class="form-product">
                 <label >Nội dung</label>
                 <textarea type="text" name="noidung" class="form-control" placeholder="Nhập nội dung"></textarea>
+                <script>
+                    CKEDITOR.replace( 'noidung' );
+                </script>
             </div>
             <div class="form-product">
                 <label >Ảnh</label>
