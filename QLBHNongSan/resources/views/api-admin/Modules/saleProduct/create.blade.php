@@ -1,23 +1,19 @@
 @extends('api-admin.master')
-@section('title','Thêm thông tin khuyến mãi')
+@section('title','Thêm thông tin sản phẩm khuyến mãi')
 @section('content')
 <!-- Default box -->
 <div class="card">
-    <div class="card-header">
-        <h3 class="card-title">Thêm thông tin khuyến mãi</h3>
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-            <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-            <i class="fas fa-times"></i></button>
-        </div>
-    </div>
     <div class="card-body">
         <form action="{{route('admin.saleproduct.store')}}" method="POST">
             @csrf
             <div class="form-group">
                 <label>Thông tin khuyến mãi</label>
                 <input type="text" class="form-control-file" name="mota">
+                @if ($errors->has('mota'))
+                <div class="text-danger">
+                    {{$errors->first('mota')}}
+                </div>
+                @endif
             </div>
             <div class="form-group">
                 <label>Khuyến mãi ID</label>
@@ -27,6 +23,11 @@
                     <option value="{{$km->id}}">{{$km->tieude}}</option>
                 @endforeach
                 </select>
+                @if ($errors->has('khuyenmai_id'))
+                <div class="text-danger">
+                    {{$errors->first('khuyenmai_id')}}
+                </div>
+                @endif
             </div>
             <div class="form-group">
                 <label>Sản phẩm</label>
@@ -36,14 +37,17 @@
                     <option value="{{$SP->id}}">{{$SP->ten}}</option>
                 @endforeach
                 </select>
+                @if ($errors->has('sanpham_id'))
+                <div class="text-danger">
+                    {{$errors->first('sanpham_id')}}
+                </div>
+                @endif
             </div>
+            <a href="{{route('admin.saleproduct.index')}}" class="btn btn-warning">Quay Lại</a>
             <button type="submit" class="btn btn-primary">Lưu thông tin</button>
         </form>
     </div>
     <!-- /.card-body -->
-    <div class="card-footer">
-        Footer
-    </div>
     <!-- /.card-footer-->
 </div>
 

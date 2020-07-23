@@ -5,36 +5,41 @@
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Thêm thông tin khuyến mãi</h3>
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-            <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-            <i class="fas fa-times"></i></button>
-        </div>
     </div>
     <div class="card-body">
         <form action="{{route('admin.sale.store')}}" enctype="multipart/form-data" method="POST">
             @csrf
             <div class="form-group">
                 <label>Tiêu Đề</label>
-                <input type="text" class="form-control-file" required name="tieude">
+                <input type="text" class="form-control-file"  name="tieude">
+                @if ($errors->has('tieude'))
+                <div class="text-danger">
+                    {{$errors->first('tieude')}}
+                </div>
+                @endif
             </div>
             <div class="form-group">
                 <label>Nội Dung</label>
-                <textarea class="form-control" name="noidung" rows="3" required placeholder="noidung"></textarea>
+                <textarea class="form-control" name="noidung" rows="3"  placeholder="noidung"></textarea>
                 <script>
                     CKEDITOR.replace( 'noidung' );
                 </script>
+                @if ($errors->has('noidung'))
+                    <div class="text-danger">
+                        {{$errors->first('noidung')}}
+                    </div>
+                @endif
             </div>
             <div class="form-group">
                 <label>Ảnh</label>
-                <input type="file" class="form-control-file" required name="anh">
+                <input type="file" class="form-control-file"  name="anh">
+                @if ($errors->has('anh'))
+                    <div class="text-danger">
+                        {{$errors->first('anh')}}
+                    </div>
+                @endif
             </div>
-            <div class="form-group">
-                <label>Trạng Thái</label>
-                <input type="checkbox" name="tinhtrang" value="1"/>ON
-                <input type="checkbox" name="tinhtrang" value="1"/>OFF
-            </div>
+            <a href="{{route('admin.sale.index')}}" class="btn btn-warning">Quay Lại</a>
             <button type="submit" class="btn btn-primary">Lưu thông tin</button>
         </form>
     </div>

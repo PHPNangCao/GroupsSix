@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin\SaleModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB, DateTime;
+use  Illuminate\Support\Str;
 
 class SaleController extends Controller
 {
@@ -39,6 +41,7 @@ class SaleController extends Controller
     public function store(Request $request)
     {
         $data = $request->except('_token');
+        $data['url'] = Str::slug($data['tieude'], '-');
         $data['created_at'] = new DateTime;
         $data['updated_at'] = new DateTime;
         //$request->anh->store('images', 'public');
@@ -62,9 +65,12 @@ class SaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function status($id)
     {
-        //
+        $km = SaleModel::find($id);
+        $km->tinhtrang = ! $km->tinhtrang;
+        $km->save();
+        return redirect()->back();
     }
 
     /**
@@ -88,10 +94,13 @@ class SaleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $data = $request->except('_token');
+        $data['url'] = Str::slug($data['ten'], '-');
         $data['updated_at'] = new DateTime;
         DB::table('KhuyenMai')->where('id',$id)->update($data);
         return redirect()->route('admin.sale.index');
+        
     }
 
     /**

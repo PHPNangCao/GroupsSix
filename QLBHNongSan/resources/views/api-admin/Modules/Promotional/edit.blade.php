@@ -5,12 +5,6 @@
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Sửa thông tin quảng cáo</h3>
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-            <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-            <i class="fas fa-times"></i></button>
-        </div>
     </div>
     <div class="card-body">
         <form action="{{route('admin.promotional.store')}}" method="POST">
@@ -18,19 +12,30 @@
             <div class="form-group">
                 <label>Ảnh</label>
                 <input type="file" class="form-control-file" name="anh" value="{{$quangcao->anh}}">
+                @if ($errors->has('anh'))
+                <div class="text-danger">
+                    {{$errors->first('anh')}}
+                </div>
+                @endif
             </div>
             <div class="form-group">
-                <label>Trạng Thái</label>
-                <input type="checkbox" name="trangthai" value="1"  {{ ($quangcao->trangthai== 1) ? 'checked' : ''}} />ON
-                <input type="checkbox" name="trangthai" value="1"  {{ ($quangcao->trangthai== 1) ? 'checked' : ''}} />OFF
+                <label>Khuyến mãi <span class="text-danger">(*)</label>
+                <select name="khuyenmai_id" class="form-control">
+                <option >----Chọn Khuyến mãi----</option>
+                @foreach ($khuyenmai as $km)
+                    <option value="{{$khuyenmai->id}}" selected = {{$quangcao->khuyenmai_id}}>{{$khuyenmai->ten}}</option>
+                @endforeach
+                </select>
+                @if ($errors->has('khuyenmai_id'))
+                <div class="text-danger">
+                    {{$errors->first('khuyenmai_id')}}
+                </div>
+                @endif
             </div>
             <button type="submit" class="btn btn-primary">Lưu thông tin</button>
         </form>
     </div>
     <!-- /.card-body -->
-    <div class="card-footer">
-        Footer
-    </div>
     <!-- /.card-footer-->
 </div>
 

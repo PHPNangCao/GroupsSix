@@ -5,25 +5,19 @@
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Thêm quảng cáo</h3>
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-            <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-            <i class="fas fa-times"></i></button>
-        </div>
     </div>
     <div class="card-body">
-        <form action="{{route('admin.promotional.store')}}" method="POST">
+        <form action="{{route('admin.promotional.store')}}" enctype="multipart/form-data" method="POST">
             @csrf
             <div class="form-group">
-                <label>Ảnh</label>
-                <input type="file" class="form-control-file" name="anh">
-            </div>
-            <div class="form-group">
-                <label>Trạng Thái</label>
-                <input type="checkbox" name="trangthai" value="1"/>ON
-                <input type="checkbox" name="trangthai" value="1"/>OFF
-            </div>
+                <label>Ảnh <span class="text-danger">(*)</label>
+                <input type="file" class="form-control-file"  name="anh">
+                @if ($errors->has('anh'))
+                <div class="text-danger">
+                    {{$errors->first('anh')}}
+                </div>
+                @endif
+            </div>   
             <div class="form-group">
                 <label>Khuyến mãi</label>
                 <select name="khuyenmai_id" class="form-control">
@@ -32,14 +26,17 @@
                   <option value="{{$km->id}}"> {{$km->noidung}}</option>                    
                 @endforeach
                 </select>
+                @if ($errors->has('khuyenmai_id'))
+                <div class="text-danger">
+                    {{$errors->first('khuyenmai_id')}}
+                </div>
+                @endif
             </div>
+            <a href="{{route('admin.promotional.index')}}" class="btn btn-warning">Quay Lại</a>
             <button type="submit" class="btn btn-primary">Lưu thông tin</button>
         </form>
     </div>
     <!-- /.card-body -->
-    <div class="card-footer">
-        Footer
-    </div>
     <!-- /.card-footer-->
 </div>
 

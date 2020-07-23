@@ -67,9 +67,6 @@
                         <select name="loaisanpham_id" class="form-control">
                         <option value="">----Chọn loại sản phẩm----</option>
                         @foreach ($LoaiSanPham as $LoaiSP)
-                            {{-- @if (array($LoaiSP->trangthai) == 1)
-                                <option value="{{$loaiSP->id}}">{{$LoaiSP->ten}}</option>
-                            @else --}}
                             <option value="{{$LoaiSP->id}}">{{$LoaiSP->ten}}</option>
                         @endforeach
                         </select>

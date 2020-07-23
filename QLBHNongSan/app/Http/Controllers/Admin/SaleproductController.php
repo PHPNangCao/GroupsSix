@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin\SaleProductModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +19,7 @@ class SaleproductController extends Controller
     public function index()
     {
 
-        $khuyenmaisanpham = DB::table('SanPhamKhuyenMai')->orderBy('id', 'DESC')->get();;
+        $khuyenmaisanpham = SaleProductModel::orderBy('id', 'DESC')->get();
         return view('api-admin.modules.saleproduct.index', ['khuyenmaisanpham' => $khuyenmaisanpham]);
     }
 

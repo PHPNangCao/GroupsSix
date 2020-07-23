@@ -5,15 +5,9 @@
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Danh sách món ngon <a href="{{route('admin.monngon.create')}}">Thêm mới</a></h3>
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-            <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-            <i class="fas fa-times"></i></button>
-        </div>
     </div>
     <div class="card-body">
-        <table id="example1" class="table table-bordered table-striped">
+        <table style="text-align: center" id="example1" class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -22,10 +16,9 @@
                     <th>Nội dung</th>
                     <th>Lượt xem</th>
                     <th>Ảnh</th>
-                    <th>Trạng thái</th>
                     <th>Sản phẩm</th>
-                    <th>Sửa</th>
-                    <th>Xóa</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,11 +29,19 @@
                     <td>{{ $mn->tomtat }}</td>
                     <td>{{ $mn->noidung }}</td>
                     <td>{{ $mn->luotxem }}</td>
-                    <td>{{ $mn->anh }}</td>
-                    <td>{{ $mn->trangthai }}</td>
-                    <td>{{ $mn->sanpham_id }}</td>
-                    <td><a href="{{route('admin.monngon.edit',['id' => $mn->id])}}">Sửa</a></td>
-                    <td><a href="{{route('admin.monngon.destroy',['id' => $mn->id])}}" onclick="return checkDelete('Bạn có muốn xóa món ngon này không?')">Xóa</a></td>
+                    <td><img src="public/upload/monngon/{{$mn->anh}}" alt="" height="100px"></td>
+                    <td>{{ $mn->SanPham->ten }}</td>
+                    <td>
+                        @if ($mn->trangthai == 1)
+                            <a href="{{route('admin.monngon.status',['id' => $mn->id])}}" class="btn btn-success">Show</i></a>
+                        @else
+                            <a href="{{route('admin.monngon.status',['id' => $mn->id])}}" class="btn btn-danger">Hide</a>
+                        @endif
+                    </td>
+                    <td>
+                        <a href="{{route('admin.monngon.edit',['id' => $mn->id])}}" class="btn btn-success">Sửa</a>
+                        <a href="{{route('admin.monngon.destroy',['id' => $mn->id])}}" onclick="return checkDelete('Bạn có muốn xóa sản phẩm này không?')" class="btn btn-danger" >Xoá</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
