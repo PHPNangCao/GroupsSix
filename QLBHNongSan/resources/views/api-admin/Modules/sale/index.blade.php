@@ -6,59 +6,49 @@
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Thông tin khuyến mãi <a href="{{route('admin.sale.create')}}">Thêm mới</a></h3>
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-            <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-            <i class="fas fa-times"></i></button>
-        </div>
+        <h3 class="card-title">Thông tin khuyến mãi<a href="{{route('admin.sale.create')}}">Thêm mới</a></h3>
     </div>
     <div class="card-body">
         <form action="{{route('admin.sale.index')}}" method="POST">
             <table id="example1" class="table table-bordered table-striped">
-                <thead>
+                <thead style="text-align: center">
                     <tr>
-                        <th>ID</th>
+                        <th>STT</th>
                         <th>Tiêu đề</th>
+                        <th>Url</th>
                         <th>Nội dung</th>
                         <th>Ảnh</th>
                         <th>Trình trạng</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        <th>Thao tác</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style="text-align: center">
                     @foreach ($khuyenmai as $km)
                     <tr>
                         <td>{{$loop->iteration }}</td>
                         <td>{{ $km->tieude }}</td>
+                        <td>{{ $km->url }}</td>
                         <td>{{ $km->noidung }}</td>
                         <td><img src="public/upload/sale/{{$km->anh}}" alt="" height="100px"></td>
-                        <td>{{ $km->tinhtrang }}</td>
-                        <td><a href="{{route('admin.sale.edit',['id' => $km->id])}}">Edit</a></td>
-                        <td><a href="{{route('admin.sale.destroy',['id' => $km->id])}}" onclick="return checkDelete('Bạn có muốn xóa thông tin khách hàng này không?')">Delete</a></td>
+                        <td>
+                            @if ($km->tinhtrang == 1)
+                                <a href="{{route('admin.sale.status',['id' => $km->id])}}" class="btn btn-success">Show</i></a>
+                            @else
+                                <a href="{{route('admin.sale.status',['id' => $km->id])}}" class="btn btn-danger">Hide</a>
+                            @endif
+                        </td>
+                        <td>
+                            <a href="{{route('admin.sale.edit',['id' => $km->id])}}" class="btn btn-success">Sửa <i class="fa fa-pencil"></a>
+                            <a href="{{route('admin.sale.destroy',['id' => $km->id])}}" onclick="return checkDelete('Bạn có muốn xóa loại sản phẩm này không?')" class="btn btn-danger">Xóa <i class="fa fa-close"></a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <th>ID</th>
-                        <th>Tiêu đề</th>
-                        <th>Nội dung</th>
-                        <th>Ảnh</th>
-                        <th>Trình trạng</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                </tfoot>
+
             </table>
         </form>
     </div>
     <!-- /.card-body -->
-    <div class="card-footer">
-        Footer
-    </div>
     <!-- /.card-footer-->
 </div>
 

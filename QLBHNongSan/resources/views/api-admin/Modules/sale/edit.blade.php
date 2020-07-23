@@ -31,11 +31,7 @@
                 <label>Ảnh</label>
                 <input type="file" class="form-control-file" name="anh" value="{{$khuyenmai->anh}}">
             </div>
-            <div class="form-group">
-                <label>Trạng Thái</label>
-                <input type="checkbox" name="tinhtrang" value="1"  {{ ($khuyenmai->tinhtrang== 1) ? 'checked' : ''}} />ON
-                <input type="checkbox" name="tinhtrang" value="1"  {{ ($khuyenmai->tinhtrang== 0) ? 'checked' : ''}} />OFF
-            </div>
+
             <button type="submit" class="btn btn-primary">Lưu thông tin</button>
         </form>
     </div>

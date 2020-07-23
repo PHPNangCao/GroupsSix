@@ -4,15 +4,9 @@
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Sửa món ngon</h3>
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-            <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-            <i class="fas fa-times"></i></button>
-        </div>
     </div>
     <div class="card-body">
-        <form action="{{route('admin.monngon.update',['id' => $monngon->id])}}" method="POST">
+        <form action="{{route('admin.monngon.update',['id' => $monngon->id])}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-product">
                 <label >Tiêu đề</label>
@@ -29,21 +23,26 @@
                     CKEDITOR.replace( 'noidung' );
                 </script>
             </div>
-            <div class="form-product">
-                <label >Ảnh</label>
-                <input type="file" name="anh" class="form-control-file" value="{{$monngon->anh}}">
+            <div class="form-group">
+                <label>Ảnh <span class="text-danger">(*)</label>
+                <input type="hidden" name="image" value="{{$monngon->anh}}">
+                <input type="file" class="form-control-file" name="anh">
+            </div>   
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Ảnh đã lưu</label>
+                    <a href="#" class="thumbnail">
+                        <img src="public/upload/monngon/{{$monngon->anh}}" alt="" height="100px">
+                    </a>
+                </div>
             </div>
+            <input type="hidden" name="trangthai" value="{{$monngon->trangthai}}">
             <div class="form-product">
-                <label >Trạng thái</label>
-                    <input type="radio" name="trangthai" value="1" {{  ($monngon->trangthai == 1 ? ' checked' : '') }}>Mở
-                    <input type="radio" name="trangthai" value="0" {{  ($monngon->trangthai == 0 ? ' checked' : '') }}>Ẩn
-            </div>
-            <div class="form-product">
-                <label >Sản phẩm: </label>
+                <label >Sản phẩm </label>
                 <select name="sanpham_id" class="form-control">
-                    <option value="{{$sanpham->id}}">{{$sanpham->ten}}</option>
-                    @foreach($sanpham as $sp)
-                        <option value="{{$sanpham->id}}">{{$sanpham->ten}}</option>
+                    <option value="">San Pham</option>
+                    @foreach($SanPham as $SP)
+                <option value="{{$SP->id}}" selected = "{{$monngon->sanpham_id}}">{{$SP->ten}}</option>
                     @endforeach
                 </select>
             </div>

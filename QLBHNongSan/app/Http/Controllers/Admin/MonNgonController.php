@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin\MonNgonModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
@@ -15,8 +16,8 @@ class MonNgonController extends Controller
      */
     public function index()
     {
-        $monngon = DB::table('monngon')->get();
-        return view('api-admin.modules.monngon.index',['monngon'=>$monngon]);
+        $data = MonNgonModel::orderBy('id', 'DESC')->get();
+        return view('api-admin.modules.monngon.index',['monngon'=>$data]);
     }
 
     /**
@@ -38,29 +39,34 @@ class MonNgonController extends Controller
      */
     public function store(Request $request)
     {
-        $validator  = Validator::make($request->all(),[
-            'tieude' => 'required|unique:monngon',
-            'tomtat' => 'required',
-            'noidung' => 'nullable',
-            'anh' => 'nullable',
-            'luotxem' => 'defual',
-            'trangthai' => 'required',
-            'sanpham_id' => 'required|exists:sanpham,id',
-        ]);
-        if ($validator->fails()) {
-            return redirect('admin/monngon/create')
-                        ->withErrors($validator)
-                        ->withInput();
-        }
-        else
-        {
+            $valdidateData = $request->validate([
+                'tieude' => 'required|unique:monngon',
+                'tomtat' => 'required',
+                'noidung' => 'required',
+                'anh' => 'required',
+                'luotxem' => 'defual',
+                'sanpham_id' => 'required',
+    
+            ],[
+                'tieude.required' => 'Vui lòng nhập tiêu đề',
+                'tomtat.required' => 'Vui lòng chọn tóm tắt',
+                'anh.required' => 'Vui lòng chọn ảnh',   
+                'sanpham_id' => 'Vui lòng chọn Loại Sản phẩm',
+
+            ]);
+
             $data = $request->except('_token');
+
+            $file = $request->anh;       
+            $file->move('public/upload/monngon', $file->getClientOriginalName());
+            $data["anh"] =  $file->getClientOriginalName();
+
             $data['created_at'] = new DateTime;
             $data['updated_at'] = new DateTime;
     
             DB::table('monngon')->insert($data);
             return redirect()->route('admin.monngon.index');
-        }
+        
     }
 
     /**
@@ -69,9 +75,12 @@ class MonNgonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function status($id)
     {
-        //
+        $monngon = MonNgonModel::find($id);
+        $monngon->trangthai = ! $monngon->trangthai;
+        $monngon->save();
+        return redirect()->back();
     }
 
     /**
@@ -83,8 +92,8 @@ class MonNgonController extends Controller
     public function edit($id)
     {
         $monngon = DB::table('monngon')->where('id',$id)->first();
-        $sanpham = DB::table('monngon')->get();
-        return view('api-admin.modules.monngon.edit',['monngon'=>$monngon],['sanpham'=>$sanpham]);
+        $sanpham = DB::table('sanpham')->get();
+        return view('api-admin.modules.monngon.edit',['monngon'=>$monngon],['SanPham'=>$sanpham]);
     }
 
     /**
@@ -96,11 +105,33 @@ class MonNgonController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->except('_token');
-        $data['updated_at'] = new DateTime;
+        if($request->has('anh')){
+            $image_name = $request->anh->getClientOriginalName();
+            $request->anh->move('public/upload/monngon', $image_name);
+        }else{
+            $image_name = $request->image;
+        }
 
-        DB::table('monngon')->where('id',$id)->update($data);
-        return redirect()->route('admin.monngon.index');
+        $addimage = DB::table('MonNgon')->where('id',$id)->update([
+            'tieude' => $request->tieude,
+            'tomtat' => $request->tomtat,
+            'noidung' => $request->noidung,
+            'anh' => $image_name,
+            'sanpham_id' => $request->sanpham_id,
+            'trangthai' => $request->trangthai
+
+        ]);
+
+        if($addimage){
+            return redirect()->route('admin.monngon.index')->with('Sửa thành công bảng sản phẩm');
+        }
+            return redirect()->route('admin.monngon.index')->with('Sửa không thành công bảng sản phẩm');
+
+        // $data = $request->except('_token');
+        // $data['updated_at'] = new DateTime;
+
+        // DB::table('monngon')->where('id',$id)->update($data);
+        // return redirect()->route('admin.monngon.index');
     }
 
     /**

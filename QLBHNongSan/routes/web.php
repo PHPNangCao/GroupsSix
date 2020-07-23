@@ -116,6 +116,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
         Route::get('edit/{id}', 'MonNgonController@edit')->name('edit');
         Route::post('update/{id}', 'MonNgonController@update')->name('update');
     
+        Route::get('status/{id}', 'MonNgonController@status')->name('status');
         Route::get('destroy/{id}', 'MonNgonController@destroy')->name('destroy');
     });
 
@@ -169,6 +170,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
         Route::get('edit/{id}', 'SaleController@edit')->name('edit');
         Route::post('update/{id}', 'SaleController@update')->name('update');
 
+        Route::get('status/{id}', 'SaleController@status')->name('status');
         Route::get('destroy/{id}', 'SaleController@destroy')->name('destroy');
 
     });

@@ -60,6 +60,7 @@
                 </div>
     
                 <hr>
+                <a href="{{route('admin.category.index')}}" class="btn btn-warning">Quay Lại</a>
                 <button type="submit" class="btn btn-primary">Lưu thông tin</button>
             </div>
         </form>

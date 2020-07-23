@@ -21,31 +21,31 @@
                     <tr>
                         <th>ID</th>
                         <th>Ảnh</th>
+                        <th>Url</th>
                         <th>Trạng Thái</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        <th>Khuyến mãi </th>
+                        <th>Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($quangcao as $qc)
                     <tr>
                         <td>{{$loop->iteration }}</td>
-                        <td>{{ $qc->anh }}</td>
-                        <td>{{ $qc->trangthai }}</td>
-                    <td><a href="{{route('admin.promotional.edit',['id' => $qc->id])}}">Edit</a></td>
-                        <td><a href="{{route('admin.promotional.destroy',['id' => $qc->id])}}" onclick="return checkDelete('Bạn có muốn xóa thông tin khách hàng này không?')">Delete</a></td>
-                    </tr>
+                        <td><img src="public/upload/quangcao/{{$qc->anh}}" alt="" height="100px"></td>
+                        <td>{{ $qc->url }}</td>
+                        <td>
+                            @if ($qc->trangthai == 1)
+                                <a href="{{route('admin.promotional.status',['id' => $qc->id])}}" class="btn btn-success">Show</i></a>
+                            @else
+                                <a href="{{route('admin.promotional.status',['id' => $qc->id])}}" class="btn btn-danger">Hide</a>
+                            @endif
+                        </td>
+                        <td>
+                            <a href="{{route('admin.promotional.edit',['id' => $qc->id])}}" class="btn btn-success">Sửa</a>
+                            <a href="{{route('admin.promotional.destroy',['id' => $qc->id])}}" onclick="return checkDelete('Bạn có muốn xóa quảng cáo này không?')" class="btn btn-danger" >Xoá</a>
+                        </td>
                     @endforeach
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <th>ID</th>
-                        <th>Ảnh</th>
-                        <th>Trạng Thái</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                </tfoot>
             </table>
         </form>
     </div>

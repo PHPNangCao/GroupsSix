@@ -41,8 +41,8 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{route('admin.product.edit',['id' => $SP->id])}}" class="btn btn-danger">Sửa</a>
-                        <a href="{{route('admin.product.destroy',['id' => $SP->id])}}" onclick="return checkDelete('Bạn có muốn xóa sản phẩm này không?')" class="btn btn-success">Xoá</a>
+                        <a href="{{route('admin.product.edit',['id' => $SP->id])}}" class="btn btn-success">Sửa</a>
+                        <a href="{{route('admin.product.destroy',['id' => $SP->id])}}" onclick="return checkDelete('Bạn có muốn xóa sản phẩm này không?')" class="btn btn-danger" >Xoá</a>
                     </td>
                 </tr>
                 @endforeach
