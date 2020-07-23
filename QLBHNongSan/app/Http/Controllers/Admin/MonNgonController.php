@@ -6,7 +6,7 @@ use App\Admin\MonNgonModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
-use DB,DateTime;
+use Illuminate\Support\Facades\DB,DateTime;
 class MonNgonController extends Controller
 {
     /**
@@ -46,27 +46,27 @@ class MonNgonController extends Controller
                 'anh' => 'required',
                 'luotxem' => 'defual',
                 'sanpham_id' => 'required',
-    
+
             ],[
                 'tieude.required' => 'Vui lòng nhập tiêu đề',
                 'tomtat.required' => 'Vui lòng chọn tóm tắt',
-                'anh.required' => 'Vui lòng chọn ảnh',   
+                'anh.required' => 'Vui lòng chọn ảnh',
                 'sanpham_id' => 'Vui lòng chọn Loại Sản phẩm',
 
             ]);
 
             $data = $request->except('_token');
 
-            $file = $request->anh;       
+            $file = $request->anh;
             $file->move('public/upload/monngon', $file->getClientOriginalName());
             $data["anh"] =  $file->getClientOriginalName();
 
             $data['created_at'] = new DateTime;
             $data['updated_at'] = new DateTime;
-    
+
             DB::table('monngon')->insert($data);
             return redirect()->route('admin.monngon.index');
-        
+
     }
 
     /**
