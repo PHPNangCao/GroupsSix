@@ -115,12 +115,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 
         Route::get('edit/{id}', 'MonNgonController@edit')->name('edit');
         Route::post('update/{id}', 'MonNgonController@update')->name('update');
-<<<<<<< HEAD
 
-=======
-    
         Route::get('status/{id}', 'MonNgonController@status')->name('status');
->>>>>>> 8593695f0e0efca21963862dbce97cce7dee0732
         Route::get('destroy/{id}', 'MonNgonController@destroy')->name('destroy');
     });
 
