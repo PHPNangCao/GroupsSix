@@ -12,8 +12,8 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="info">
-                {{-- <h1 class="text-success" style="font-size:13px">{{auth()->user()->name}}</h1>
-                <a href="{{route('logout')}}" style="font-size:13px" class="text-danger">Log Out</a> --}}
+                <h1 class="text-success" style="font-size:13px">{{auth()->user()->name}}</h1>
+                <a href="{{route('logout')}}" style="font-size:13px" class="text-danger">Log Out</a>
             </div>
         </div>
         <!-- Sidebar Menu -->

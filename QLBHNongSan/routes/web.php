@@ -19,7 +19,7 @@ Route::post('login', 'LoginController@progressLogin')->name('progressLogin');
 Route::get('logout', 'LoginController@logout')->name('logout');
 
 
-Route::middleware('check_login')->group(function () {
+//Route::middleware('check_login')->group(function () {
     Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 
         Route::prefix('category')->name('category.')->group(function(){
@@ -255,7 +255,7 @@ Route::middleware('check_login')->group(function () {
 
         });
     });
-});
+//});
 
 
 
