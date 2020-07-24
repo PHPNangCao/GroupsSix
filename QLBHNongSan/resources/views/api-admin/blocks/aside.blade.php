@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="api-admin/index3.html" class="brand-link">
-    <img src="api-admin/dist/img/AdminLTELogo.png"
+    <img src="avatar.jpg"
         alt="AdminLTE Logo"
         class="brand-image img-circle elevation-3"
         style="opacity: .8">
@@ -12,12 +12,12 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="api-admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                <img src="avatar.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Nhóm 6</a>
-                {{-- <h1 class="text-success" style="font-size:13px">{{auth()->user()->name}}</h1>
-                <a href="{{route('logout')}}" style="font-size:13px" class="text-danger">Log Out</a> --}}
+                <a href="{{route('admin')}}"  style="font-size:20px" class="d-block">{{auth()->user()->name}}</a>
+                {{-- <h1 class="text-success" style="font-size:13px">{{auth()->user()->name}}</h1> --}}
+                <a href="{{route('logout')}}" style="font-size:13px" class="text-danger">Log Out</a>
             </div>
         </div>
         <!-- Sidebar Menu -->
