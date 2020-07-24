@@ -7,12 +7,6 @@
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Thông tin quảng cáo <a href="{{route('admin.promotional.create')}}">Thêm mới</a></h3>
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-            <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-            <i class="fas fa-times"></i></button>
-        </div>
     </div>
     <div class="card-body">
         <form action="{{route('admin.promotional.index')}}" method="POST">
@@ -22,8 +16,8 @@
                         <th>ID</th>
                         <th>Ảnh</th>
                         <th>Url</th>
-                        <th>Trạng Thái</th>
                         <th>Khuyến mãi </th>
+                        <th>Trạng Thái</th>
                         <th>Thao tác</th>
                     </tr>
                 </thead>
@@ -33,6 +27,7 @@
                         <td>{{$loop->iteration }}</td>
                         <td><img src="public/upload/quangcao/{{$qc->anh}}" alt="" height="100px"></td>
                         <td>{{ $qc->url }}</td>
+                        <td>{{ $qc->KhuyenMai->ten }}</td>
                         <td>
                             @if ($qc->trangthai == 1)
                                 <a href="{{route('admin.promotional.status',['id' => $qc->id])}}" class="btn btn-success">Show</i></a>

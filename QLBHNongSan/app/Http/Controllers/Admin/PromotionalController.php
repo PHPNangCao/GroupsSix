@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin\PromotionalModel;
+use App\Admin\SaleProductModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB, DateTime;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
+use DateTime;
 
 class PromotionalController extends Controller
 {
@@ -15,8 +20,8 @@ class PromotionalController extends Controller
      */
     public function index()
     {
-        $data = DB::table('quangcao')->orderBy('id', 'DESC')->get();
-        return view('api-admin.modules.promotional.index', ['quangcao' => $data]);
+        $quangcao = SaleProductModel::orderBy('id', 'DESC')->get();
+        return view('api-admin.modules.promotional.index', ['quangcao' => $quangcao]);
     }
 
     /**
@@ -26,7 +31,7 @@ class PromotionalController extends Controller
      */
     public function create()
     {
-        $khuyenmai = DB::table('khuyenmai')->get();
+        $khuyenmai = DB::table('KhuyenMai')->get();
         return view('api-admin.modules.promotional.create',['khuyenmai' => $khuyenmai]);
     }
 
@@ -38,13 +43,23 @@ class PromotionalController extends Controller
      */
     public function store(Request $request)
     {
+        $valdidateData = $request->validate([
+            'anh' => 'required|unique:QuangCao',
+            'khuyenmai_id' => 'required',
+
+
+        ],[
+
+            'khuyenmai_id.required' => 'Vui lòng chọn khuyến mãi',
+            'anh.required' => 'Vui lòng chọn ảnh',
+
+        ]);
+
         $data = $request->except('_token');
         $data['created_at'] = new DateTime;
         $data['updated_at'] = new DateTime;
-        //$request->anh->store('images', 'public');
-
+        // $data['url'] = Str::slug($data['ten'], '-');
         DB::table('quangcao')->insert($data);
-
         return redirect()->route('admin.promotional.index');
     }
 
@@ -54,9 +69,12 @@ class PromotionalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function status($id)
     {
-        //
+        $quangcao = PromotionalModel::find($id);
+        $quangcao->trangthai = ! $quangcao->trangthai;
+        $quangcao->save();
+        return redirect()->back();
     }
 
     /**
@@ -67,8 +85,9 @@ class PromotionalController extends Controller
      */
     public function edit($id)
     {
+        $khuyenmai = DB::table('KhuyenMai')->get();
         $quangcao = DB::table('quangcao')->where('id',$id)->first();
-        return view('api-admin.modules.promotional.edit', ['quangcao' => $quangcao]);
+        return view('api-admin.modules.promotional.edit', ['quangcao' => $quangcao],['khuyenmai' => $khuyenmai]);
     }
 
     /**
