@@ -1,12 +1,12 @@
 <!-- đây là bảng Khách hàng -->
 
 @extends('api-admin.master')
-@section('title','Danh sách khuyến mãi')
+@section('title','Danh sách chương trình khuyến mãi')
 @section('content')
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Thông tin khuyến mãi<a href="{{route('admin.sale.create')}}">Thêm mới</a></h3>
+        <h3><a href="{{route('admin.sale.create')}}">Thêm mới</a></h3>
     </div>
     <div class="card-body">
         <form action="{{route('admin.sale.index')}}" method="POST">
@@ -28,7 +28,7 @@
                         <td>{{$loop->iteration }}</td>
                         <td>{{ $km->tieude }}</td>
                         <td>{{ $km->url }}</td>
-                        <td>{{ $km->noidung }}</td>
+                        <td style="width: 300px;">{{ $km->noidung }}</td>
                         <td><img src="public/upload/sale/{{$km->anh}}" alt="" height="100px"></td>
                         <td>
                             @if ($km->tinhtrang == 1)

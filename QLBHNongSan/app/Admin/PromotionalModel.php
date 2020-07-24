@@ -9,6 +9,7 @@ class PromotionalModel extends Model
     protected $table='QuangCao';
 
     public function KhuyenMai(){
-        return $this->belongsTo('App\Admin\SaleProductModel','khuyenmai_id','id');
+        return $this->belongsTo('App\Admin\SaleModel','khuyenmai_id','id');
     }
+
 }

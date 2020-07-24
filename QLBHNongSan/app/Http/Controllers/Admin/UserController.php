@@ -41,15 +41,15 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $valdidateData = $request->validate([
-            'name'           => 'required',
+            'name'              => 'required',
             'email'             => 'required|unique:User',
-            'matkhau'           => 'required',
+            'password'          => 'required',
             'loainguoidung_id'  => 'required'
         ],[
-            'name.required'               => 'Vui lòng nhập tên',
+            'name.required'                => 'Vui lòng nhập tên',
             'email.required'               => 'Vui lòng nhập Email',
             'email.unique'                 => 'Tên Email đã tồn tại',
-            'matkhau.required'             => 'Vui lòng nhập mật khẩu',
+            'password.required'            => 'Vui lòng nhập mật khẩu',
             'loainguoidung_id.required'    => 'Vui lòng chọn loại người dùng',
         ]);
 
@@ -97,12 +97,11 @@ class UserController extends Controller
     {
         $valdidateData = $request->validate([
             'email'             => 'required',
-            'matkhau'           => 'required',
+            'password'          => 'required',
             'loainguoidung_id'  => 'required'
         ],[
             'email.required'               => 'Vui lòng nhập Email',
-            //'email.unique'                 => 'Tên Email đã tồn tại',
-            'matkhau.required'             => 'Vui lòng nhập mật khẩu',
+            'password.required'            => 'Vui lòng nhập mật khẩu',
             'loainguoidung_id.required'    => 'Vui lòng chọn loại người dùng',
         ]);
 

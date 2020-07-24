@@ -192,6 +192,7 @@ Route::middleware('check_login')->group(function () {
             Route::get('edit/{id}', 'PromotionalController@edit')->name('edit');
             Route::post('update/{id}', 'PromotionalController@update')->name('update');
 
+            Route::get('status/{id}', 'PromotionalController@status')->name('status');
             Route::get('destroy/{id}', 'PromotionalController@destroy')->name('destroy');
 
         });

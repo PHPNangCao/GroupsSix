@@ -1,18 +1,12 @@
 <!-- đây là bảng Khách hàng -->
 
 @extends('api-admin.master')
-@section('title','Danh sách khuyến mãi')
+@section('title','Danh sách sản phẩm khuyến mãi')
 @section('content')
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Thông tin khuyến mãi <a href="{{route('admin.saleproduct.create')}}">Thêm mới</a></h3>
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-            <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-            <i class="fas fa-times"></i></button>
-        </div>
+        <h3><a href="{{route('admin.saleproduct.create')}}">Thêm mới</a></h3>
     </div>
     <div class="card-body">
         <form action="{{route('admin.saleproduct.index')}}" method="POST">
