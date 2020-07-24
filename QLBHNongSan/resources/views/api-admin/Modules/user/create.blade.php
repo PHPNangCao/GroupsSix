@@ -10,6 +10,15 @@
         <form action="{{route('admin.user.store')}}" method="POST">
             @csrf
             <div class="form-product">
+                <label>Tên<span class="text-danger">(*)</label>
+                <input type="text" name="name" class="form-control" placeholder="Tên...">
+                @if ($errors->has('name'))
+                <div class="text-danger">
+                    {{$errors->first('name')}}
+                </div>
+                @endif
+            </div>
+            <div class="form-product">
                 <label>Email <span class="text-danger">(*)</label>
                 <input type="email" name="email" class="form-control" placeholder="Email">
                 @if ($errors->has('email'))
@@ -20,10 +29,10 @@
             </div>
             <div class="form-product">
                 <label>Mật khẩu <span class="text-danger">(*)</label>
-                <input type="text" class="form-control" name="matkhau" placeholder="Nhập mật khẩu">
-                @if ($errors->has('matkhau'))
+                <input type="text" class="form-control" name="password" placeholder="Nhập mật khẩu">
+                @if ($errors->has('password'))
                         <div class="text-danger">
-                            {{$errors->first('matkhau')}}
+                            {{$errors->first('password')}}
                         </div>
                 @endif
             </div>

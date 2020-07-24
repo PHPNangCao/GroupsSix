@@ -16,7 +16,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $data = UserModel::orderBy('id', 'DESC')->get();
         return view('api-admin.modules.user.index',['LoaiNguoiDung' => $data]);
     }
@@ -40,21 +40,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $valdidateData = $request->validate([
-            'email'             => 'required|unique:User',
-            'matkhau'           => 'required',
-            'loainguoidung_id'  => 'required'
-        ],[
-            'email.required'               => 'Vui lòng nhập Email',
-            'email.unique'                 => 'Tên Email đã tồn tại',
-            'matkhau.required'             => 'Vui lòng nhập mật khẩu',
-            'loainguoidung_id.required'    => 'Vui lòng chọn loại người dùng',
-        ]);
+        // $valdidateData = $request->validate([
+        //     'name'           => 'required',
+        //     'email'             => 'required|unique:User',
+        //     'matkhau'           => 'required',
+        //     'loainguoidung_id'  => 'required'
+        // ],[
+        //     'name.required'               => 'Vui lòng nhập tên',
+        //     'email.required'               => 'Vui lòng nhập Email',
+        //     'email.unique'                 => 'Tên Email đã tồn tại',
+        //     'matkhau.required'             => 'Vui lòng nhập mật khẩu',
+        //     'loainguoidung_id.required'    => 'Vui lòng chọn loại người dùng',
+        // ]);
 
         $data = $request->except('_token');
         $data['created_at'] = new DateTime;
         $data['updated_at'] = new DateTime;
-        
+        $data['password'] = bcrypt($request->password);
         DB::table('user')->insert($data);
 
         return redirect()->route('admin.user.index');
@@ -78,7 +80,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   
+    {
         $loainguoidung = DB::table('LoaiNguoiDung')->get();
         $nguoidung = DB::table('user')->where('id',$id)->first();
         return view('api-admin.modules.user.edit',['nguoidung'=>$nguoidung],['loainguoidung'=>$loainguoidung]);

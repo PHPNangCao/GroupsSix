@@ -11,6 +11,7 @@
             <thead>
                 <tr>
                     <th>STT</th>
+                    <th>Ten </th>
                     <th>Email </th>
                     <th>Password</th>
                     <th>Loại người dùng</th>
@@ -21,8 +22,9 @@
                 @foreach ($LoaiNguoiDung as $nd)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
+                    <td>{{ $nd->name }}</td>
                     <td>{{ $nd->email }}</td>
-                    <td>{{ $nd->matkhau }}</td>
+                    <td>{{ $nd->password }}</td>
                     <td>{{ $nd->loainguoidung->ten }}</td>
                     <td>
                         <a href="{{route('admin.user.edit',['id' => $nd->id])}}" class="btn btn-success">Sửa</a>
@@ -31,7 +33,7 @@
                 </tr>
                 @endforeach
             </tbody>
-        </table>    
+        </table>
     </div>
     <!-- /.card-body -->
     <!-- /.card-footer-->

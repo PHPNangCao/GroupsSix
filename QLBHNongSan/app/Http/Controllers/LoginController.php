@@ -13,17 +13,20 @@ class LoginController extends Controller
     }
 
     public function progressLogin(Request $request){
-        $credentials = request()->only('email', 'matkhau');
-
-        //if (Auth::attempt($credentials)){
-            return redirect()->route('admin.monngon.index');
-        //} else {
-        //    return redirect()->route('showViewLogin');
-        //}
+        $data = request()->only('email', 'password');
+        if (Auth::attempt($data)){
+            return redirect()->route('admin');
+        } else {
+            return redirect()->route('showViewLogin');
+        }
     }
 
     public function logout(){
         Auth::logout();
         return redirect()->route('showViewLogin');
+    }
+
+    public function admin(){
+        return view('welcome');
     }
 }

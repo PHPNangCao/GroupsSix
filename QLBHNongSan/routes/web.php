@@ -12,9 +12,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('admin', function () {
-    return view('welcome');
-});
+Route::get('admin', 'LoginController@admin')->name('admin');
+Route::get('login', 'LoginController@showViewLogin')->name('showViewLogin');
+Route::post('login', 'LoginController@progressLogin')->name('progressLogin');
+
+Route::get('logout', 'LoginController@logout')->name('logout');
+
 
 //Route::middleware('check_login')->group(function () {
     Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){

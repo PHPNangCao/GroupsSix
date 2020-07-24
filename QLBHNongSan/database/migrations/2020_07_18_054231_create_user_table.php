@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Traits\Macroable;
+
 
 class CreateUserTable extends Migration
 {
@@ -15,10 +17,13 @@ class CreateUserTable extends Migration
     {
         Schema::create('user', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
-            $table->string('matkhau');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
             $table->unsignedBigInteger('loainguoidung_id');
             $table->foreign('loainguoidung_id')->references('id')->on('LoaiNguoiDung');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

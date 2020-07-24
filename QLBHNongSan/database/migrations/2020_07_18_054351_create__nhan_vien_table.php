@@ -20,7 +20,7 @@ class CreateNhanVienTable extends Migration
             $table->integer('sdt');
             $table->string('diachi');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('User');
+            $table->foreign('user_id')->references('id')->on('user');
             $table->timestamps();
         });
     }
