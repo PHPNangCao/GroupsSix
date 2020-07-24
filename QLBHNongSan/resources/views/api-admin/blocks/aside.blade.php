@@ -1,4 +1,11 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </div>
+    @endif
     <!-- Brand Logo -->
     <a href="api-admin/index3.html" class="brand-link">
     <img src="avatar.jpg"
@@ -11,9 +18,6 @@
     <div class="sidebar">
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="avatar.jpg" class="img-circle elevation-2" alt="User Image">
-            </div>
             <div class="info">
                 <a href="{{route('admin')}}"  style="font-size:20px" class="d-block">{{auth()->user()->name}}</a>
                 {{-- <h1 class="text-success" style="font-size:13px">{{auth()->user()->name}}</h1> --}}

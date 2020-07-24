@@ -40,18 +40,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // $valdidateData = $request->validate([
-        //     'name'           => 'required',
-        //     'email'             => 'required|unique:User',
-        //     'matkhau'           => 'required',
-        //     'loainguoidung_id'  => 'required'
-        // ],[
-        //     'name.required'               => 'Vui lòng nhập tên',
-        //     'email.required'               => 'Vui lòng nhập Email',
-        //     'email.unique'                 => 'Tên Email đã tồn tại',
-        //     'matkhau.required'             => 'Vui lòng nhập mật khẩu',
-        //     'loainguoidung_id.required'    => 'Vui lòng chọn loại người dùng',
-        // ]);
+        $valdidateData = $request->validate([
+            'name'           => 'required',
+            'email'             => 'required|unique:User',
+            'matkhau'           => 'required',
+            'loainguoidung_id'  => 'required'
+        ],[
+            'name.required'               => 'Vui lòng nhập tên',
+            'email.required'               => 'Vui lòng nhập Email',
+            'email.unique'                 => 'Tên Email đã tồn tại',
+            'matkhau.required'             => 'Vui lòng nhập mật khẩu',
+            'loainguoidung_id.required'    => 'Vui lòng chọn loại người dùng',
+        ]);
 
         $data = $request->except('_token');
         $data['created_at'] = new DateTime;

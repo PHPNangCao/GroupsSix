@@ -12,14 +12,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('admin', 'LoginController@admin')->name('admin');
+
 Route::get('login', 'LoginController@showViewLogin')->name('showViewLogin');
 Route::post('login', 'LoginController@progressLogin')->name('progressLogin');
 
 Route::get('logout', 'LoginController@logout')->name('logout');
 
 
-//Route::middleware('check_login')->group(function () {
+Route::middleware('check_login')->group(function () {
+
+    Route::get('admin', 'LoginController@admin')->name('admin');
     Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 
         Route::prefix('category')->name('category.')->group(function(){
@@ -255,7 +257,7 @@ Route::get('logout', 'LoginController@logout')->name('logout');
 
         });
     });
-//});
+});
 
 
 

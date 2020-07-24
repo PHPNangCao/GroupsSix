@@ -21,7 +21,7 @@
             </div>
             <div class="form-product">
                 <label>Email</label>
-                <input type="text" name="email" class="form-control" placeholder="Email..." value="{{$nguoidung->email}}">
+                <input type="text" name="email" class="form-control" placeholder="Email..." value="{{$nguoidung->email}}" readonly="">
                 @if ($errors->has('email'))
                 <div class="text-danger">
                     {{$errors->first('email')}}
