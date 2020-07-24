@@ -15,7 +15,12 @@
                 <img src="api-admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
+<<<<<<< HEAD
                 <a href="#" class="d-block">Nhóm 6</a>
+=======
+                {{-- <h1 class="text-success" style="font-size:13px">{{auth()->user()->name}}</h1>
+                <a href="{{route('logout')}}" style="font-size:13px" class="text-danger">Log Out</a> --}}
+>>>>>>> 7f0837b19b6f0879ee5a9245c731d5081de85d3f
             </div>
         </div>
         <!-- Sidebar Menu -->
