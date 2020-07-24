@@ -11,11 +11,9 @@
     <div class="sidebar">
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="api-admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-            </div>
             <div class="info">
-                <a href="#" class="d-block">Nhóm 6</a>
+                <h1 class="text-success" style="font-size:13px">{{auth()->user()->name}}</h1>
+                <a href="{{route('logout')}}" style="font-size:13px" class="text-danger">Log Out</a>
             </div>
         </div>
         <!-- Sidebar Menu -->
