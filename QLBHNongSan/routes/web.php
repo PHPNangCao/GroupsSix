@@ -279,3 +279,4 @@ Route::get('login', 'LoginController@showViewLogin')->name('showViewLogin');
 Route::post('login', 'LoginController@progressLogin')->name('progressLogin');
 
 Route::get('logout', 'LoginController@logout')->name('logout');
+Route::get('tongquan', 'TongQuanController@index')->name('tongquan');
