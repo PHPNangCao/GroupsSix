@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
 use DB,DateTime;
+use App\Http\Controllers\Admin\Str;
 class RecruitmentController extends Controller
 {
     /**
@@ -56,7 +57,7 @@ class RecruitmentController extends Controller
             $data = $request->except('_token');
             $data['created_at'] = new DateTime;
             $data['updated_at'] = new DateTime;
-    
+            $data['url'] = Str::slug($data['tieude'], '-');
             DB::table('tuyendung')->insert($data);
             return redirect()->route('admin.recruitment.index');
         }

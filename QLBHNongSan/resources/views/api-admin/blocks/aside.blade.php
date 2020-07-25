@@ -168,14 +168,14 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{route('admin.recruitment.index')}}" class="nav-link">
                         <i class="nav-icon far fa-image"></i>
                         <p>
                             Tuyển dụng
                         </p>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-list"></i>
@@ -208,7 +208,7 @@
                     </a>
                 </li>
 
-                <li class="nav-header">LABELS</li>
+                {{-- <li class="nav-header">LABELS</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon far fa-circle text-danger"></i>
@@ -226,7 +226,7 @@
                         <i class="nav-icon far fa-circle text-info"></i>
                         <p>Informational</p>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
