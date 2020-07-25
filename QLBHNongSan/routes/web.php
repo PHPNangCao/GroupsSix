@@ -183,13 +183,8 @@ Route::get('admin', function () {
             Route::get('create', 'PromotionalController@create')->name('create');
             Route::post('store', 'PromotionalController@store')->name('store');
 
-<<<<<<< HEAD
         Route::get('status/{id}', 'PromotionalController@status')->name('status');
         Route::get('destroy/{id}', 'PromotionalController@destroy')->name('destroy');
-=======
-            Route::get('edit/{id}', 'PromotionalController@edit')->name('edit');
-            Route::post('update/{id}', 'PromotionalController@update')->name('update');
->>>>>>> 711ddfd2f2885670ff419e5f938de0ef43b7490b
 
             Route::get('destroy/{id}', 'PromotionalController@destroy')->name('destroy');
 
