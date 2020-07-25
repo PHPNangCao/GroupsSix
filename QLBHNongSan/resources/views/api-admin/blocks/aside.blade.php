@@ -1,11 +1,4 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </div>
-    @endif
     <!-- Brand Logo -->
     <a href="api-admin/index3.html" class="brand-link">
     <img src="avatar.jpg"

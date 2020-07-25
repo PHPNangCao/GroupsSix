@@ -11,7 +11,7 @@
             <thead>
                 <tr>
                     <th>STT</th>
-                    <th>Ten </th>
+                    <th>Tên </th>
                     <th>Email </th>
                     <th>Password</th>
                     <th>Loại người dùng</th>
