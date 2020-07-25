@@ -18,8 +18,6 @@ class LoginController extends Controller
         $valdidateData = $request->validate([
             'email' => 'required',
             'password' => 'required', 
-            'anh' => 'required',
-            'mota' => 'required',
 
         ],[
             'email.required' => 'Vui lòng nhập Email',
