@@ -57,6 +57,7 @@ class UserController extends Controller
         $data['created_at'] = new DateTime;
         $data['updated_at'] = new DateTime;
         $data['password'] = bcrypt($request->password);
+
         DB::table('user')->insert($data);
 
         return redirect()->route('admin.user.index');
@@ -107,6 +108,9 @@ class UserController extends Controller
 
         $data = $request->except('_token');
         $data['updated_at'] = new DateTime;
+
+        $data['password'] = bcrypt($request->password);
+
         DB::table('user')->where('id',$id)->update($data);
 
         return redirect()->route('admin.user.index');
