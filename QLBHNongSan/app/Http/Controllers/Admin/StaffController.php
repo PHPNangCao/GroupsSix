@@ -43,7 +43,7 @@ class StaffController extends Controller
         $valdidateData = $request->validate([
             'ten' => 'required',
             'cmnd' => 'required|unique:NhanVien|integer',
-            'sdt' => 'required|integer',    
+            'sdt' => 'required',    
             'diachi' => 'required',
             'user_id' => 'required|unique:NhanVien',
 
@@ -54,7 +54,7 @@ class StaffController extends Controller
             'cmnd.integer' => 'Số CMND này phải nhập bằng số',
            // 'cmnd.max' => 'Số CMND không quá được 12 số',
             'sdt.required' => 'Vui lòng nhập số số điện thoại',
-            'sdt.integer' => 'Số điện thoại phải nhận bằng số',
+            //'sdt.integer' => 'Số điện thoại phải nhận bằng số',
             'diachi.required' => 'Vui lòng nhập địa chỉ',
             'user_id.required' => 'Vui lòng chọn user',
             'user_id.unique' => 'User này đã có thông tin',
@@ -107,7 +107,7 @@ class StaffController extends Controller
         $valdidateData = $request->validate([
             'ten' => 'required',
             'cmnd' => 'required|integer',
-            'sdt' => 'required|integer',    
+            'sdt' => 'required',    
             'diachi' => 'required',
             'user_id' => 'required',
 
@@ -118,7 +118,7 @@ class StaffController extends Controller
             'cmnd.integer' => 'Số CMND này phải nhập bằng số',
            // 'cmnd.max' => 'Số CMND không quá được 12 số',
             'sdt.required' => 'Vui lòng nhập số số điện thoại',
-            'sdt.integer' => 'Số điện thoại phải nhận bằng số',
+           // 'sdt.integer' => 'Số điện thoại phải nhận bằng số',
             'diachi.required' => 'Vui lòng nhập địa chỉ',
             'user_id.required' => 'Vui lòng chọn user',
            // 'user_id.unique' => 'User này đã có thông tin',

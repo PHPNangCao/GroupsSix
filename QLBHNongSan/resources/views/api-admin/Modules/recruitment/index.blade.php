@@ -20,7 +20,7 @@
                     <th>Tiêu đề </th>
                     <th>URL</th>
                     <th>Ảnh</th>
-                    <th>Mổ tả</th>
+                    <th>Mô tả</th>
                     <th>Liên hệ</th>
                     <th>Ngày tạo</th>
                     <th>Tình trạng</th>
@@ -28,12 +28,12 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($tuyendung as $td)
+                @foreach ($TuyenDung as $td)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $td->tieude }}</td>
                     <td>{{ $td->url }}</td>
-                    <td>{{ $td->anh }}</td>
+                    <td><img src="public/upload/tuyendung/{{$td->anh}}" alt="" height="100px"></td>
                     <td>{{ $td->mota }}</td>
                     <td>{{ $td->lienhe }}</td>
                     <td>{{ $td->created_at }}</td>
@@ -54,9 +54,9 @@
         </table>    
     </div>
     <!-- /.card-body -->
-    <div class="card-footer">
+    {{-- <div class="card-footer">
         Footer
-    </div>
+    </div> --}}
     <!-- /.card-footer-->
 
 </div>

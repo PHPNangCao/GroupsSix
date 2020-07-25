@@ -111,6 +111,7 @@ Route::middleware('check_login')->group(function () {
             Route::get('edit/{id}', 'RecruitmentController@edit')->name('edit');
             Route::post('update/{id}', 'RecruitmentController@update')->name('update');
 
+            Route::get('status/{id}', 'RecruitmentController@status')->name('status');
             Route::get('destroy/{id}', 'RecruitmentController@destroy')->name('destroy');
         });
 

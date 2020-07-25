@@ -1,64 +1,49 @@
 @extends('api-admin.master')
-@section('title','Sửa tin tuyển dụng')
+@section('title','Sửa thông tin tuyển dụng')
 @section('content')
+<!-- Default box -->
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Sửa tin tuyển dụng</h3>
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-            <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-            <i class="fas fa-times"></i></button>
-        </div>
+        <h3 class="card-title">Sửa thông tin tuyển dụng</h3>
     </div>
     <div class="card-body">
-        <form action="{{route('admin.recruitment.update',['id' => $tuyendung->id])}}" method="POST">
+        <form action="{{route('admin.recruitment.update',['id' => $TuyenDung->id])}}" enctype="multipart/form-data" method="POST">
             @csrf
-            <div class="form-product">
-                <label >Tiêu đề</label>
-                <input type="text" name="tieude" class="form-control" value="{{$tuyendung->tieude}}">
-                <span class="text-danger"> @error('tieude') {{ $message }} @enderror</span>
+            <div class="form-group">
+                <label>Tiêu Đề</label>
+            <input type="text" class="form-control-file"  name="tieude" placeholder="Tiêu đề" value="{{$TuyenDung->tieude}}">
             </div>
-            <div class="form-product">
-                <label >URL</label>
-                <input type="text" name="url" class="form-control" value="{{$tuyendung->url}}">
-                <span class="text-danger"> @error('url') {{ $message }} @enderror</span>
+            <div class="form-group">
+                <label>Ảnh</label>
+                <input type="hidden" name="image" value="{{$TuyenDung->anh}}">
+                <input type="file" class="form-control-file"  name="anh">
             </div>
-            <div class="form-product">
-                <label >Ảnh</label>
-                <input type="file" name="anh" class="form-control-file" value="{{$tuyendung->anh}}">
-                <span class="text-danger"> @error('anh') {{ $message }} @enderror</span>
+            <div class="form-group">
+                <label>Tình trạng</label>
+                <select name="tinhtrang" class="form-control">
+                    <option value="1">Đang còn tuyển</option>
+                    <option value="0">Tạm ngừng tuyển</option>
+                </select>
             </div>
-            <div class="form-product">
-                <label >Mô tả</label>
-                <textarea type="text" name="mota" class="form-control" >{{$tuyendung->mota}}</textarea>
+            <div class="form-group">
+                <label>Mô tả</label>
+                <textarea class="form-control" name="mota" rows="3"  placeholder="Mô tả">{{$TuyenDung->mota}}</textarea>
                 <script>
-                    CKEDITOR.replace( 'mota' );
+                    CKEDITOR.replace('mota');
                 </script>
             </div>
-            <div class="form-product">
-                <label >Liên hệ</label>
-                <input type="text" name="lienhe" class="form-control" value="{{$tuyendung->lienhe}}">
-                <span class="text-danger"> @error('lienhe') {{ $message }} @enderror</span>
+            <div class="form-group">
+                <label>Liên hệ</label>
+                <input type="text" class="form-control-file" name="lienhe" placeholder="Số điện thoại" value="{{$TuyenDung->lienhe}}">
             </div>
-            <br>
-            <div class="form-product">
-                <label >Tình trạng</label>
-                <br>
-                    <input type="radio" name="tinhtrang" value="1" {{  ($tuyendung->tinhtrang == 1 ? ' checked' : '') }}>Mở
-                    <input type="radio" name="tinhtrang" value="0" {{  ($tuyendung->tinhtrang == 0 ? ' checked' : '') }}>Ẩn
-                <br>
-                    <span class="text-danger"> @error('tinhtrang') {{ $message }} @enderror</span>
-            </div>
-            
-            <br>
+            <a href="{{route('admin.recruitment.index')}}" class="btn btn-warning">Quay Lại</a>
             <button type="submit" class="btn btn-primary">Lưu thông tin</button>
-        </form>    
+        </form>
     </div>
     <!-- /.card-body -->
     <div class="card-footer">
-        Footer
     </div>
     <!-- /.card-footer-->
 </div>
+
 @endsection

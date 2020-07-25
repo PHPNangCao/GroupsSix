@@ -34,7 +34,7 @@
     
                 <div class="form-group">
                     <label>Số điện thoại </label>
-                    <input type="number" name="sdt" class="form-control" placeholder="Số điện thoại" value="{{$nhanvien->sdt}}"> 
+                    <input type="text" name="sdt" class="form-control" placeholder="Số điện thoại" value="{{$nhanvien->sdt}}"> 
                     @if ($errors->has('sdt'))
                     <div class="text-danger">
                         {{$errors->first('sdt')}}
