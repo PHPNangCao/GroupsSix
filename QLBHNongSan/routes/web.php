@@ -191,6 +191,7 @@ Route::middleware('check_login')->group(function () {
             Route::get('edit/{id}', 'PromotionalController@edit')->name('edit');
             Route::post('update/{id}', 'PromotionalController@update')->name('update');
 
+            Route::get('status/{id}', 'PromotionalController@status')->name('status');
             Route::get('destroy/{id}', 'PromotionalController@destroy')->name('destroy');
 
         });
@@ -274,3 +275,8 @@ Route::get('tin-tuc', 'TrangChu\PageController@tintuc')->name('tin-tuc');
 Route::get('mon-ngon', 'TrangChu\PageController@monngon')->name('mon-ngon');
 
 
+<<<<<<< HEAD
+=======
+Route::get('logout', 'LoginController@logout')->name('logout');
+Route::get('tongquan', 'TongQuanController@index')->name('tongquan');
+>>>>>>> 1f90046ecda764f4a1878ca00c1ec38925680438
