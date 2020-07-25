@@ -170,7 +170,18 @@ Route::middleware('check_login')->group(function () {
         });
 
 
-         
+        Route::prefix('sale')->name('sale.')->group(function(){
+            Route::get('index', 'SaleController@index')->name('index');
+            Route::get('create', 'SaleController@create')->name('create');
+            Route::post('store', 'SaleController@store')->name('store');
+
+            Route::get('edit/{id}', 'SaleController@edit')->name('edit');
+            Route::post('update/{id}', 'SaleController@update')->name('update');
+
+            Route::get('status/{id}', 'SaleController@status')->name('status');
+            Route::get('destroy/{id}', 'SaleController@destroy')->name('destroy');
+
+        });
 
 
         Route::prefix('promotional')->name('promotional.')->group(function(){
