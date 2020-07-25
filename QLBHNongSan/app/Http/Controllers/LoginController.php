@@ -14,7 +14,8 @@ class LoginController extends Controller
 
     public function progressLogin(Request $request){
         $data = request()->only('email', 'password');
-        if (Auth::attempt($data)){
+        $remember = $request->input('remember-me');
+        if (Auth::attempt($data, $remember)){
             return redirect()->route('admin');
         } else {
             return redirect()->route('showViewLogin');
