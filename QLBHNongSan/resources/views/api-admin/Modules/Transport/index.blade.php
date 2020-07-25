@@ -27,7 +27,7 @@
                     <td>{{ $NVC->ten }}</td>
                     <td>{{ $NVC->diachi }}</td>
                     <td>{{ $NVC->sdt }} </td>
-                    <td>{{ $NVC->mota }} </td>
+                    <td>{!! $NVC->mota !!} </td>
                     <td>
                         <a href="{{route('admin.transport.edit',['id' => $NVC->id])}}" class="btn btn-success">Sửa <i class="fa fa-pencil"></a>
                         <a href="{{route('admin.transport.destroy',['id' => $NVC->id])}}" onclick="return checkDelete('Bạn có muốn xóa nhà vận chuyển này không?')" class="btn btn-danger">Xóa <i class="fa fa-close"></a>

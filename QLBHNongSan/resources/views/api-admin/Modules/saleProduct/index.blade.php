@@ -26,7 +26,7 @@
                         <td>{{$loop->iteration}}</td>
                         <td>{{ $kmsp->KhuyenMai->tieude }}</td>
                         <td>{{ $kmsp->SanPham->ten }}</td>
-                        <td>{{ $kmsp->mota }}</td>
+                        <td>{!! $kmsp->mota !!}</td>
                         <td>
                             <a href="{{route('admin.saleproduct.edit',['id' => $kmsp->id])}}" class="btn btn-danger">Sửa</a>
                             <a href="{{route('admin.saleproduct.destroy',['id' => $kmsp->id])}}" onclick="return checkDelete('Bạn có muốn xóa sản phẩm này không?')" class="btn btn-success">Xoá</a>

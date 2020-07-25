@@ -28,7 +28,7 @@
                         <td>{{$loop->iteration }}</td>
                         <td>{{ $km->tieude }}</td>
                         <td>{{ $km->url }}</td>
-                        <td style="width: 300px;">{{ $km->noidung }}</td>
+                        <td style="width: 300px;">{!! $km->noidung !!}</td>
                         <td><img src="public/upload/sale/{{$km->anh}}" alt="" height="100px"></td>
                         <td>
                             @if ($km->tinhtrang == 1)

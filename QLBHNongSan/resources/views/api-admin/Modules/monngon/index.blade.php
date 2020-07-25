@@ -27,7 +27,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $mn->tieude }}</td>
                     <td>{{ $mn->tomtat }}</td>
-                    <td>{{ $mn->noidung }}</td>
+                    <td>{!! $mn->noidung !!}</td>
                     <td>{{ $mn->luotxem }}</td>
                     <td><img src="public/upload/monngon/{{$mn->anh}}" alt="" height="100px"></td>
                     <td>{{ $mn->SanPham->ten }}</td>

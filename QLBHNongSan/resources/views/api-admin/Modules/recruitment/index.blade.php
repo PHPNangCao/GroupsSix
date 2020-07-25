@@ -34,7 +34,7 @@
                     <td>{{ $td->tieude }}</td>
                     <td>{{ $td->url }}</td>
                     <td><img src="public/upload/tuyendung/{{$td->anh}}" alt="" height="100px"></td>
-                    <td>{{ $td->mota }}</td>
+                    <td>{!! $td->mota !!}</td>
                     <td>{{ $td->lienhe }}</td>
                     <td>{{ $td->created_at }}</td>
                     <td>

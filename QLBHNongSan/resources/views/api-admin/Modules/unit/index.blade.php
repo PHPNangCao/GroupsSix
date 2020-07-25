@@ -22,7 +22,7 @@
                 <tr>
                     <td>{{$loop->iteration }}</td>
                     <td>{{ $DVT->ten }}</td>
-                    <td>{{ $DVT->mota }}</td>
+                    <td>{!! $DVT->mota !!}</td>
                     <td>
                         <a href="{{route('admin.unit.edit',['id' => $DVT->id])}}" class="btn btn-success">Sửa</a>
                         <a href="{{route('admin.unit.destroy',['id' => $DVT->id])}}" onclick="return checkDelete('Bạn có muốn xóa đơn vị tính này không?')" class="btn btn-danger">Xóa</a>
