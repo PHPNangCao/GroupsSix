@@ -12,7 +12,8 @@
     body {
         margin: 0;
         padding: 0;
-        background-color: #17a2b8;
+        background-image: url("public/upload/anhbiaLogin.jpg");
+        /* background-color: #17a2b8; */
         height: 100vh;
       }
       #login .container #login-row #login-column #login-box {
@@ -28,11 +29,12 @@
       #login .container #login-row #login-column #login-box #login-form #register-link {
         margin-top: -85px;
       }
+    
       </style>
 </head>
 <body>
     <div id="login">
-        <h3 class="text-center text-white pt-5">TRANG NÔNG SẢN</h3>
+        <h1 class="text-center text-white pt-3">TRANG NÔNG SẢN</h1>
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
@@ -43,10 +45,20 @@
                             <div class="form-group">
                                 <label for="username" class="text-info">Email: <span class="text-danger">(*)</span></label><br>
                                 <input type="email" name="email" id="email" class="form-control">
+                                @if ($errors->has('email'))
+                                    <div class="text-danger">
+                                        {{$errors->first('email')}}
+                                    </div>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label class="text-info">Password:  <span class="text-danger">(*)</span></label><br>
                                 <input type="password" name="password" id="password" class="form-control">
+                                {{-- @if ($errors->has('password'))
+                                    <div class="text-danger">
+                                        {{$errors->first('password')}}
+                                    </div>
+                                @endif --}}
                             </div>
                             <div class="form-group">
                                 <label for="remember-me" class="text-info"><span>Remember Password </span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
