@@ -274,9 +274,6 @@ Route::get('lien-he', 'TrangChu\PageController@lienhe')->name('lien-he');
 Route::get('tin-tuc', 'TrangChu\PageController@tintuc')->name('tin-tuc');
 Route::get('mon-ngon', 'TrangChu\PageController@monngon')->name('mon-ngon');
 
-
-<<<<<<< HEAD
-=======
 Route::get('logout', 'LoginController@logout')->name('logout');
 Route::get('tongquan', 'TongQuanController@index')->name('tongquan');
->>>>>>> 1f90046ecda764f4a1878ca00c1ec38925680438
+
