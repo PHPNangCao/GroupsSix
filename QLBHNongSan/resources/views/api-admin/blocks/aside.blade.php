@@ -144,14 +144,14 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="../gallery.html" class="nav-link">
                         <i class="nav-icon far fa-image"></i>
                         <p>
                             Bình Luận khách hàng
                         </p>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a href="{{route('admin.monngon.index')}}" class="nav-link">
                         <i class="nav-icon far fa-image"></i>
@@ -199,14 +199,14 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="../gallery.html" class="nav-link">
                         <i class="nav-icon far fa-image"></i>
                         <p>
                             Kho hàng
                         </p>
                     </a>
-                </li>
+                </li> --}}
 
                 {{-- <li class="nav-header">LABELS</li>
                 <li class="nav-item">
