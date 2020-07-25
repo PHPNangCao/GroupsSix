@@ -6,7 +6,7 @@
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Thông tin quảng cáo <a href="{{route('admin.promotional.create')}}">Thêm mới</a></h3>
+        <h3><a href="{{route('admin.promotional.create')}}" class="btn btn-dark">Thêm mới</a></h3>
     </div>
     <div class="card-body">
         <form action="{{route('admin.promotional.index')}}" method="POST">
@@ -27,7 +27,7 @@
                         <td>{{$loop->iteration }}</td>
                         <td><img src="public/upload/quangcao/{{$qc->anh}}" alt="" height="100px"></td>
                         <td>{{ $qc->url }}</td>
-                        <td>{{ $qc->KhuyenMai->ten }}</td>
+                        <td>{{ $qc->KhuyenMai->tieude }}</td>
                         <td>
                             @if ($qc->trangthai == 1)
                                 <a href="{{route('admin.promotional.status',['id' => $qc->id])}}" class="btn btn-success">Show</i></a>
@@ -45,9 +45,9 @@
         </form>
     </div>
     <!-- /.card-body -->
-    <div class="card-footer">
+    {{-- <div class="card-footer">
         Footer
-    </div>
+    </div> --}}
     <!-- /.card-footer-->
 </div>
 

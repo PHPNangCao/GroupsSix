@@ -11,7 +11,7 @@
             <thead>
                 <tr>
                     <th>STT</th>
-                    <th>Ten </th>
+                    <th>Tên </th>
                     <th>Email </th>
                     <th>Password</th>
                     <th>Loại người dùng</th>
@@ -24,7 +24,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $nd->name }}</td>
                     <td>{{ $nd->email }}</td>
-                    <td>{{ $nd->password }}</td>
+                    <td style="max-width: 200px;">{{ $nd->password }}</td>
                     <td>{{ $nd->loainguoidung->ten }}</td>
                     <td>
                         <a href="{{route('admin.user.edit',['id' => $nd->id])}}" class="btn btn-success">Sửa</a>

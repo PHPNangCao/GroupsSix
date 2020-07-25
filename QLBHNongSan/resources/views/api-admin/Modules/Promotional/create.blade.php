@@ -19,11 +19,15 @@
                 @endif
             </div>   
             <div class="form-group">
+                <label>Url <span class="text-warning">(Nếu có)</label>
+                <input type="text" class="form-control-file"  name="url" placeholder="dinh-dang-nhu-vay">
+            </div>
+            <div class="form-group">
                 <label>Khuyến mãi</label>
                 <select name="khuyenmai_id" class="form-control">
                 <option >----Chọn Khuyến mãi----</option>
                 @foreach ($khuyenmai as $km)
-                  <option value="{{$km->id}}"> {{$km->noidung}}</option>                    
+                  <option value="{{$km->id}}"> {{$km->tieude}}</option>                    
                 @endforeach
                 </select>
                 @if ($errors->has('khuyenmai_id'))

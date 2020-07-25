@@ -94,11 +94,21 @@ class SaleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if($request->has('anh')){
+            $image_name = $request->anh->getClientOriginalName();
+            $request->anh->move('public/upload/sale', $image_name);
+        }else{
+            $image_name = $request->image;
+        }
+        $url = Str::slug($request->tieude, '-');
+        DB::table('KhuyenMai')->where('id',$id)->update([
+        'tieude' => $request->tieude,
+        'url'   => $url,
+        'noidung' => $request->noidung,
+        'anh' => $image_name,
+        'tinhtrang' => $request->tinhtrang,
         
-        $data = $request->except('_token');
-        $data['url'] = Str::slug($data['ten'], '-');
-        $data['updated_at'] = new DateTime;
-        DB::table('KhuyenMai')->where('id',$id)->update($data);
+        ]);
         return redirect()->route('admin.sale.index');
         
     }

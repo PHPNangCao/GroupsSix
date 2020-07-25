@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Admin\PromotionalModel;
-use App\Admin\SaleProductModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +19,7 @@ class PromotionalController extends Controller
      */
     public function index()
     {
-        $quangcao = SaleProductModel::orderBy('id', 'DESC')->get();
+        $quangcao = PromotionalModel::orderBy('id', 'DESC')->get();
         return view('api-admin.modules.promotional.index', ['quangcao' => $quangcao]);
     }
 
@@ -44,10 +43,8 @@ class PromotionalController extends Controller
     public function store(Request $request)
     {
         $valdidateData = $request->validate([
-            'anh' => 'required|unique:QuangCao',
+            'anh' => 'required',
             'khuyenmai_id' => 'required',
-
-
         ],[
 
             'khuyenmai_id.required' => 'Vui lòng chọn khuyến mãi',
@@ -58,7 +55,11 @@ class PromotionalController extends Controller
         $data = $request->except('_token');
         $data['created_at'] = new DateTime;
         $data['updated_at'] = new DateTime;
-        // $data['url'] = Str::slug($data['ten'], '-');
+        //thêm ảnh
+        $file = $request->anh;       
+        $file->move('public/upload/quangcao', $file->getClientOriginalName());
+        $data["anh"] =  $file->getClientOriginalName();
+  
         DB::table('quangcao')->insert($data);
         return redirect()->route('admin.promotional.index');
     }
@@ -99,9 +100,18 @@ class PromotionalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->except('_token');
-        $data['updated_at'] = new DateTime;
-        DB::table('quangcao')->where('id',$id)->update($data);
+        if($request->has('anh')){
+            $image_name = $request->anh->getClientOriginalName();
+            $request->anh->move('public/upload/quangcao', $image_name);
+        }else{
+            $image_name = $request->image;
+        }
+        DB::table('QuangCao')->where('id',$id)->update([
+            'anh' => $image_name,
+            'url' => $request->url,
+            'trangthai' => $request->trangthai,
+            'khuyenmai_id' => $request->khuyenmai_id,
+        ]);
         return redirect()->route('admin.promotional.index');
     }
 
