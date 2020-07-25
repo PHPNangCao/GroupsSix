@@ -13,8 +13,7 @@ class LoginController extends Controller
     }
 
     public function progressLogin(Request $request){
-        $data = request()->only('email', 'password');
-        if (Auth::attempt($data)){
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password,'loainguoidung_id' => 1])){
             return redirect()->route('admin');
         } else {
             return redirect()->route('showViewLogin');
