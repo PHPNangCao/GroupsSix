@@ -281,3 +281,4 @@ Route::get('lien-he', 'TrangChu\PageController@lienhe')->name('lien-he');
 Route::get('logout', 'LoginController@logout')->name('logout');
 Route::get('tongquan', 'TongQuanController@index')->name('tongquan');
 
+Route::get('chi-tiet-san-pham/{id}', 'TrangChu\PageController@chitietsanpham')->name('chi-tiet-san-pham');

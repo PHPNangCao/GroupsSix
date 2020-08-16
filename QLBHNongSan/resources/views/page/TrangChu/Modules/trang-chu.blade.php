@@ -64,7 +64,7 @@
                         <div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 
                         <div class="single-item-header">
-                            <a href="product.html"><img src="public/upload/product/{{$sp->anh}}" alt="" height="100px"></a>
+                        <a href="{{route('chi-tiet-san-pham',['id' => $sp->id])}}"><img src="public/upload/product/{{$sp->anh}}" alt="" height="100px"></a>
                         </div>
                         <div class="single-item-body">
                         <p class="single-item-title">{{$sp->ten}}</p>

@@ -47,4 +47,8 @@ class PageController extends Controller
         
     }
 
+    function chitietsanpham($id){
+        $data = DB::table('SanPham')->orderBy('id', 'DESC')->get();
+        return view('page.TrangChu.Modules.chitietsanpham',['sanpham'=> $data]);
+    }
 }

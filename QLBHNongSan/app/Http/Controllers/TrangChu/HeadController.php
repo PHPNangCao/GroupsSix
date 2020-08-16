@@ -11,6 +11,6 @@ class HeadController extends Controller
 {
     public function head(){
         $data = DB::table('LoaiSanPham')->orderBy('id', 'DESC')->get();
-        return view('page.TrangChu.block.master', ['LoaiSanPham' => $data]);
+        return view('page.TrangChu.block.header', ['LoaiSanPham' => $data]);
     }
 }
