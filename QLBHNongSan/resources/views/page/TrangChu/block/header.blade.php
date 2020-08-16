@@ -81,16 +81,22 @@
     <div class="container">
         <a class="visible-xs beta-menu-toggle pull-right" href="#"><span class='beta-menu-toggle-text'>Menu</span> <i class="fa fa-bars"></i></a>
         <div class="visible-xs clearfix"></div>
+        
         <nav class="main-menu">
             <ul class="l-inline ov">
                 <li><a href="{{route('trang-chu')}}">Trang chủ</a></li>
-            <li><a href="{{route('trang-chu')}}">Sản phẩm</a>
+
+                <li><a href="{{route('san-pham')}}">Sản phẩm</a>
                     <ul class="sub-menu">
-                        <li><a href="product_type.html">Danh Mục SP 1</a></li>
-                        <li><a href="product_type.html">Danh Mục SP 2</a></li>
-                        <li><a href="product_type.html">Danh Mục SP 3</a></li>
+
+                        {{-- @foreach ($LoaiSanPham as $lsb)
+                            <li><a href="product_type.html">{{$lsb->ten}}</a></li>
+                        @endforeach --}}
+                        
+
                     </ul>
                 </li>
+
                 <li><a href="{{route('tin-tuc')}}">Tin Tức</a></li>
                 <li><a href="{{route('khuyen-mai')}}">Khuyến Mãi</a></li>
                 <li><a href="{{route('mon-ngon')}}">Món Ngon</a></li>

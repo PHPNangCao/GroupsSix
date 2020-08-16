@@ -4,11 +4,13 @@ namespace App\Http\Controllers\TrangChu;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
     function page(){
-        return view('page.TrangChu.Modules.trang-chu');
+        $data = DB::table('SanPham')->orderBy('id', 'DESC')->get();
+        return view('page.TrangChu.Modules.trang-chu',['SanPham'=> $data]);
     }
     
     function dangki(){
@@ -18,6 +20,12 @@ class PageController extends Controller
     function xulydangki(){
        
     }
+
+    function sanpham(){
+        return view('page.TrangChu.Modules.san-pham');
+
+    }
+
 
     function tintuc(){
         return view('page.TrangChu.Modules.tin-tuc');

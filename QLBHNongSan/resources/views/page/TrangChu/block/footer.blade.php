@@ -16,7 +16,7 @@
                             <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> Sản phẩm 2</a></li>
                             <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> Sản phẩm 3</a></li>
                             <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> Sản phẩm 4</a></li>
-                            
+                          
                         </ul>
                     </div>
                 </div>

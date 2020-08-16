@@ -58,16 +58,16 @@
             </div>
 
             <div class="row">
-                @foreach ($SanPham as $sp)
+                
                 <div class="col-sm-3">
                     <div class="single-item">
                         <div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 
                         <div class="single-item-header">
-                            <a href="product.html"><img src="public/upload/product/{{$sp->anh}}" alt="" height="100px"></a>
+                            <a href="product.html"><img src="source/assets/dest/images/products/2.jpg" alt=""></a>
                         </div>
                         <div class="single-item-body">
-                        <p class="single-item-title">{{$sp->ten}}</p>
+                            <p class="single-item-title">Sản Phẩm 1</p>
                             <p class="single-item-price">
                                 <span class="flash-del">50.000đ</span>
                                 <span class="flash-sale">15.000đ</span>
@@ -80,7 +80,6 @@
                         </div>
                     </div>
                 </div>
-                @endforeach
                 
             </div>
         </div> <!-- .beta-products-list -->
